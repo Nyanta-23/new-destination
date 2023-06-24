@@ -19,6 +19,7 @@ include("config.php");
 
 <body>
   <h1>Homepage</h1>
+  <p>rian</p>
   <a href="admin/login.php">Login</a>
 </body>
 
