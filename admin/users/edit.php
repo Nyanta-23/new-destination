@@ -1,21 +1,17 @@
 <?php
-ini_set('display_errors', '1');
-ini_set('display_startup_errors', '1');
-error_reporting(E_ALL);
 include_once("../../config.php");
 include('session.php');
-define('SITE_ROOT', realpath(dirname(__FILE__)));
+
 // Display selected user data based on id
 // Getting id from url
 $id = @$_GET['id'];
 
 // Fetech user data based on id
-$res_users = mysqli_query($mysqli, "SELECT * FROM users WHERE id=$id");
+$result = mysqli_query($mysqli, "SELECT * FROM users WHERE id=$id");
 
-while ($users = mysqli_fetch_array($res_users)) {
-    $row_judul_users = $users['judul_users'];
-    $row_content_users = $users['content_users'];
-    $row_kategori = $users['id_kategori'];
+while ($user_data = mysqli_fetch_array($result)) {
+    $row_username = $user_data['username'];
+    $row_nama = $user_data['nama'];
 }
 ?>
 <?php
@@ -23,52 +19,14 @@ while ($users = mysqli_fetch_array($res_users)) {
 // Check if form is submitted for user update, then redirect to homepage after update
 if (isset($_POST['update'])) {
     $id = $_POST['id'];
-    $created_time = date("Y-m-d H:i:s");
-    $user_id = $_SESSION['id'];
-    $kategori = @$_POST['kategori'];
-    $slug = preg_replace('/[^a-z0-9]+/i', '-', trim(strtolower($_POST["judul_users"])));
-
-    $judul_users = @$_POST['judul_users'];
-    $content_users  = @$_POST['content_users'];
-    $ekstensi_diperbolehkan    = array('png', 'jpg', 'jpeg');
-    $nama = $_FILES['file']['name'];
-    $x = explode('.', $nama);
-    $ekstensi = strtolower(end($x));
-    $ukuran    = $_FILES['file']['size'];
-    $file_tmp = $_FILES['file']['tmp_name'];
-    if (in_array($ekstensi, $ekstensi_diperbolehkan) === true) {
-        if ($ukuran < 1044070) {
-            move_uploaded_file($file_tmp, SITE_ROOT . '/image/' . $nama);
-            $file_name = $nama;
-        } else {
-            echo 'UKURAN FILE TERLALU BESAR';
-        }
+    $username = @$_POST['username'];
+    $password = @$_POST['password'];
+    $nama = @$_POST['nama'];
+    if ($password) {
+        $result = mysqli_query($mysqli, "UPDATE users SET username='$username',nama='$nama',password='$password' WHERE id=$id");
     } else {
-        echo 'EKSTENSI FILE YANG DI UPLOAD TIDAK DI PERBOLEHKAN';
-        $file_name = '';
+        $result = mysqli_query($mysqli, "UPDATE users SET username='$username',nama='$nama' WHERE id=$id");
     }
-    if (!empty($file_name)) {
-        $sql = "SELECT cover FROM users WHERE id='$id'";
-        $result = mysqli_query($mysqli, $sql);
-        if ($result->num_rows ==  0) {
-            $row = mysqli_fetch_assoc($result);
-            if (file_exists('uploads/' . $filename)) {
-                unlink('uploads/' . $filename);
-                echo 'File ' . $row['cover'] . ' has been deleted';
-            } else {
-                echo 'Could not delete ' . $row['cover'] . ', file does not exist';
-            }
-        }
-        $file_name = $nama;
-        $result = mysqli_query($mysqli, "UPDATE users SET cover='$file_name',judul_users='$judul_users',
-    content_users='$content_users',id_kategori='$kategori',user_id='$user_id',created_time='$created_time'
-    WHERE id=$id");
-    } else {
-        $result = mysqli_query($mysqli, "UPDATE users SET judul_users='$judul_users',
-    content_users='$content_users',id_kategori='$kategori',user_id='$user_id',created_time='$created_time'
-    WHERE id=$id");
-    }
-
     // update user data
 
     // Redirect to homepage to display updated user in list
@@ -86,14 +44,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin Panel</title>
+    <title>Login Admin Panel</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../../assets/admin/plugins/fontawesome-free/css/all.min.css">
+    <!-- icheck bootstrap -->
+    <link rel="stylesheet" href="../../assets/admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="../../assets/admin/dist/css/adminlte.min.css">
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -117,52 +77,43 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                                     <div class="card-tools">
                                         <!-- This will cause the card to maximize when clicked -->
-                                        <a href="<?= $base_url_admin ?>/dashboard.php?page=users" class="btn btn-info">Kembali</a>
+                                        <a href="../../admin?page=users" class="btn btn-info">Kembali</a>
                                     </div>
                                     <!-- /.card-tools -->
                                 </div>
 
                                 <div class="card-body">
 
-                                    <form action="../../admin/users/edit.php?page=users" method="post" enctype="multipart/form-data">
+                                    <form action="../../admin/users/edit.php" method="post">
                                         <input type="hidden" name="id" value="<?= $id ?>">
                                         <div class="form-group">
-                                            <label for="judul_users">Judul users</label>
-                                            <input type="text" class="form-control" value="<?= $row_judul_users ?>" name="judul_users" required>
+                                            <label for="username">Username</label>
+                                            <input type="text" class="form-control" value="<?= $row_username ?>" name="username" required <?php if ($row_username == 'admin') { ?> readonly <?php } ?>>
                                         </div>
-
                                         <div class="form-group">
-                                            <label for="content_users">Content</label>
-                                            <textarea type="text" class="form-control" name="content_users" required><?= $row_content_users ?></textarea>
+                                            <label for="nama">Nama</label>
+                                            <input type="text" class="form-control" value="<?= $row_nama ?>" name="nama_operator" required>
                                         </div>
-                                        <?php
-                                        $data_kategori = mysqli_query($mysqli, "SELECT * FROM tb_kategori ORDER BY id DESC");
-                                        ?>
                                         <div class="form-group">
-                                            <label for="kategori">Kategori</label>
-                                            <select class="form-control" name="kategori" required>
-                                                <option value="">Pilih Kategori</option>
-                                                <?php while ($d_kategori = mysqli_fetch_array($data_kategori)) { ?>
-                                                    <option value="<?= $d_kategori['id'] ?>" <?php if ($d_kategori['id'] == $row_kategori) { ?> <?= 'selected' ?> <?php } ?>><?= $d_kategori['nama_kategori'] ?></option>
-                                                <?php } ?>
-                                                <select>
+                                            <label for="password">Password</label>
+                                            <input type="password" class="form-control" value="" name="password">
+                                            <span class="help-block"> Kosongkan bila tidak di ubah</span>
                                         </div>
-                                        <input type="file" name="file">
                                         <button class="btn btn-primary" type="submit" name="update">Simpan</button>
-
-                                    </form>
-
-
                                 </div>
-                                <!-- /.content-wrapper -->
+                                </form>
+
 
                             </div>
+                            <!-- /.content-wrapper -->
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <?php include_once('../template/footer.php'); ?>
+    </div>
+    <?php include_once('../template/footer.php'); ?>
 
     </div>
     <!-- ./wrapper -->
