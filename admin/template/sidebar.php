@@ -72,7 +72,7 @@ $page  = $_GET['page']; ?>
           </a>
         </li>
         <li class="nav-item">
-          <a href="<?= $base_url ?>/signout.php" class="nav-link">
+          <a href="<?= $base_url ?>/logout.php" class="nav-link">
             <i class="nav-icon fas fa-power-off"></i>
             <p>
               Keluar
