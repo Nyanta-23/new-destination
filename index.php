@@ -104,11 +104,17 @@ include("config.php");
   <!-- Navbar -->
 
   <h1>Homepage</h1>
+<<<<<<< HEAD
 
 
 
 
 
+=======
+  <h1>HANNNNNNNNN</h1>
+  <p>rian</p>
+  <p>Faisal</p>
+>>>>>>> 520b30c7ade68dd97e81761cbb24c05dba214ae4
   <a href="admin/login.php">Login</a>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.js"></script>
