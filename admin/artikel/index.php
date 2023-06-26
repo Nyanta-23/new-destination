@@ -26,19 +26,14 @@ include_once("../config.php");
                             <tr>
                                 <th>No</th>
                                 <th>Judul Artikel</th>
-                                <th>Kategori Artikel</th>
+                                <th>Image</th>
                                 <th>Penulis</th>
                                 <th>Aksi</th>
                             </tr>
                             <?php
                             $no = 1;
-                            $result = mysqli_query($mysqli, "SELECT tb_artikel.*,
-                            tb_kategori.nama_kategori,
-                            tb_users.nama_operator
-                            FROM tb_artikel
-                            INNER JOIN tb_kategori ON tb_artikel.id_kategori = tb_kategori.id
-                            INNER JOIN tb_users ON tb_artikel.user_id = tb_users.id
-                            
+                            $result = mysqli_query($mysqli, "SELECT *
+                            FROM article
                             ORDER BY id DESC");
 
                             while ($data = mysqli_fetch_array($result)) {
@@ -46,9 +41,9 @@ include_once("../config.php");
 
                                 <tr>
                                     <td><?= $no++ ?></td>
-                                    <td><?= $data['judul_artikel'] ?></td>
-                                    <td><?= $data['nama_kategori'] ?></td>
-                                    <td><?= $data['nama_operator'] ?></td>
+                                    <td><?= $data['title'] ?></td>
+                                    <td>-</td>
+                                    <td>-</td>
                                     <td>
                                         <a class="btn btn-success" href='artikel/edit.php?id=<?= $data['id'] ?>&page=artikel'>Edit</a>
                                         <a class="btn btn-danger" onclick='return confirmDelete()' href='artikel/delete.php?id=<?= $data['id'] ?>&page=artikel'>Hapus</a>

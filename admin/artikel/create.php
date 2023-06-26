@@ -12,7 +12,7 @@ if (isset($_POST['submit'])) {
     $user_id = $_SESSION['id'];
     $kategori = @$_POST['kategori'];
     $content_artikel  = @$_POST['content_artikel'];
-    $sql = "SELECT * FROM tb_artikel WHERE judul_artikel='$judul_artikel'";
+    $sql = "SELECT * FROM article WHERE judul_artikel='$judul_artikel'";
     $ekstensi_diperbolehkan    = array('png', 'jpg');
     $nama = $_FILES['file']['name'];
     $x = explode('.', $nama);
@@ -35,7 +35,7 @@ if (isset($_POST['submit'])) {
         echo 'EKSTENSI FILE YANG DI UPLOAD TIDAK DI PERBOLEHKAN';
     }
 
-    $result = mysqli_query($mysqli, "INSERT INTO tb_artikel(judul_artikel,created_time,user_id,id_kategori, content_artikel,cover)
+    $result = mysqli_query($mysqli, "INSERT INTO article(judul_artikel,created_time,user_id,id_kategori, content_artikel,cover)
          VALUES('$judul_artikel','$created_time','$user_id','$kategori','$content_artikel','$file_name')");
 }
 // 
@@ -99,19 +99,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             <label for="content_artikel">Content</label>
                                             <textarea type="text" class="form-control" name="content_artikel" required></textarea>
                                         </div>
-                                        <?php
-                                        $kategori = mysqli_query($mysqli, "SELECT * FROM tb_kategori ORDER BY id DESC");
-                                        ?>
-                                        <div class="form-group">
-                                            <label for="content_artikel">Kategori</label>
-                                            <select class="form-control" name="kategori" required>
-                                                <option value="">Pilih Kategori</option>
-                                                <?php while ($data = mysqli_fetch_array($kategori)) { ?>
-                                                    <option value="<?= $data['id'] ?>"><?= $data['nama_kategori'] ?></option>
-                                                <?php } ?>
-                                                <select>
-                                        </div>
-
                                     </div>
                                     <div class="card-footer">
                                         <button class="btn btn-primary" type="submit" name="submit">Simpan</button>

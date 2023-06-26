@@ -10,7 +10,7 @@ define('SITE_ROOT', realpath(dirname(__FILE__)));
 $id = @$_GET['id'];
 
 // Fetech user data based on id
-$res_artikel = mysqli_query($mysqli, "SELECT * FROM tb_artikel WHERE id=$id");
+$res_artikel = mysqli_query($mysqli, "SELECT * FROM article WHERE id=$id");
 
 while ($artikel = mysqli_fetch_array($res_artikel)) {
     $row_judul_artikel = $artikel['judul_artikel'];
@@ -48,7 +48,7 @@ if (isset($_POST['update'])) {
         $file_name = '';
     }
     if (!empty($file_name)) {
-        $sql = "SELECT cover FROM tb_artikel WHERE id='$id'";
+        $sql = "SELECT cover FROM article WHERE id='$id'";
         $result = mysqli_query($mysqli, $sql);
         if ($result->num_rows ==  0) {
             $row = mysqli_fetch_assoc($result);
@@ -60,11 +60,11 @@ if (isset($_POST['update'])) {
             }
         }
         $file_name = $nama;
-        $result = mysqli_query($mysqli, "UPDATE tb_artikel SET cover='$file_name',judul_artikel='$judul_artikel',
+        $result = mysqli_query($mysqli, "UPDATE article SET cover='$file_name',judul_artikel='$judul_artikel',
     content_artikel='$content_artikel',id_kategori='$kategori',user_id='$user_id',created_time='$created_time'
     WHERE id=$id");
     } else {
-        $result = mysqli_query($mysqli, "UPDATE tb_artikel SET judul_artikel='$judul_artikel',
+        $result = mysqli_query($mysqli, "UPDATE article SET judul_artikel='$judul_artikel',
     content_artikel='$content_artikel',id_kategori='$kategori',user_id='$user_id',created_time='$created_time'
     WHERE id=$id");
     }
