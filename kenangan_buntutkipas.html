@@ -1,0 +1,184 @@
+<?php
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
+
+include("config.php");
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="admin/assets/styles/styles.css">
+  <title>Web Pariwisata</title>
+</head>
+<body class="overflow-x-hidden">
+  
+  <!-- Navbar -->
+<nav class="bg-white fixed w-full z-20 top-0 left-0 border-b border-gray-200">
+  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+  <a href="https://flowbite.com/" class="flex items-center">
+      <span class="self-center text-2xl font-semibold whitespace-nowrap capitalize"><span class="text-orange-400">ambatu</span>trip</span>
+  </a>
+  <div class="flex md:order-2">
+
+    <button data-collapse-toggle="navbar-sticky" aria-controls="navbar-sticky" aria-expanded="false" type="button" class="md:hidden text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-lg text-sm p-2.5 mr-1"  >
+
+      <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
+      <span class="sr-only">Search</span>
+    </button>
+
+      <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-sticky" aria-expanded="false">
+        <span class="sr-only">Open main menu</span>
+        <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+      </button>
+      
+      <div class="relative hidden md:block">
+        <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+          <svg class="w-5 h-5 text-gray-500" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
+          <span class="sr-only">Search icon</span>
+        </div>
+        <input type="text" id="search-navbar" class="block w-72 p-2 pr-10 text-sm text-gray-900 border border-gray-300 rounded-full bg-gray-50 focus:ring-orange-400 focus:border-orange-400" placeholder="Search...">
+      </div>
+  </div>
+
+  <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-2" id="navbar-sticky">
+    <div class="relative mt-3 md:hidden">
+      <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+        <svg class="w-5 h-5 text-gray-500" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
+      </div>
+      <input type="text" id="search-navbar" class="block w-full p-2 pr-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-orange-400 focus:border-orange-400" placeholder="Search...">
+    </div>
+
+    <ul class="capitalize flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white">
+      <li>
+        <a href="#" class="block py-2 pl-3 pr-4 text-white bg-orange-400 rounded md:bg-transparent md:text-orange-400 md:p-0" aria-current="page">home</a>
+      </li>
+      <li>
+        <a href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-orange-400 md:p-0">destinations</a>
+      </li>
+      <li>
+        <a href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-orange-400 md:p-0">article</a>
+      </li>
+      <li>
+        <a href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-orange-400 md:p-0">about</a>
+      </li>
+    </ul>
+  </div>
+  </div>
+</nav>
+
+  <!-- Navbar -->
+
+<!-- Jumbotron -->
+<section class="bg-center bg-no-repeat bg-[url('admin/assets/images/jumbotron.png')] bg-gray-700 bg-blend-multiply bg-size-145vw-auto lg:pl-10 md:pl-5">
+
+  <div class="px-4 max-w-screen-xl py-24 lg:py-56">
+      <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">Where Would You Like To Go?</h1>
+      <p class="mb-8 text-lg font-normal text-gray-300 lg:text-xl lg:pr-20 lg:w-2/3 md:w-3/5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi incidunt architecto rerum, dolor ad ab non quis possimus natus repellendus quaerat deserunt dolore voluptatum, libero doloribus. Ullam laboriosam repellat nam.</p>
+      
+      <div class="flex flex-col space-y-4 sm:flex-row sm:justify-left sm:space-y-0 sm:space-x-4">
+          <a href="#" class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-orange-500 hover:bg-orange-800 focus:ring-4 focus:ring-orange-300">
+              Get started
+              <svg aria-hidden="true" class="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+          </a>
+      </div>
+  </div>
+</section>
+<!-- Jumbotron -->
+
+<!-- Main Page -->
+
+<!-- Destination Section -->
+<section class="m-14">
+  <h1 class="text-4xl font-bold text-orange-400 capitalize text-center">destinations</h1>
+
+  <ul class="mt-8 grid justify-center gap-y-10 static">
+
+    <li class="w-96">
+        <div class="overlay opacity-10 scale-100"></div>
+        <div class="justify-center text-center bg-[url('admin/assets/images/destinations/destinationsImg.png')] bg-cover w-96 h-96 rounded-lg text-white">
+          <p class="pt-4 text-xl uppercase font-bold">bali</p>
+          <a href=""><h4 class="text-2xl w-auto capitalize font-bold">pura uluwatu</h4></a>
+
+          <a href="#" class="inline-flex items-center px-8 py-2 text-sm font-medium text-white bg-orange-400 rounded-lg hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-orange-300 mt-56 capitalize">
+            read more
+          </a>
+        </div>
+    </li>
+
+  </ul>
+
+  <div class="text-center mt-10">
+    <a href="#" class="capitalize py-2 px-16 text-lg font-medium text text-white bg-orange-400 rounded-sm hover:bg-orange-800 focus:ring-4 focus:outline-none">
+      show more
+    </a>
+  </div>
+
+</section>
+<!-- Destination Section -->
+
+<!-- Article Section -->
+
+<section class="m-14">
+  <h1 class="text-4xl font-bold text-orange-400 capitalize text-center">article</h1>
+
+  <ul class="mt-8 grid justify-center gap-y-8">
+
+    <li>
+      <div class="max-w-sm">
+        <a href="#" class="hover:bg-orange-800">
+            <img class="rounded-t-lg" src="admin/assets/images/article/article.png" alt="" />
+        </a>
+        <div class="py-3 px-1">
+          <p class="px-1 font-bold">
+            <span class="pr-1">Ilhan</span>-<span class="p-1">Anime</span>
+          </p>
+          <a href="#">
+              <h5 class="mb-2 text-2xl font-bold text-gray-900">Event Anime, kok malah cosplay genshin?</h5>
+          </a>
+        </div>
+      </div>
+    </li>
+
+  </ul>
+
+  <div class="text-center mt-10">
+    <a href="#" class="capitalize py-2 px-16 text-lg font-medium text text-white bg-orange-400 rounded-sm hover:bg-orange-800 focus:ring-4 focus:outline-none">
+      show more
+    </a>
+  </div>
+</section>
+
+<!-- Article Section -->
+
+<!-- Main Page -->
+
+<!-- About Us -->
+  <section class="mt-14 w-full">
+    <div class="bg-orange-400 text-white">
+      <div class="p-12">
+        <h3 class="text-3xl font-bold">About Us</h3>
+        <p class="mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo dicta repellat ut exercitationem magni, modi vitae! Sunt ut sint, alias, possimus soluta vel suscipit accusamus dignissimos repellat omnis perspiciatis aliquid.</p>
+      </div>
+
+      <div class="bg-gray-400 p-5">
+        <img src="admin/assets/images/contoh.png" class="w-screen rounded-lg" alt="">
+      </div>
+
+    </div>
+  </section>
+<!-- About Us -->
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.js"></script>
+</body>
+
+</html>
