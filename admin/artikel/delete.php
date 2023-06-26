@@ -5,7 +5,7 @@ include('session.php');
 
 // Get id from URL to delete that user
 $id = @$_GET['id'];
-$sql = "SELECT cover FROM tb_artikel WHERE id='$id'";
+$sql = "SELECT cover FROM article WHERE id='$id'";
 $result = mysqli_query($mysqli, $sql);
 if ($result->num_rows ==  0) {
     $row = mysqli_fetch_assoc($result);
@@ -18,7 +18,7 @@ if ($result->num_rows ==  0) {
 }
 // Delete user row from table based on given id
 
-$result = mysqli_query($mysqli, "DELETE FROM tb_artikel WHERE id=$id");
+$result = mysqli_query($mysqli, "DELETE FROM article WHERE id=$id");
 
 // After delete redirect to Home, so that latest user list will be displayed.
 header("Location:../dashboard.php?page=artikel");
