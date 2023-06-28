@@ -10,11 +10,11 @@ include_once("../config.php");
 
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Data Province</h3>
+                        <h3 class="card-title">Data District</h3>
 
                         <div class="card-tools">
                             <!-- This will cause the card to maximize when clicked -->
-                            <a href='district/create.php?page=district' class="btn btn-info"><i class="fas fa-plus"></i>Tambah Province</a>
+                            <a href='district/create.php?page=district' class="btn btn-info"><i class="fas fa-plus"></i>Tambah artikel</a>
                         </div>
                         <!-- /.card-tools -->
                     </div>
@@ -25,12 +25,18 @@ include_once("../config.php");
 
                             <tr>
                                 <th>No</th>
-                                <th>Nama </th>
+                                <th>Nama</th>
+                                <th>Provinsi</th>
                                 <th>Aksi</th>
                             </tr>
                             <?php
                             $no = 1;
-                            $result = mysqli_query($mysqli, "SELECT * FROM district ORDER BY id DESC");
+                            $result = mysqli_query($mysqli, "SELECT district.*,
+                            province.nama_province
+                            FROM district
+                            INNER JOIN province ON district.province_id = province.id
+                            
+                            ORDER BY id DESC");
 
                             while ($data = mysqli_fetch_array($result)) {
                             ?>
@@ -38,9 +44,10 @@ include_once("../config.php");
                                 <tr>
                                     <td><?= $no++ ?></td>
                                     <td><?= $data['nama'] ?></td>
+                                    <td><?= $data['nama_province'] ?></td>
                                     <td>
                                         <a class="btn btn-success" href='district/edit.php?id=<?= $data['id'] ?>&page=district'>Edit</a>
-                                        <a class="btn btn-danger" onclick='return confirmDelete()' href='district/delete.php?id=<?= $data['id'] ?>&page=province'>Hapus</a>
+                                        <a class="btn btn-danger" onclick='return confirmDelete()' href='district/delete.php?id=<?= $data['id'] ?>&page=district'>Hapus</a>
                                     </td>
                                 </tr><?php } ?>
                         </table>

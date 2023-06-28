@@ -82,7 +82,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             <select class="form-control" name="province_id" required>
                                                 <option value="">Pilih Province</option>
                                                 <?php while ($data = mysqli_fetch_array($province)) { ?>
-                                                    <option value="<?= $data['id'] ?>"><?= $data['nama'] ?></option>
+                                                    <option value="<?= $data['id'] ?>"><?= $data['nama_province'] ?></option>
                                                 <?php } ?>
                                                 <select>
                                         </div>

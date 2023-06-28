@@ -25,7 +25,7 @@ include_once("../config.php");
 
                             <tr>
                                 <th>No</th>
-                                <th>Nama </th>
+                                <th>Nama Province </th>
                                 <th>Aksi</th>
                             </tr>
                             <?php
@@ -37,7 +37,7 @@ include_once("../config.php");
 
                                 <tr>
                                     <td><?= $no++ ?></td>
-                                    <td><?= $data['nama'] ?></td>
+                                    <td><?= $data['nama_province'] ?></td>
                                     <td>
                                         <a class="btn btn-success" href='province/edit.php?id=<?= $data['id'] ?>&page=province'>Edit</a>
                                         <a class="btn btn-danger" onclick='return confirmDelete()' href='province/delete.php?id=<?= $data['id'] ?>&page=province'>Hapus</a>

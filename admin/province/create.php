@@ -6,13 +6,13 @@ include("../../config.php");
 include('session.php');
 
 if (isset($_POST['submit'])) {
-    $nama = @$_POST['nama'];
-    $sql = "SELECT * FROM province WHERE nama='$nama'";
+    $nama_province = @$_POST['nama_province'];
+    $sql = "SELECT * FROM province WHERE nama_province='$nama_province'";
     $result = mysqli_query($mysqli, $sql);
     if ($result->num_rows > 0) {
         echo "<script>alert('Nama Kategori sudah ada. Silahkan coba lagi!')</script>";
     } else {
-        $result = mysqli_query($mysqli, "INSERT INTO province(nama) VALUES('$nama')");
+        $result = mysqli_query($mysqli, "INSERT INTO province(nama_province) VALUES('$nama_province')");
     }
 }
 ?>
@@ -70,8 +70,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <div class="card-body">
 
                                         <div class="form-group">
-                                            <label for="nama">Nama Province</label>
-                                            <input type="text" class="form-control" name="nama" required>
+                                            <label for="nama_province">Nama Province</label>
+                                            <input type="text" class="form-control" name="nama_province" required>
                                         </div>
                                         <!-- /.content -->
 

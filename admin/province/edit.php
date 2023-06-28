@@ -10,7 +10,7 @@ $id = @$_GET['id'];
 $result = mysqli_query($mysqli, "SELECT * FROM province WHERE id=$id");
 
 while ($nama = mysqli_fetch_array($result)) {
-    $row_nama = $nama['nama'];
+    $row_nama = $nama['nama_province'];
 }
 ?>
 <?php
@@ -19,8 +19,8 @@ while ($nama = mysqli_fetch_array($result)) {
 if (isset($_POST['update'])) {
     $id = $_POST['id'];
 
-    $nama = @$_POST['nama'];
-    $result = mysqli_query($mysqli, "UPDATE province SET nama='$nama' WHERE id=$id");
+    $nama = @$_POST['nama_province'];
+    $result = mysqli_query($mysqli, "UPDATE province SET nama_province='$nama' WHERE id=$id");
     // update user data
 
     // Redirect to homepage to display updated user in list
@@ -37,7 +37,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name_province="viewport" content="width=device-width, initial-scale=1">
     <title>Login Admin Panel</title>
 
     <!-- Google Font: Source Sans Pro -->
@@ -82,7 +82,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <input type="hidden" name="id" value="<?= $id ?>">
                                         <div class="form-group">
                                             <label for="province">province</label>
-                                            <input type="text" class="form-control" value="<?= $row_nama ?>" name="nama" required <?php if ($row_nama == 'admin') { ?> readonly <?php } ?>>
+                                            <input type="text" class="form-control" value="<?= $row_nama ?>" name="nama_province" required <?php if ($row_nama == 'admin') { ?> readonly <?php } ?>>
                                         </div>
                                         <button class="btn btn-primary" type="submit" name="update">Simpan</button>
 
