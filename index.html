@@ -9,6 +9,7 @@
     integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
   <link rel="stylesheet" href="admin/assets/styles/styles.css">
   <link rel="stylesheet" href="admin/assets/styles/responsiveStyle.css">
@@ -30,8 +31,11 @@
         </div>
 
         <div class="col-5 mt-2 col-xl-6 d-none d-lg-block ms-xl-5">
-          <form class="d-flex ms-lg-5" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <form class="d-flex ms-lg-5 input-group" role="search">
+            <input class="form-control custom-border" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn search pr-3 d-flex border-search-button">
+              <i class="bi bi-search"></i>
+            </button>
           </form>
         </div>
 
@@ -66,7 +70,11 @@
       <div class="collapse navbar-collapse mt-3 mx-2" id="navbarSupportedContent">
 
         <form class="d-flex d-lg-none" role="search">
-          <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+          <input class="form-control custom-border search-radius" type="search" placeholder="Search"
+            aria-label="Search">
+          <button class="btn search pr-3 d-flex border-search-button">
+            <i class="bi bi-search"></i>
+          </button>
         </form>
 
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 mt-2 text-center d-lg-none d-xl-none d-xxl-none">
@@ -95,9 +103,11 @@
 
   <div class="jumbotron jumbo-height mt-5 bg-jumbotron position-relative text-md-center text-lg-start">
     <div class="bg-window z-0"></div>
-    <h1 class="mt-3 mt-xl-5 display-3 text-orange fw-700 z-2 position-relative text-start">Where Would You Like To Go?</h1>
+    <h1 class="mt-3 mt-xl-5 display-3 text-orange fw-700 z-2 position-relative text-start">Where Would You Like To Go?
+    </h1>
 
-    <p class="lead text-white z-2 position-relative text-start">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta sed
+    <p class="lead text-white z-2 position-relative text-start">Lorem ipsum dolor sit amet consectetur, adipisicing
+      elit. Dicta sed
       sint mollitia magnam aspernatur labore reiciendis ex dolore, molestias, perspiciatis commodi quam distinctio
       impedit laboriosam corrupti ut ratione incidunt qui.</p>
 
@@ -122,48 +132,52 @@
       <div class="row">
 
         <div class="col-sm-6 col-md-4 col-lg-3  d-inline-block d-flex justify-content-center">
-          <div class="custom-cards-dest my-3 text-center position-relative overflow-hidden card-width card-hover" style="background-image: url('admin/assets/images/destinations/destinationsImg.png');">
+          <div class="custom-cards-dest my-3 text-center position-relative overflow-hidden card-width card-hover"
+            style="background-image: url('admin/assets/images/destinations/destinationsImg.png');">
             <div class="card-window z-0"></div>
-              <h5 class="card-title fw-bold text-white text-uppercase p-text-card position-relative z-1">bali</h5>
-              <h3 class="card-text text-white pt-2 text-capitalize position-relative z-1">pulu watu</h3>
+            <h5 class="card-title fw-bold text-white text-uppercase p-text-card position-relative z-1">bali</h5>
+            <h3 class="card-text text-white pt-2 text-capitalize position-relative z-1">pulu watu</h3>
 
             <a href="#" class="btn margin-btn-cards mb-4 text-white btn-orange z-1 position-relative">Lihat Detail</a>
           </div>
         </div>
 
         <div class="col-sm-6 col-md-4 col-lg-3  d-inline-block d-flex justify-content-center">
-          <div class="custom-cards-dest my-3 text-center position-relative overflow-hidden card-width card-hover" style="background-image: url('admin/assets/images/destinations/destinationsImg.png');">
+          <div class="custom-cards-dest my-3 text-center position-relative overflow-hidden card-width card-hover"
+            style="background-image: url('admin/assets/images/destinations/destinationsImg.png');">
             <div class="card-window z-0"></div>
-              <h5 class="card-title fw-bold text-white text-uppercase p-text-card position-relative z-1">bali</h5>
-              <h3 class="card-text text-white pt-2 text-capitalize position-relative z-1">pulu watu</h3>
+            <h5 class="card-title fw-bold text-white text-uppercase p-text-card position-relative z-1">bali</h5>
+            <h3 class="card-text text-white pt-2 text-capitalize position-relative z-1">pulu watu</h3>
 
             <a href="#" class="btn margin-btn-cards mb-4 text-white btn-orange z-1 position-relative">Lihat Detail</a>
           </div>
         </div>
 
         <div class="col-sm-6 col-md-4 col-lg-3  d-inline-block d-flex justify-content-center">
-          <div class="custom-cards-dest my-3 text-center position-relative overflow-hidden card-width card-hover" style="background-image: url('admin/assets/images/destinations/destinationsImg.png');">
+          <div class="custom-cards-dest my-3 text-center position-relative overflow-hidden card-width card-hover"
+            style="background-image: url('admin/assets/images/destinations/destinationsImg.png');">
             <div class="card-window z-0"></div>
-              <h5 class="card-title fw-bold text-white text-uppercase p-text-card position-relative z-1">bali</h5>
-              <h3 class="card-text text-white pt-2 text-capitalize position-relative z-1">pulu watu</h3>
+            <h5 class="card-title fw-bold text-white text-uppercase p-text-card position-relative z-1">bali</h5>
+            <h3 class="card-text text-white pt-2 text-capitalize position-relative z-1">pulu watu</h3>
 
             <a href="#" class="btn margin-btn-cards mb-4 text-white btn-orange z-1 position-relative">Lihat Detail</a>
           </div>
         </div>
 
         <div class="col-sm-6 col-md-4 col-lg-3  d-inline-block d-flex justify-content-center">
-          
-          <div class="custom-cards-dest my-3 text-center position-relative overflow-hidden card-width card-hover" style="background-image: url('admin/assets/images/destinations/destinationsImg.png');">
+
+          <div class="custom-cards-dest my-3 text-center position-relative overflow-hidden card-width card-hover"
+            style="background-image: url('admin/assets/images/destinations/destinationsImg.png');">
             <div class="card-window z-0"></div>
-              <h5 class="card-title fw-bold text-white text-uppercase p-text-card position-relative z-1">bali</h5>
-              <h3 class="card-text text-white pt-2 text-capitalize position-relative z-1">pulu watu</h3>
+            <h5 class="card-title fw-bold text-white text-uppercase p-text-card position-relative z-1">bali</h5>
+            <h3 class="card-text text-white pt-2 text-capitalize position-relative z-1">pulu watu</h3>
 
             <a href="#" class="btn margin-btn-cards mb-4 text-white btn-orange z-1 position-relative">Lihat Detail</a>
           </div>
         </div>
-        
+
       </div>
-    
+
       <div class="col text-center ">
         <a href="#" class="btn btn-show-more text-white my-3">Show More</a>
       </div>
@@ -179,69 +193,69 @@
       </div>
     </div>
 
-  <div class="container">
-    <div class="row d-flex justify-content-sm-center justify-content-md-between">
+    <div class="container">
+      <div class="row d-flex justify-content-sm-center justify-content-md-between">
 
-      <div class="col-sm-10 col-md-4 col-lg-4  d-inline-block d-flex justify-content-center">
-        <div class="my-3">
-          <a href="#">
-            <img src="admin/assets/images/article/article.png" class="card-img-top rounded-2" alt="...">
-          </a>
-          <div class="card-body">
-            <p class="info fw-medium">
-              <span class="author">Ilhan</span>
-              -
-              <span class="category">Anime</span>
-            </p>
-            <a class="title-article" href="#">
-              <h5 class="article">Event anime, kok cosplay genshin? "Bukan Main"</h5>
+        <div class="col-sm-10 col-md-4 col-lg-4  d-inline-block d-flex justify-content-center">
+          <div class="my-3">
+            <a href="#">
+              <img src="admin/assets/images/article/article.png" class="card-img-top rounded-2" alt="...">
             </a>
+            <div class="card-body">
+              <p class="info fw-medium">
+                <span class="author">Ilhan</span>
+                -
+                <span class="category">Anime</span>
+              </p>
+              <a class="title-article" href="#">
+                <h5 class="article">Event anime, kok cosplay genshin? "Bukan Main"</h5>
+              </a>
+            </div>
           </div>
         </div>
+
+        <div class="col-sm-10 col-md-4 col-lg-4  d-inline-block d-flex justify-content-center">
+          <div class="my-3">
+            <a href="#">
+              <img src="admin/assets/images/article/article.png" class="card-img-top rounded-2" alt="...">
+            </a>
+            <div class="card-body">
+              <p class="info fw-medium">
+                <span class="author">Ilhan</span>
+                -
+                <span class="category">Anime</span>
+              </p>
+              <a class="title-article" href="#">
+                <h5 class="article">Event anime, kok cosplay genshin? "Bukan Main"</h5>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-10 col-md-4 col-lg-4  d-inline-block d-flex justify-content-center">
+          <div class="my-3">
+            <a href="#">
+              <img src="admin/assets/images/article/article.png" class="card-img-top rounded-2" alt="...">
+            </a>
+            <div class="card-body">
+              <p class="info fw-medium">
+                <span class="author">Ilhan</span>
+                -
+                <span class="category">Anime</span>
+              </p>
+              <a class="title-article" href="#">
+                <h5 class="article">Event anime, kok cosplay genshin? "Bukan Main"</h5>
+              </a>
+            </div>
+          </div>
+        </div>
+
       </div>
 
-      <div class="col-sm-10 col-md-4 col-lg-4  d-inline-block d-flex justify-content-center">
-        <div class="my-3">
-          <a href="#">
-            <img src="admin/assets/images/article/article.png" class="card-img-top rounded-2" alt="...">
-          </a>
-          <div class="card-body">
-            <p class="info fw-medium">
-              <span class="author">Ilhan</span>
-              -
-              <span class="category">Anime</span>
-            </p>
-            <a class="title-article" href="#">
-              <h5 class="article">Event anime, kok cosplay genshin? "Bukan Main"</h5>
-            </a>
-          </div>
-        </div>
+      <div class="col text-center ">
+        <a href="#" class="btn btn-show-more text-white my-3">Show More</a>
       </div>
-      
-      <div class="col-sm-10 col-md-4 col-lg-4  d-inline-block d-flex justify-content-center">
-        <div class="my-3">
-          <a href="#">
-            <img src="admin/assets/images/article/article.png" class="card-img-top rounded-2" alt="...">
-          </a>
-          <div class="card-body">
-            <p class="info fw-medium">
-              <span class="author">Ilhan</span>
-              -
-              <span class="category">Anime</span>
-            </p>
-            <a class="title-article" href="#">
-              <h5 class="article">Event anime, kok cosplay genshin? "Bukan Main"</h5>
-            </a>
-          </div>
-        </div>
-      </div>
-      
     </div>
-  
-    <div class="col text-center ">
-      <a href="#" class="btn btn-show-more text-white my-3">Show More</a>
-    </div>
-  </div>
 
 
   </section>
@@ -256,9 +270,11 @@
           <h3 class="h3 text-md-start text-center text-orange mb-3">About Us</h3>
         </div>
       </div>
-      <div class="row">
-        <div class="col-12 order-2 order-md-0 col-md-7 d-md-flex mt-4 mt-md-0">
-          <p class="text-start lh-base">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum aspernatur debitis, recusandae molestiae quisquam, adipisci temporibus laboriosam odio, placeat maxime officia aut perspiciatis voluptas architecto a dignissimos quidem eaque fugiat?</p>
+      <div class="row pt-5">
+        <div class=" col-12 order-2 order-md-0 col-md-7 d-md-flex mt-4 mt-md-0">
+          <p class="text-start lh-base">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum aspernatur
+            debitis, recusandae molestiae quisquam, adipisci temporibus laboriosam odio, placeat maxime officia aut
+            perspiciatis voluptas architecto a dignissimos quidem eaque fugiat?</p>
         </div>
         <div class="col order-1 order-md-0 col-md-5 d-flex justify-content-center">
           <img class="w-75 rounded" src="admin/assets/images/about.png" alt="">
@@ -270,21 +286,23 @@
   <!-- About Us -->
 
   <!-- Footer -->
-  <footer class="bg-black pt-4 mt-5">
+  <footer class="bg-black mt-5">
     <div class="container">
       <div class="row-2">
         <div class="col text-start">
           <a class="navbar-brand fs-3 text-white" href="#">
-            <h2>
-              <span class="text-orange">Ambatu</span >trip
-              </h2>
-            </a>
+            <h2 class="pt-5">
+              <span class="text-orange">Ambatu</span>trip
+            </h2>
+          </a>
         </div>
         <div class="col text-white">
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat totam earum perferendis, commodi corrupti et eligendi cum expedita. Dolores cum quia iure cumque nulla voluptas deleniti tempore ad sit? Atque.</p>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat totam earum perferendis, commodi corrupti
+            et eligendi cum expedita. Dolores cum quia iure cumque nulla voluptas deleniti tempore ad sit? Atque.</p>
         </div>
         <div class="col text-white pt-2 pb-1">
-          <p class="text-center">© 2023 <a class="text-white footer-link" href="https://www.linkedin.com/in/ihaannn/">Nyanta</a>. All right reserved</p>
+          <p class="text-center">© 2023 <a class="text-white footer-link"
+              href="https://www.linkedin.com/in/ihaannn/">Nyanta</a>. All right reserved</p>
         </div>
       </div>
     </div>
