@@ -56,10 +56,19 @@ $page  = $_GET['page']; ?>
           </a>
         </li>
         <li class="nav-item">
-          <a href="<?= $base_url ?>/dashboard.php?page=agenda" class="nav-link  <?php if ($page == 'agenda') { ?>active<?php } ?>">
-            <i class="nav-icon fas fa-file"></i>
+          <a href="<?= $base_url ?>/dashboard.php?page=province" class="nav-link  <?php if ($page == 'province') { ?>active<?php } ?>">
+            <i class="nav-icon fas fa-tags"></i>
             <p>
-              Agenda
+              Province
+            </p>
+          </a>
+        </li>
+        </li>
+        <li class="nav-item">
+          <a href="<?= $base_url ?>/dashboard.php?page=district" class="nav-link  <?php if ($page == 'district') { ?>active<?php } ?>">
+            <i class="nav-icon fas fa-tags"></i>
+            <p>
+              District
             </p>
           </a>
         </li>
