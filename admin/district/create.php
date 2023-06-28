@@ -7,7 +7,7 @@ include('session.php');
 
 if (isset($_POST['submit'])) {
     $nama = @$_POST['nama'];
-    $province = @$_POST['province'];
+    $province_id = @$_POST['province_id'];
     $sql = "SELECT * FROM district WHERE nama='$nama'";
 
 
