@@ -25,7 +25,7 @@ include_once("../config.php");
 
                             <tr>
                                 <th>No</th>
-                                <th>Nama</th>
+                                <th>Nama Destinasi</th>
                                 <th>Provinsi</th>
                                 <th>Aksi</th>
                             </tr>
