@@ -70,7 +70,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <div class="card-body">
 
                                         <div class="form-group">
-                                            <label for="judul_artikel">nama</label>
+                                            <label for="nama">nama</label>
                                             <input type="text" class="form-control" name="nama" required>
                                         </div>
 
@@ -79,7 +79,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         ?>
                                         <div class="form-group">
                                             <label for="content_artikel">Province</label>
-                                            <select class="form-control" name="kategori" required>
+                                            <select class="form-control" name="province_id" required>
                                                 <option value="">Pilih Province</option>
                                                 <?php while ($data = mysqli_fetch_array($province)) { ?>
                                                     <option value="<?= $data['id'] ?>"><?= $data['nama'] ?></option>
