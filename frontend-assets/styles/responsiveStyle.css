@@ -1,0 +1,83 @@
+/* Sm */
+@media only screen and (min-width: 576px) {
+  .custom-cards-dest{
+    background-size: 50vw 55vw;
+  }
+  
+  .card-width{
+    width: 50vw;
+  }
+
+  .margin-btn-cards{
+    margin-top: 160px;
+  }
+}
+
+/* Md */
+@media only screen and (min-width: 768px) {
+  .custom-cards-dest{
+    background-size: 50vw 47vw;
+  }
+
+  .card-width{
+    width: 80vw;
+  }
+
+  .margin-btn-cards{
+    margin-top: 200px;
+  }
+
+  .btn-show-more{
+    width: 20vw;
+  }
+
+  
+  .btn-custom-size{
+    width: 80vw !important;
+  }
+}
+
+/* Lg */
+@media only screen and (min-width: 992px) {
+  .custom-cards-dest{
+    background-size: 40vw 40vw;
+  }
+
+  .btn-custom-size{
+    width: 130px !important;
+  }
+
+  .margin-side-list{
+    margin-top: 0px !important;
+  }
+
+  .mt-text-lg-custom{
+    margin-top: -14px !important;
+  }
+}
+
+/* Xl */
+@media only screen and (min-width: 1200px) {
+  .custom-cards-dest{
+    background-size: 30vw 30vw;
+  }
+
+  .btn-show-more{
+    width: 15vw;
+  }
+
+  .bg-jumbotron{
+    background-size: 190vw 120vh;
+    margin-top: 10px; 
+  }
+
+  .jumbo-height{
+    height: 70vh;
+  }
+
+}
+
+/* Xxl */
+/* @media only screen and (min-width: 1400px) {
+
+} */

@@ -1,0 +1,259 @@
+:root{
+  --orange: #FFA834;
+  --dark-orange: #C27803;
+  --white: #FFF;
+  --grey: #232023;
+}
+
+.custom-border{
+  border-color: var(--orange);
+  border-right: none;
+}
+
+.custom-border:focus{
+  outline: 2px solid var(--orange) !important;
+  box-shadow: 0 0 0 0.25rem rgba(253, 169, 13, 0.473);
+}
+
+.border-search-button{
+  padding-right: 10px;
+  border: 1px solid var(--orange);
+  border-top-left-radius: 0px !important;
+  border-bottom-left-radius: 0px !important;
+  border-left: none;
+}
+
+.border-search-button:hover{
+  border: 1px solid var(--orange);
+  border-color: var(--orange);
+  box-shadow: 0 0 0 0.25rem rgba(253, 169, 13, 0.473);
+  border-left: none;
+  padding-right: 10px;
+}
+
+
+.search-radius{
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.bg-jumbotron{
+  background-image: url("../images/jumbotron.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 180vw auto; 
+}
+
+.bg-window{
+  background-color: var(--grey);
+  opacity: 0.5;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  position: absolute;
+}
+
+.bg-orange{
+  background-color: var(--orange);
+}
+
+.text-orange{
+  color: var(--orange);
+}
+
+.text-white{
+  color: var(--white);
+}
+
+.fw-700{
+  font-weight: 700;
+}
+
+.btn-orange{
+  background-color: var(--orange);
+}
+
+.btn-custom-size{
+  width: 100%;
+  height: 40px;
+}
+
+.btn-custom-rounded{
+  border-radius: 5px !important;
+}
+
+.nav-link{
+  border-radius: 5px;
+}
+
+.custom-active{
+  color: var(--white) !important;
+  background-color: var(--orange) !important;
+}
+
+.custom-link:hover{
+  color: var(--white);
+  background-color: var(--orange);
+}
+
+.active{
+  color: var(--orange) !important;
+}
+
+.font-size-navbar{
+  font-size: 1.1em;
+}
+
+.custom-cards-dest{
+  border: none;
+  border-radius: 10px;
+  background-size: 75vw 69vh;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.card-width{
+  width: 70vw;
+}
+
+.margin-btn-cards{
+  margin-top: 260px;
+}
+
+.btn-orange{
+  background-color: var(--orange);
+  width: 170px;
+}
+
+.btn-orange:hover{
+  background-color: var(--dark-orange);
+}
+
+.p-text-card{
+  padding-top: 20px;
+}
+
+.card-window{
+  background-color: var(--grey);
+  width: 100%;
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+  /* bottom: 0; */
+}
+
+/* .card-window:hover{
+  bottom: 100;
+} */
+
+.custom-card-body{
+  width: 100px;
+  text-align: center;
+}
+
+.btn-show-more{
+  background-color: var(--orange);
+  border-radius: 5px !important;
+  width: 30vw;
+}
+
+.btn-show-more:hover{
+  background-color: var(--dark-orange);
+}
+
+.info{
+  margin: 5px 2px 15px 2px;
+  
+}
+
+.title-article{
+  text-decoration: none;
+  color: var(--grey);
+  
+}
+
+.title-article:hover{
+  text-decoration: none;
+  color: var(--orange);
+}
+
+.article{
+  margin: -15px 2px 0 2px;
+}
+
+.footer-link{
+  text-decoration: none;
+}
+
+.footer-link:hover{
+  text-decoration: underline;
+}
+
+
+.header-margin{
+  margin-top: 78px;
+}
+
+
+/* Artikel */
+.bg-article{
+  background-image: url('../images/article/header-article.png');
+  background-repeat: no-repeat;
+  background-size: 150vw auto;
+  background-position: center;
+}
+
+.active-pagination{
+  background-color: var(--orange);
+  color: var(--white);
+}
+
+.page-link:hover{
+  background-color: var(--orange);
+  color: var(--white);
+}
+
+.page-link:active{
+  background-color: var(--orange);
+  color: var(--white);
+  box-shadow: 0 0 0 0.25rem rgba(253, 169, 13, 0.473);
+}
+
+
+/* Artikel */
+
+/* Detail Article */
+.margin-side-list{
+  margin-top: 100px !important;
+  margin-bottom: 20px;
+}
+
+.text-elipsis{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* Detail Article */
+
+/* Destinations */
+.bg-destinations{
+  background-image: url('../images/destinations/destinations-header.jpg');
+  background-repeat: no-repeat;
+  background-size: 150vw auto;
+  background-position: center;
+}
+
+.title-destinations{
+  text-decoration: none;
+  color: var(--grey);
+}
+
+.title-destinations:hover{
+  text-decoration: none;
+  color: var(--orange);
+}
+/* Destinations */
+
