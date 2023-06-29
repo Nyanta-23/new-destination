@@ -11,10 +11,29 @@
   .margin-btn-cards{
     margin-top: 160px;
   }
+
+  .gmap_canvas {
+    height: 60vh;
+    width: 100%;
+  }
+
+  .card-width-any{
+    width: 136px;
+    height: 20vh;
+  }
+  
+  .custom-any-cards-dest{
+    border: none;
+    border-radius: 10px;
+    background-size: 23vw 23vh;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
 }
 
 /* Md */
 @media only screen and (min-width: 768px) {
+
   .custom-cards-dest{
     background-size: 50vw 47vw;
   }
@@ -31,14 +50,42 @@
     width: 20vw;
   }
 
-  
   .btn-custom-size{
     width: 80vw !important;
   }
+
+  .gmap_canvas {
+    overflow: hidden;
+    background: none!important;
+    height: 60vh;
+    width: 100%;
+  }
+
+  .custom-size-detail-dest-img{
+    width: 80vw !important;
+    height: 75vh !important;
+    padding: 0 100px;
+  }
+
+  .card-width-any{
+    width: 180px;
+    height: 25vh;
+  }
+  
+  .custom-any-cards-dest{
+    border: none;
+    border-radius: 10px;
+    background-size: 23vw 25vh;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  
 }
 
 /* Lg */
 @media only screen and (min-width: 992px) {
+
   .custom-cards-dest{
     background-size: 40vw 40vw;
   }
@@ -54,6 +101,23 @@
   .mt-text-lg-custom{
     margin-top: -14px !important;
   }
+
+  .gmap_canvas {
+    overflow: hidden;
+    background: none!important;
+    height: 60vh;
+    width: 51vw;
+  }
+
+
+  .custom-any-cards-dest{
+    border: none;
+    border-radius: 10px;
+    background-size: 18vw 25vh;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
 }
 
 /* Xl */
@@ -73,6 +137,14 @@
 
   .jumbo-height{
     height: 70vh;
+  }
+
+  .custom-any-cards-dest{
+    border: none;
+    border-radius: 10px;
+    background-size: 16vw 25vh;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 
 }
