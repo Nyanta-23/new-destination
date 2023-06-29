@@ -27,6 +27,12 @@
                     case 'district':
                         include "district/index.php";
                         break;
+                    case 'about':
+                        include "about/index.php";
+                        break;
+                    case 'contact':
+                        include "contact/index.php";
+                        break;
                     default:
                         echo "<center><h3>Maaf. Halaman tidak di temukan !</h3></center>";
                         break;
