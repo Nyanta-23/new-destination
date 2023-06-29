@@ -6,17 +6,15 @@ include("../../config.php");
 include('session.php');
 
 if (isset($_POST['submit'])) {
-    $username = @$_POST['username'];
     $nama = @$_POST['nama'];
-    $password = md5(@$_POST['password']);
-    $sql = "SELECT * FROM users WHERE username='$username'";
-    $result = mysqli_query($mysqli, $sql);
-    if ($result->num_rows > 0) {
-        echo "<script>alert('Username sudah ada. Silahkan coba lagi!')</script>";
-    } else {
-        $result = mysqli_query($mysqli, "INSERT INTO users(username,nama,password) VALUES('$username','$nama','$password')");
-    }
+    $province_id = @$_POST['province_id'];
+    $sql = "SELECT * FROM district WHERE nama='$nama'";
+
+
+    $result = mysqli_query($mysqli, "INSERT INTO district(nama,province_id)
+         VALUES('$nama','$province_id')");
 }
+// 
 ?>
 <!DOCTYPE html>
 <!--
@@ -58,31 +56,36 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="card">
 
                                 <div class="card-header">
-                                    <h3 class="card-title">Data Users</h3>
+                                    <h3 class="card-title">Data district
+                                    </h3>
 
                                     <div class="card-tools">
                                         <!-- This will cause the card to maximize when clicked -->
-                                        <a href="../../admin?page=users" class="btn btn-info">Kembali</a>
+                                        <a href="<?= $base_url_admin ?>/dashboard.php?page=district" class="btn btn-info">Kembali</a>
                                     </div>
                                     <!-- /.card-tools -->
                                 </div>
-                                <form action="../users/create.php" method="post" name="form1">
+                                <form action="../district/create.php?page=district" method="post" enctype="multipart/form-data">
 
                                     <div class="card-body">
 
                                         <div class="form-group">
-                                            <label for="nama">Nama</label>
+                                            <label for="nama">nama</label>
                                             <input type="text" class="form-control" name="nama" required>
                                         </div>
+
+                                        <?php
+                                        $province = mysqli_query($mysqli, "SELECT * FROM province ORDER BY id DESC");
+                                        ?>
                                         <div class="form-group">
-                                            <label for="username">Username</label>
-                                            <input type="text" class="form-control" name="username" required>
+                                            <label for="content_artikel">Province</label>
+                                            <select class="form-control" name="province_id" required>
+                                                <option value="">Pilih Province</option>
+                                                <?php while ($data = mysqli_fetch_array($province)) { ?>
+                                                    <option value="<?= $data['id'] ?>"><?= $data['nama_province'] ?></option>
+                                                <?php } ?>
+                                                <select>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="password">Password</label>
-                                            <input type="password" class="form-control" name="password" required>
-                                        </div>
-                                        <!-- /.content -->
 
                                     </div>
                                     <div class="card-footer">

@@ -6,15 +6,13 @@ include("../../config.php");
 include('session.php');
 
 if (isset($_POST['submit'])) {
-    $username = @$_POST['username'];
     $nama = @$_POST['nama'];
-    $password = md5(@$_POST['password']);
-    $sql = "SELECT * FROM users WHERE username='$username'";
+    $sql = "SELECT * FROM category WHERE nama='$nama'";
     $result = mysqli_query($mysqli, $sql);
     if ($result->num_rows > 0) {
-        echo "<script>alert('Username sudah ada. Silahkan coba lagi!')</script>";
+        echo "<script>alert('Nama Kategori sudah ada. Silahkan coba lagi!')</script>";
     } else {
-        $result = mysqli_query($mysqli, "INSERT INTO users(username,nama,password) VALUES('$username','$nama','$password')");
+        $result = mysqli_query($mysqli, "INSERT INTO category(nama) VALUES('$nama')");
     }
 }
 ?>
@@ -58,29 +56,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="card">
 
                                 <div class="card-header">
-                                    <h3 class="card-title">Data Users</h3>
+                                    <h3 class="card-title">Data Kategori
+                                    </h3>
 
                                     <div class="card-tools">
                                         <!-- This will cause the card to maximize when clicked -->
-                                        <a href="../../admin?page=users" class="btn btn-info">Kembali</a>
+                                        <a href="<?= $base_url_admin ?>/dashboard.php?page=kategori" class="btn btn-info">Kembali</a>
                                     </div>
                                     <!-- /.card-tools -->
                                 </div>
-                                <form action="../users/create.php" method="post" name="form1">
+                                <form action="../kategori/create.php?page=kategori" method="post" name="form1">
 
                                     <div class="card-body">
 
                                         <div class="form-group">
-                                            <label for="nama">Nama</label>
+                                            <label for="nama_kategori">Nama Kategori</label>
                                             <input type="text" class="form-control" name="nama" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="username">Username</label>
-                                            <input type="text" class="form-control" name="username" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="password">Password</label>
-                                            <input type="password" class="form-control" name="password" required>
                                         </div>
                                         <!-- /.content -->
 
@@ -89,18 +80,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <button class="btn btn-primary" type="submit" name="submit">Simpan</button>
                                     </div>
                                 </form>
-
-
                             </div>
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- /.content-wrapper -->
+    </div>
+    <!-- /.content-wrapper -->
 
 
-        <?php include('../template/footer.php'); ?>
+    <?php include('../template/footer.php'); ?>
 
     </div>
 </body>

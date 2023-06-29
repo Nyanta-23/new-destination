@@ -7,11 +7,10 @@ include('session.php');
 $id = @$_GET['id'];
 
 // Fetech user data based on id
-$result = mysqli_query($mysqli, "SELECT * FROM users WHERE id=$id");
+$result = mysqli_query($mysqli, "SELECT * FROM province WHERE id=$id");
 
-while ($user_data = mysqli_fetch_array($result)) {
-    $row_username = $user_data['username'];
-    $row_nama = $user_data['nama'];
+while ($nama = mysqli_fetch_array($result)) {
+    $row_nama = $nama['nama_province'];
 }
 ?>
 <?php
@@ -19,23 +18,18 @@ while ($user_data = mysqli_fetch_array($result)) {
 // Check if form is submitted for user update, then redirect to homepage after update
 if (isset($_POST['update'])) {
     $id = $_POST['id'];
-    $username = @$_POST['username'];
-    $password = @$_POST['password'];
-    $nama = @$_POST['nama'];
-    if ($password) {
-        $result = mysqli_query($mysqli, "UPDATE users SET username='$username',nama='$nama',password='$password' WHERE id=$id");
-    } else {
-        $result = mysqli_query($mysqli, "UPDATE users SET username='$username',nama='$nama' WHERE id=$id");
-    }
+
+    $nama = @$_POST['nama_province'];
+    $result = mysqli_query($mysqli, "UPDATE province SET nama_province='$nama' WHERE id=$id");
     // update user data
 
     // Redirect to homepage to display updated user in list
-    header("Location:../dashboard.php?page=users");
+    header("Location:../dashboard.php?page=province");
 }
 ?>
 
 <!DOCTYPE html>
-<!--
+<!--content-header.php
 This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
 -->
@@ -43,7 +37,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name_province="viewport" content="width=device-width, initial-scale=1">
     <title>Login Admin Panel</title>
 
     <!-- Google Font: Source Sans Pro -->
@@ -73,47 +67,38 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                             <div class="card">
                                 <div class="card-header">
-                                    <h3 class="card-title">Data Users</h3>
+                                    <h3 class="card-title">Province</h3>
 
                                     <div class="card-tools">
                                         <!-- This will cause the card to maximize when clicked -->
-                                        <a href="../../admin?page=users" class="btn btn-info">Kembali</a>
+                                        <a href="<?= $base_url_admin ?>/dashboard.php?page=province" class="btn btn-info">Kembali</a>
                                     </div>
                                     <!-- /.card-tools -->
                                 </div>
 
                                 <div class="card-body">
 
-                                    <form action="../../admin/users/edit.php" method="post">
+                                    <form action="../../admin/province/edit.php" method="post">
                                         <input type="hidden" name="id" value="<?= $id ?>">
                                         <div class="form-group">
-                                            <label for="username">Username</label>
-                                            <input type="text" class="form-control" value="<?= $row_username ?>" name="username" required <?php if ($row_username == 'admin') { ?> readonly <?php } ?>>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="nama">Nama</label>
-                                            <input type="text" class="form-control" value="<?= $row_nama ?>" name="nama_operator" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="password">Password</label>
-                                            <input type="password" class="form-control" value="" name="password">
-                                            <span class="help-block"> Kosongkan bila tidak di ubah</span>
+                                            <label for="province">province</label>
+                                            <input type="text" class="form-control" value="<?= $row_nama ?>" name="nama_province" required <?php if ($row_nama == 'admin') { ?> readonly <?php } ?>>
                                         </div>
                                         <button class="btn btn-primary" type="submit" name="update">Simpan</button>
-                                </div>
-                                </form>
 
+                                    </form>
+
+
+                                </div>
+                                <!-- /.content-wrapper -->
 
                             </div>
-                            <!-- /.content-wrapper -->
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <?php include_once('../template/footer.php'); ?>
+        <?php include_once('../template/footer.php'); ?>
 
     </div>
     <!-- ./wrapper -->

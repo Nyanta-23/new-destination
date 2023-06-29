@@ -1,5 +1,6 @@
 <?php
-
+session_start();
+include_once("../../config.php");
 
 $user_check = $_SESSION['username'];
 $sql = "SELECT username FROM users WHERE username='$user_check'";

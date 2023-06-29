@@ -21,8 +21,11 @@
                     case 'home':
                         include "home/index.php";
                         break;
-                    case 'agenda':
-                        include "agenda/index.php";
+                    case 'province':
+                        include "province/index.php";
+                        break;
+                    case 'district':
+                        include "district/index.php";
                         break;
                     default:
                         echo "<center><h3>Maaf. Halaman tidak di temukan !</h3></center>";
