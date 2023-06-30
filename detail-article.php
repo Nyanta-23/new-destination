@@ -1,3 +1,14 @@
+<?php
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
+
+include("config.php");
+
+?>
+
+<!-- <a href="admin/login.php">Login</a> -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,10 +16,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
-    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
   <link rel="stylesheet" href="frontend-assets/styles/styles.css">
@@ -58,19 +67,16 @@
       <div class="collapse navbar-collapse"></div>
     </div>
     <!-- For large size -->
-    
+
     <!-- For small size -->
-    <button class="navbar-toggler d-block d-sm-block d-lg-none" type="button" data-bs-toggle="collapse"
-      data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-      aria-label="Toggle navigation">
+    <button class="navbar-toggler d-block d-sm-block d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse mt-3 mx-2" id="navbarSupportedContent">
 
       <form class="d-flex d-lg-none" role="search">
-        <input class="form-control custom-border search-radius" type="search" placeholder="Search"
-          aria-label="Search">
+        <input class="form-control custom-border search-radius" type="search" placeholder="Search" aria-label="Search">
         <button class="btn search pr-3 d-flex border-search-button">
           <i class="bi bi-search"></i>
         </button>
@@ -104,7 +110,7 @@
         <h1 class="h-1 text-black mt-5">Detail Article</h1>
       </div>
     </div>
-  </div> 
+  </div>
 </section>
 <!-- Header -->
 
@@ -123,8 +129,8 @@
         Event anime, kok cosplay genshin? "Bukan Main"
       </h2>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores rerum, optio odio, eum cum ex animi ullam cupiditate quam nulla dicta magni assumenda velit voluptas nam sunt libero quaerat iusto?
-      Quidem deleniti ut dolores! Nulla, quia inventore deserunt dolorum perspiciatis similique ea sapiente totam quibusdam velit consequuntur, ab dolor sint quidem quae dicta voluptatem dignissimos qui officia ipsam minus asperiores!
-      Quibusdam deserunt rerum animi nisi iusto voluptas vero. Voluptatum, fuga iure soluta magni praesentium qui sed, corporis voluptas, illo consequatur minima aut id quasi saepe modi unde beatae? Tempora, nam!</p>
+        Quidem deleniti ut dolores! Nulla, quia inventore deserunt dolorum perspiciatis similique ea sapiente totam quibusdam velit consequuntur, ab dolor sint quidem quae dicta voluptatem dignissimos qui officia ipsam minus asperiores!
+        Quibusdam deserunt rerum animi nisi iusto voluptas vero. Voluptatum, fuga iure soluta magni praesentium qui sed, corporis voluptas, illo consequatur minima aut id quasi saepe modi unde beatae? Tempora, nam!</p>
     </div>
 
     <!-- List any article -->
@@ -171,8 +177,8 @@
               </div>
             </div>
           </div>
-          
-          
+
+
         </div>
       </div>
     </div>
@@ -189,38 +195,32 @@
 
 <!-- Footer -->
 <footer class="bg-black">
-<div class="container">
-  <div class="row-2">
-    <div class="col text-start">
-      <a class="navbar-brand fs-3 text-white" href="#">
-        <h2 class="pt-5">
-          <span class="text-orange">Ambatu</span>trip
-        </h2>
-      </a>
-    </div>
-    <div class="col text-white">
-      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat totam earum perferendis, commodi corrupti
-        et eligendi cum expedita. Dolores cum quia iure cumque nulla voluptas deleniti tempore ad sit? Atque.</p>
-    </div>
-    <div class="col text-white pt-2 pb-1">
-      <p class="text-center">© 2023 <a class="text-white footer-link"
-          href="https://www.linkedin.com/in/ihaannn/">Nyanta</a>. All right reserved</p>
+  <div class="container">
+    <div class="row-2">
+      <div class="col text-start">
+        <a class="navbar-brand fs-3 text-white" href="#">
+          <h2 class="pt-5">
+            <span class="text-orange">Ambatu</span>trip
+          </h2>
+        </a>
+      </div>
+      <div class="col text-white">
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat totam earum perferendis, commodi corrupti
+          et eligendi cum expedita. Dolores cum quia iure cumque nulla voluptas deleniti tempore ad sit? Atque.</p>
+      </div>
+      <div class="col text-white pt-2 pb-1">
+        <p class="text-center">© 2023 <a class="text-white footer-link" href="https://www.linkedin.com/in/ihaannn/">Nyanta</a>. All right reserved</p>
+      </div>
     </div>
   </div>
-</div>
 </footer>
 <!-- Footer -->
 
 <script src="admin/assets/script/script.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-  integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-  crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-  integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-  crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
-  crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 </body>
+
 </html>
