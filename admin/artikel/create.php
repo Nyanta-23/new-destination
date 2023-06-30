@@ -6,37 +6,36 @@ include("../../config.php");
 include('session.php');
 
 if (isset($_POST['submit'])) {
-    $judul_artikel = @$_POST['judul_artikel'];
-    $slug = preg_replace('/[^a-z0-9]+/i', '-', trim(strtolower($_POST["judul_artikel"])));
-    $created_time = date("Y-m-d H:i:s");
-    $user_id = $_SESSION['id'];
-    $kategori = @$_POST['kategori'];
-    $content_artikel  = @$_POST['content_artikel'];
-    $sql = "SELECT * FROM article WHERE judul_artikel='$judul_artikel'";
+    $category_id = @$_POST['category_id'];
+    $attraction_id = @$_POST['attraction_id'];
+    $author_id  = @$_POST['author_id'];
+    $title = @$_POST['title'];
+    $description = @$_POST['description'];
+    $sql = "SELECT * FROM article WHERE title='$title'";
     $ekstensi_diperbolehkan    = array('png', 'jpg');
-    $nama = $_FILES['file']['name'];
+    $nama = $_FILES['image']['name'];
     $x = explode('.', $nama);
     $ekstensi = strtolower(end($x));
-    $ukuran    = $_FILES['file']['size'];
-    $file_tmp = $_FILES['file']['tmp_name'];
+    $ukuran    = $_FILES['image']['size'];
+    $file_tmp = $_FILES['image']['tmp_name'];
     if (in_array($ekstensi, $ekstensi_diperbolehkan) === true) {
         if ($ukuran < 1044070) {
-            move_uploaded_file($file_tmp, 'uploads/' . $nama);
+            $query = move_uploaded_file($file_tmp, 'image/' . $nama);
             $file_name = $nama;
             if ($query) {
-                echo 'FILE BERHASIL DI UPLOAD';
+                echo '<script> alert("FILE BERHASIL DI UPLOAD") </script>';
             } else {
-                echo 'GAGAL MENGUPLOAD GAMBAR';
+                echo '<script> alert("GAGAL MENGUPLOAD GAMBAR") </script>';
             }
         } else {
-            echo 'UKURAN FILE TERLALU BESAR';
+            echo '<script> alert("UKURAN FILE TERLALU BESAR") </script>';
         }
     } else {
-        echo 'EKSTENSI FILE YANG DI UPLOAD TIDAK DI PERBOLEHKAN';
+        echo '<script> alert("EKSTENSI FILE YANG DI UPLOAD TIDAK DI PERBOLEHKAN") </script>';
     }
 
-    $result = mysqli_query($mysqli, "INSERT INTO article(judul_artikel,created_time,user_id,id_kategori, content_artikel,cover)
-         VALUES('$judul_artikel','$created_time','$user_id','$kategori','$content_artikel','$file_name')");
+    $result = mysqli_query($mysqli, "INSERT INTO article(category_id,attraction_id,author_id,title,description,image)
+         VALUES('$category_id','$attraction_id','$author_id','$title','$description','$file_name')");
 }
 // 
 ?>
@@ -50,14 +49,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin Panel</title>
+    <title>Login Admin Panel</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../../assets/admin/plugins/fontawesome-free/css/all.min.css">
+    <!-- icheck bootstrap -->
+    <link rel="stylesheet" href="../../assets/admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="../../assets/admin/dist/css/adminlte.min.css">
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -83,21 +84,37 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                                     <div class="card-tools">
                                         <!-- This will cause the card to maximize when clicked -->
-                                        <a href="<?= $base_url_admin ?>/dashboard.php?page=artikel" class="btn btn-info">Kembali</a>
+                                        <a href="<?= $base_url_admin ?>/dashboard.php?page=article" class="btn btn-info">Kembali</a>
                                     </div>
                                     <!-- /.card-tools -->
                                 </div>
-                                <form action="../artikel/create.php?page=artikel" method="post" enctype="multipart/form-data">
+                                <form action="../artikel/create.php?page=article" method="post" enctype="multipart/form-data">
 
                                     <div class="card-body">
 
                                         <div class="form-group">
-                                            <label for="judul_artikel">Judul artikel</label>
-                                            <input type="text" class="form-control" name="judul_artikel" required>
+                                            <label for="category_id">Category</label>
+                                            <input type="text" class="form-control" name="category_id" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="content_artikel">Content</label>
-                                            <textarea type="text" class="form-control" name="content_artikel" required></textarea>
+                                            <label for="attraction_id">attraction</label>
+                                            <input type="text" class="form-control" name="attraction_id" required></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="author_id">author</label>
+                                            <input type="text" class="form-control" name="author_id" required></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="title">title</label>
+                                            <input type="text" class="form-control" name="title" required></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="description">Description</label>
+                                            <textarea type="text" class="form-control" name="description" required></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="image">Image</label>
+                                            <input type="file" class="form-control" name="image" required></textarea>
                                         </div>
                                     </div>
                                     <div class="card-footer">

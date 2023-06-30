@@ -13,9 +13,11 @@ $id = @$_GET['id'];
 $res_artikel = mysqli_query($mysqli, "SELECT * FROM article WHERE id=$id");
 
 while ($artikel = mysqli_fetch_array($res_artikel)) {
-    $row_judul_artikel = $artikel['judul_artikel'];
-    $row_content_artikel = $artikel['content_artikel'];
-    $row_kategori = $artikel['id_kategori'];
+    $row_category_id = $artikel['category_id'];
+    $row_attraction_id = $artikel['attraction_id'];
+    $row_author_id = $artikel['author_id'];
+    $row_title = $artikel['title'];
+    $row_description = $artikel['description'];
 }
 ?>
 <?php

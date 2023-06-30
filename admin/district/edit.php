@@ -9,8 +9,9 @@ $id = @$_GET['id'];
 // Fetech user data based on id
 $result = mysqli_query($mysqli, "SELECT * FROM district WHERE id=$id");
 
-while ($nama = mysqli_fetch_array($result)) {
-    $row_nama = $nama['nama'];
+while ($district = mysqli_fetch_array($result)) {
+    $row_nama = $district['nama'];
+    $row_province = $district['province_id'];
 }
 ?>
 <?php
@@ -18,9 +19,9 @@ while ($nama = mysqli_fetch_array($result)) {
 // Check if form is submitted for user update, then redirect to homepage after update
 if (isset($_POST['update'])) {
     $id = $_POST['id'];
-
     $nama = @$_POST['nama'];
-    $result = mysqli_query($mysqli, "UPDATE district SET nama='$nama' WHERE id=$id");
+    $province = @$_POST['province'];
+    $result = mysqli_query($mysqli, "UPDATE district SET nama='$nama',province_id='$province' WHERE id=$id");
     // update user data
 
     // Redirect to homepage to display updated user in list
@@ -81,8 +82,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <form action="../../admin/district/edit.php" method="post">
                                         <input type="hidden" name="id" value="<?= $id ?>">
                                         <div class="form-group">
-                                            <label for="district">district</label>
+                                            <label for="nama">nama destinasi</label>
                                             <input type="text" class="form-control" value="<?= $row_nama ?>" name="nama" required <?php if ($row_nama == 'admin') { ?> readonly <?php } ?>>
+                                        </div>
+                                        <?php
+                                        $province = mysqli_query($mysqli, "SELECT * FROM province ORDER BY id DESC");
+                                        ?>
+                                        <div class="form-group">
+                                            <label for="province">Provinsi</label>
+                                            <select class="form-control" name="province" required>
+                                                <option value="">Pilih Provinsi</option>
+                                                <?php while ($district = mysqli_fetch_array($province)) { ?>
+                                                    <option value="<?= $district['id'] ?>" <?php if ($district['id'] == $row_province) { ?> <?= 'selected' ?> <?php } ?>><?= $district['province_id'] ?></option>
+                                                <?php } ?>
+                                                <select>
                                         </div>
                                         <button class="btn btn-primary" type="submit" name="update">Simpan</button>
 
