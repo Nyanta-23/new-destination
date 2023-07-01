@@ -5,15 +5,15 @@ include('session.php');
 
 // Get id from URL to delete that user
 $id = @$_GET['id'];
-$sql = "SELECT cover FROM article WHERE id='$id'";
+$sql = "SELECT image FROM article WHERE id='$id'";
 $result = mysqli_query($mysqli, $sql);
 if ($result->num_rows ==  0) {
     $row = mysqli_fetch_assoc($result);
     if (file_exists('uploads/' . $filename)) {
         unlink('uploads/' . $filename);
-        echo 'File ' . $row['cover'] . ' has been deleted';
+        echo 'File ' . $row['image'] . ' has been deleted';
     } else {
-        echo 'Could not delete ' . $row['cover'] . ', file does not exist';
+        echo 'Could not delete ' . $row['image'] . ', file does not exist';
     }
 }
 // Delete user row from table based on given id

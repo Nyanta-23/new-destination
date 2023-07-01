@@ -10,11 +10,11 @@ include_once("../config.php");
 
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Data artikel</h3>
+                        <h3 class="card-title">Data Destinasi Wisata</h3>
 
                         <div class="card-tools">
                             <!-- This will cause the card to maximize when clicked -->
-                            <a href='attraction/create.php?page=attraction' class="btn btn-info"><i class="fas fa-plus"></i>Tambah artikel</a>
+                            <a href='attraction/create.php?page=attraction' class="btn btn-info"><i class="fas fa-plus"></i>Tambah destinasi</a>
                         </div>
                         <!-- /.card-tools -->
                     </div>
@@ -25,19 +25,20 @@ include_once("../config.php");
 
                             <tr>
                                 <th>No</th>
-                                <th>kategori</th>
-                                <th>district</th>
-                                <th>nama</th>
-                                <th>map</th>
-                                <th>description</th>
+                                <th>Kategori</th>
+                                <th>District</th>
+                                <th>Nama</th>
+                                <th>Description</th>
                                 <th>Image</th>
                                 <th>capacity</th>
                                 <th>Aksi</th>
                             </tr>
                             <?php
                             $no = 1;
-                            $result = mysqli_query($mysqli, "SELECT *
-                            FROM attraction
+                            $result = mysqli_query($mysqli, "SELECT attractions.*, category.nama category, district.nama district
+                            FROM attractions
+                            INNER JOIN category ON category.id = attractions.category_id
+                            INNER JOIN district ON district.id = attractions.district_id
                             ORDER BY id DESC");
 
                             while ($data = mysqli_fetch_array($result)) {
@@ -45,12 +46,11 @@ include_once("../config.php");
 
                                 <tr>
                                     <td><?= $no++ ?></td>
-                                    <td><?= $data['kategori'] ?></td>
-                                    <td><?= $data['attraction'] ?></td>
-                                    <td><?= $data['author'] ?></td>
-                                    <td><?= $data['title'] ?></td>
+                                    <td><?= $data['category'] ?></td>
+                                    <td><?= $data['district'] ?></td>
+                                    <td><?= $data['name'] ?></td>
                                     <td><?= $data['description'] ?></td>
-                                    <td><?= $data['image'] ?></td>
+                                    <td><img src="../admin/attraction/image/<?= $data['image']?>" alt="" width="100" height="50" style="object-fit: cover;"></td>
                                     <td><?= $data['capacity'] ?></td>
                                     <td>
                                         <a class="btn btn-success" href='attraction/edit.php?id=<?= $data['id'] ?>&page=attraction'>Edit</a>

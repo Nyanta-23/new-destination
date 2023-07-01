@@ -10,14 +10,6 @@ $page  = $_GET['page']; ?>
 
   <!-- Sidebar -->
   <div class="sidebar">
-    <!-- Sidebar user panel (optional) -->
-    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-      <div class="info">
-        <a href="#" class="d-block"><?= isset($_SESSION['username']) ? $_SESSION['username'] : 'GUEST'; ?></a>
-      </div>
-    </div>
-
-
     <!-- Sidebar Menu -->
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -40,24 +32,32 @@ $page  = $_GET['page']; ?>
           </a>
         </li>
         <li class="nav-item">
-          <a href="<?= $base_url ?>/dashboard.php?page=artikel" class="nav-link  <?php if ($page == 'artikel') { ?>active<?php } ?>">
-            <i class="nav-icon fas fa-pen"></i>
-            <p>
-              Artikel
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
           <a href="<?= $base_url ?>/dashboard.php?page=kategori" class="nav-link  <?php if ($page == 'kategori') { ?>active<?php } ?>">
-            <i class="nav-icon fas fa-tags"></i>
+            <i class="nav-icon fas fa-th-large"></i>
             <p>
               Kategori
             </p>
           </a>
         </li>
         <li class="nav-item">
+          <a href="<?= $base_url ?>/dashboard.php?page=artikel" class="nav-link  <?php if ($page == 'artikel') { ?>active<?php } ?>">
+            <i class="nav-icon fas fa-file"></i>
+            <p>
+              Artikel
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="<?= $base_url ?>/dashboard.php?page=attraction" class="nav-link  <?php if ($page == 'attraction') { ?>active<?php } ?>">
+            <i class="nav-icon fas fa-map-signs"></i>
+            <p>
+              Destinasi Wisata
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
           <a href="<?= $base_url ?>/dashboard.php?page=province" class="nav-link  <?php if ($page == 'province') { ?>active<?php } ?>">
-            <i class="nav-icon fas fa-tags"></i>
+            <i class="nav-icon fas fa-globe"></i>
             <p>
               Province
             </p>
@@ -66,7 +66,7 @@ $page  = $_GET['page']; ?>
         </li>
         <li class="nav-item">
           <a href="<?= $base_url ?>/dashboard.php?page=district" class="nav-link  <?php if ($page == 'district') { ?>active<?php } ?>">
-            <i class="nav-icon fas fa-tags"></i>
+            <i class="nav-icon fas fa-map-marker"></i>
             <p>
               District
             </p>
@@ -74,7 +74,7 @@ $page  = $_GET['page']; ?>
         </li>
         <li class="nav-item">
           <a href="<?= $base_url ?>/dashboard.php?page=about" class="nav-link  <?php if ($page == 'about') { ?>active<?php } ?>">
-            <i class="nav-icon fas fa-tags"></i>
+            <i class="nav-icon fas fa-info-circle"></i>
             <p>
               About
             </p>
@@ -82,12 +82,13 @@ $page  = $_GET['page']; ?>
         </li>
         <li class="nav-item">
           <a href="<?= $base_url ?>/dashboard.php?page=contact" class="nav-link  <?php if ($page == 'contact') { ?>active<?php } ?>">
-            <i class="nav-icon fas fa-tags"></i>
+            <i class="nav-icon fas fa-phone-square"></i>
             <p>
               Contact
             </p>
           </a>
         </li>
+<<<<<<< HEAD
         <li class="nav-item">
           <a href="<?= $base_url ?>/dashboard.php?page=gallery" class="nav-link  <?php if ($page == 'gallery') { ?>active<?php } ?>">
             <i class="nav-icon fas fa-tags"></i>
@@ -105,14 +106,18 @@ $page  = $_GET['page']; ?>
           </a>
         </li>
         <li class="nav-item">
+=======
+        <!-- <li class="nav-item">
+>>>>>>> 0b993ab090d9f87fb7a96a8e17b00a371a12b7d7
           <a href="<?= $base_url ?>/dashboard.php?page=social" class="nav-link  <?php if ($page == 'social') { ?>active<?php } ?>">
-            <i class="nav-icon fas fa-file"></i>
+            <i class="nav-icon fas fa-users"></i>
             <p>
               Social
             </p>
           </a>
-        </li>
+        </li> -->
         <li class="nav-item">
+<<<<<<< HEAD
           <a href="<?= $base_url ?>/dashboard.php?page=menu" class="nav-link  <?php if ($page == 'menu') { ?>active<?php } ?>">
             <i class="nav-icon fas fa-th"></i>
             <p>
@@ -121,6 +126,8 @@ $page  = $_GET['page']; ?>
           </a>
         </li>
         <li class="nav-item">
+=======
+>>>>>>> 0b993ab090d9f87fb7a96a8e17b00a371a12b7d7
           <a href="<?= $base_url ?>/logout.php" class="nav-link">
             <i class="nav-icon fas fa-power-off"></i>
             <p>
