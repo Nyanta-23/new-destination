@@ -173,7 +173,31 @@ $article = mysqli_query(
 
               <swiper-slide>
                 <div class="card border rounded" style="width: 18rem;">
-                  <img src="frontend-assets/images/members-image/me.jpg" class="card-img-top" alt="...">
+                  <img src="frontend-assets/images/members-image/agus.png" class="card-img-top" alt="...">
+                  <div class="card-body text-center text-black">
+                    <i>Back-End Developer</i>
+                    <h6>Agus Padilah</h6>
+                    <p class="card-text">
+                      A2.2100002
+                    </p>
+                  </div>
+                  <div class="card-link d-flex justify-content-center ">
+                    <a class="text-decoration-none text-orange pb-2 fs-5 mx-2" target="_blank" href="https://github.com/apadilah30">
+                      <i class="bi bi-github"></i>
+                    </a>
+                    <a class="text-decoration-none text-orange pb-2 fs-5 mx-2" target="_blank" href="https://www.linkedin.com/in/apadilah30/">
+                      <i class="bi bi-linkedin"></i>
+                    </a>
+                    <a class="text-decoration-none text-orange pb-2 fs-5 mx-2" target="_blank" href="https://www.instagram.com/apadilah30/">
+                      <i class="bi bi-instagram"></i>
+                    </a>
+                  </div>
+                </div>
+              </swiper-slide>
+
+              <swiper-slide>
+                <div class="card border rounded" style="width: 18rem;">
+                  <img src="frontend-assets/images/members-image/Ilhan.jpg" class="card-img-top" alt="...">
                   <div class="card-body text-center text-black">
                     <i>Front-End Developer</i>
                     <h6>Muhamad Ilhan Revaliana Firmansyah</h6>
@@ -195,24 +219,26 @@ $article = mysqli_query(
                 </div>
               </swiper-slide>
 
+
+
               <swiper-slide>
                 <div class="card border rounded" style="width: 18rem;">
-                  <img src="frontend-assets/images/members-image/me.jpg" class="card-img-top" alt="...">
+                  <img src="frontend-assets/images/members-image/ryan.jpg" class="card-img-top" alt="...">
                   <div class="card-body text-center text-black">
                     <i>Back-End Developer</i>
-                    <h6>Agus Padilah</h6>
+                    <h6>AA Rian Sophian</h6>
                     <p class="card-text">
-                      A2.2100076
+                      A2.2100010
                     </p>
                   </div>
                   <div class="card-link d-flex justify-content-center ">
-                    <a class="text-decoration-none text-orange pb-2 fs-5 mx-2" target="_blank" href="https://github.com/Nyanta-23">
+                    <a class="text-decoration-none text-orange pb-2 fs-5 mx-2" target="_blank" href="https://github.com/Riannnars">
                       <i class="bi bi-github"></i>
                     </a>
-                    <a class="text-decoration-none text-orange pb-2 fs-5 mx-2" target="_blank" href="https://www.linkedin.com/in/ihaannn/">
+                    <a class="text-decoration-none text-orange pb-2 fs-5 mx-2" target="_blank" href="https://www.linkedin.com/in/aa-rian-sophian-203909277/">
                       <i class="bi bi-linkedin"></i>
                     </a>
-                    <a class="text-decoration-none text-orange pb-2 fs-5 mx-2" target="_blank" href="https://www.instagram.com/ihaannn_/">
+                    <a class="text-decoration-none text-orange pb-2 fs-5 mx-2" target="_blank" href="https://www.instagram.com/ariannns57/?hl=id">
                       <i class="bi bi-instagram"></i>
                     </a>
                   </div>
@@ -221,46 +247,22 @@ $article = mysqli_query(
 
               <swiper-slide>
                 <div class="card border rounded" style="width: 18rem;">
-                  <img src="frontend-assets/images/members-image/me.jpg" class="card-img-top" alt="...">
-                  <div class="card-body text-center text-black">
-                    <i>Back-End Developer</i>
-                    <h6>AA Ryan Shopian</h6>
-                    <p class="card-text">
-                      A2.2100076
-                    </p>
-                  </div>
-                  <div class="card-link d-flex justify-content-center ">
-                    <a class="text-decoration-none text-orange pb-2 fs-5 mx-2" target="_blank" href="https://github.com/Nyanta-23">
-                      <i class="bi bi-github"></i>
-                    </a>
-                    <a class="text-decoration-none text-orange pb-2 fs-5 mx-2" target="_blank" href="https://www.linkedin.com/in/ihaannn/">
-                      <i class="bi bi-linkedin"></i>
-                    </a>
-                    <a class="text-decoration-none text-orange pb-2 fs-5 mx-2" target="_blank" href="https://www.instagram.com/ihaannn_/">
-                      <i class="bi bi-instagram"></i>
-                    </a>
-                  </div>
-                </div>
-              </swiper-slide>
-
-              <swiper-slide>
-                <div class="card border rounded" style="width: 18rem;">
-                  <img src="frontend-assets/images/members-image/me.jpg" class="card-img-top" alt="...">
+                  <img src="frontend-assets/images/members-image/faisal.png" class="card-img-top" alt="...">
                   <div class="card-body text-center text-black">
                     <i>UI-UX Designer</i>
-                    <h6>Faishal Rahman</h6>
+                    <h6>Faisal Rahman</h6>
                     <p class="card-text">
-                      A2.2100076
+                      A2.2100043
                     </p>
                   </div>
                   <div class="card-link d-flex justify-content-center ">
-                    <a class="text-decoration-none text-orange pb-2 fs-5 mx-2" target="_blank" href="https://github.com/Nyanta-23">
+                    <a class="text-decoration-none text-orange pb-2 fs-5 mx-2" target="_blank" href="http://github.com/Qyupaww">
                       <i class="bi bi-github"></i>
                     </a>
-                    <a class="text-decoration-none text-orange pb-2 fs-5 mx-2" target="_blank" href="https://www.linkedin.com/in/ihaannn/">
+                    <a class="text-decoration-none text-orange pb-2 fs-5 mx-2" target="_blank" href="http://linkedin.com/in/qyupaww">
                       <i class="bi bi-linkedin"></i>
                     </a>
-                    <a class="text-decoration-none text-orange pb-2 fs-5 mx-2" target="_blank" href="https://www.instagram.com/ihaannn_/">
+                    <a class="text-decoration-none text-orange pb-2 fs-5 mx-2" target="_blank" href="http://instagram.com/qyupaww">
                       <i class="bi bi-instagram"></i>
                     </a>
                   </div>
