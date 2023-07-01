@@ -5,7 +5,7 @@ error_reporting(E_ALL);
 
 include("config.php");
 
-$destinations = mysqli_query(
+$attr = mysqli_query(
   $mysqli,
   "SELECT attractions.*, category.nama, district.nama
   FROM attractions
@@ -13,11 +13,13 @@ $destinations = mysqli_query(
     ON attractions.category_id = category.id
   INNER JOIN district
     ON attractions.district_id = district.id
-  ORDER BY id DESC
-  "
+  ORDER BY id DESC"
 );
 
-$article = mysqli_query($mysqli, "SELECT * FROM article");
+$article = mysqli_query(
+  $mysqli,
+  "SELECT * FROM article"
+);
 
 ?>
 
@@ -66,24 +68,22 @@ $article = mysqli_query($mysqli, "SELECT * FROM article");
         <div class="row">
 
           <?php
-          $maxAttr = 4;
-          while ($attr = mysqli_fetch_array($destinations)) {
-            if ($maxAttr < $attr) {
+          // $maxAttr = 4;
+          while ($destinations = mysqli_fetch_array($attr)) {
           ?>
-              <div class="col-sm-6 col-md-4 col-lg-3 d-inline-block d-flex justify-content-center">
-                <div class="custom-cards-dest my-3 text-center overflow-hidden card-dest">
-                  <img src="frontend-assets/images/destinations/destinationsImg.png" alt="">
-                  <div class="info-dest text-center">
-                    <h5 class="text-uppercase fs-6"><?= $attr['district_id']; ?></h5>
-                    <h3 class="text-capitalize fs-5"><?= $attr['name']; ?></h3>
-                  </div>
-                  <div class="btn-centering">
-                    <button href="#" class="btn text-white btn-orange z-2">Lihat Detail</button>
-                  </div>
+            <div class="col-sm-6 col-md-4 col-lg-3 d-inline-block d-flex justify-content-center">
+              <div class="custom-cards-dest my-3 text-center overflow-hidden card-dest">
+                <img src="frontend-assets/images/destinations/destinationsImg.png" alt="">
+                <div class="info-dest text-center">
+                  <h5 class="text-uppercase fs-6"><?= $destinations['district_id']; ?></h5>
+                  <h3 class="text-capitalize fs-5"><?= $destinations['name']; ?></h3>
+                </div>
+                <div class="btn-centering">
+                  <button href="#" class="btn text-white btn-orange z-2">Lihat Detail</button>
                 </div>
               </div>
+            </div>
           <?php
-            }
           }
           ?>
 
@@ -109,37 +109,35 @@ $article = mysqli_query($mysqli, "SELECT * FROM article");
 
           <?php
           $maxArticle = 3;
-          while ($articles = mysqli_fetch_array($article)) {
-            if ($maxArticle < $articles) {
+          while ($articles = mysqli_fetch_array($article) < $maxArticle) {
           ?>
-              <div class="col-sm-10 col-md-4 col-lg-4  d-inline-block d-flex justify-content-center">
-                <div class="my-3">
+            <div class="col-sm-10 col-md-4 col-lg-4  d-inline-block d-flex justify-content-center">
+              <div class="my-3">
 
 
-                  <a href="#" class="text-decoration-none">
-                    <div class=" my-3 text-center overflow-hidden landing-card-article">
-                      <img src="frontend-assets/images/article/article.png" class="card-img-top rounded-2" alt="...">
-                      <div class="text-see-hover-landing pt-5 mt-4">
-                        <h5 class="fs-3 h-3">Lihat</h5>
-                      </div>
+                <a href="#" class="text-decoration-none">
+                  <div class=" my-3 text-center overflow-hidden landing-card-article">
+                    <img src="frontend-assets/images/article/article.png" class="card-img-top rounded-2" alt="...">
+                    <div class="text-see-hover-landing pt-5 mt-4">
+                      <h5 class="fs-3 h-3">Lihat</h5>
                     </div>
-                  </a>
-
-
-                  <div class="card-body">
-                    <p class=" ml-1 mt-2 fw-medium">
-                      <span><?= $articles['author_id']; ?></span>
-                      -
-                      <span><?= $articles['category_id']; ?></span>
-                    </p>
-                    <a class="title-article" href="#">
-                      <h5 class="article mx-1"><?= $articles['title']; ?></h5>
-                    </a>
                   </div>
+                </a>
+
+
+                <div class="card-body">
+                  <p class=" ml-1 mt-2 fw-medium">
+                    <span><?= $articles['author_id']; ?></span>
+                    -
+                    <span><?= $articles['category_id']; ?></span>
+                  </p>
+                  <a class="title-article" href="#">
+                    <h5 class="article mx-1"><?= $articles['title']; ?></h5>
+                  </a>
                 </div>
               </div>
+            </div>
           <?php
-            }
           }
           ?>
 
