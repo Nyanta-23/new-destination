@@ -47,7 +47,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
-            <?php include('content-header.php'); ?>
+            <div class="content-header">
+                <div class="container-fluid">
+                    <?php include('content-header.php'); ?>
+                </div>
+            </div>
             <!-- /.content-header -->
             <!-- Main content -->
             <div class="content">
@@ -66,7 +70,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     </div>
                                     <!-- /.card-tools -->
                                 </div>
-                                <form action="../contact/create.php" method="post" name="form1">
+                                <form action="../contact/create.php?page=contact" method="post" name="form1">
 
                                     <div class="card-body">
 

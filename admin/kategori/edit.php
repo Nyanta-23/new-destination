@@ -2,18 +2,6 @@
 include_once("../../config.php");
 include('session.php');
 
-// Display selected user data based on id
-// Getting id from url
-$id = @$_GET['id'];
-
-// Fetech user data based on id
-$result = mysqli_query($mysqli, "SELECT * FROM category WHERE id=$id");
-
-while ($nama = mysqli_fetch_array($result)) {
-    $row_nama = $nama['nama'];
-}
-?>
-<?php
 // include config connection file
 // Check if form is submitted for user update, then redirect to homepage after update
 if (isset($_POST['update'])) {
@@ -25,6 +13,17 @@ if (isset($_POST['update'])) {
 
     // Redirect to homepage to display updated user in list
     header("Location:../dashboard.php?page=kategori");
+}
+
+// Display selected user data based on id
+// Getting id from url
+$id = @$_GET['id'];
+
+// Fetech user data based on id
+$result = mysqli_query($mysqli, "SELECT * FROM category WHERE id=$id");
+
+while ($nama = mysqli_fetch_array($result)) {
+    $row_nama = $nama['nama'];
 }
 ?>
 
@@ -57,7 +56,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
-            <?php include_once('content-header.php'); ?>
+            <div class="content-header">
+                <div class="container-fluid">
+                    <?php include('content-header.php'); ?>
+                </div>
+            </div>
             <!-- /.content-header -->
             <!-- Main content -->
             <div class="content">
