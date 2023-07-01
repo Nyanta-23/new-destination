@@ -5,7 +5,7 @@ include('session.php');
 
 // Get id from URL to delete that user
 $id = @$_GET['id'];
-$sql = "SELECT cover FROM article WHERE id='$id'";
+$sql = "SELECT cover FROM attraction WHERE id='$id'";
 $result = mysqli_query($mysqli, $sql);
 if ($result->num_rows ==  0) {
     $row = mysqli_fetch_assoc($result);

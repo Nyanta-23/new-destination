@@ -1,4 +1,3 @@
-console.log("Kontol");
 var swiper = new Swiper(".mySwiper", {
   spaceBetween: 30,
   centeredSlides: true,
@@ -17,4 +16,8 @@ var swiper = new Swiper(".mySwiper", {
   },
 });
 
-console.log(swiper);
+
+// const firstScrollSpyEl = document.querySelector('[data-bs-spy="scroll"]')
+// firstScrollSpyEl.addEventListener('activate.bs.scrollspy', () => {
+  
+// })

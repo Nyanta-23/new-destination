@@ -7,99 +7,445 @@ include("config.php");
 
 ?>
 
+<!-- <a href="admin/login.php">Login</a> -->
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="admin/assets/styles/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+  <link rel="stylesheet" href="frontend-assets/styles/styles.css">
+  <link rel="stylesheet" href="frontend-assets/styles/responsiveStyle.css">
   <title>Web Pariwisata</title>
 </head>
 
-<body>
+<body id="home" class="overflow-x-hidden" data-bs-spy="scroll" data-bs-target="navbar" data-bs-root-margin="0px 0px -40%" tabindex="0">
+
   <!-- Navbar -->
-  <nav class="bg-white border-gray-200 dark:bg-gray-900">
-    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-      <a href="#" class="flex items-center">
-        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"><span class="text-orange">Ambatu</span>trip</span>
-      </a>
 
-      <!-- Responsive -->
-      <div class="flex md:order-1">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary z-3 p-3 mr-2 position-fixed top-0 start-0 end-0 w-100 shadow-sm">
 
-        <!-- Responsive mobile Button Search -->
-        <button type="button" data-collapse-toggle="navbar-search" aria-controls="navbar-search" aria-expanded="false" class="md:hidden text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 mr-1">
-          <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
-          </svg>
-          <span class="sr-only">Search</span>
-        </button>
-        <!-- Responsive mobile Button Search -->
+    <div class="container d-flex">
 
-        <!-- Search Box -->
-        <div class="relative hidden md:block w-96">
-          <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-            <svg class="w-5 h-5 text-gray-500" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
-            </svg>
-            <span class="sr-only">Search icon</span>
-          </div>
-          <input type="text" id="search-navbar" class="block w-full p-32 pr-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="">
+      <!-- For large size -->
+      <div class="row ml-lg-2">
+
+        <div class="col-3">
+          <a class="navbar-brand fs-3" href="#"><span class="text-orange">Ambatu</span>trip</a>
         </div>
-        <!-- Search Box -->
 
-        <!-- Responsive mobile Button Burger Bar -->
-        <button data-collapse-toggle="navbar-search" type="button" class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-search" aria-expanded="false">
-          <span class="sr-only">Open menu</span>
-          <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
-          </svg>
-        </button>
-        <!-- Responsive mobile Button Burger Bar -->
+        <div class="col-5 mt-2 col-xl-6 d-none d-lg-block ms-xl-5 ms-lg-0">
+          <form class="d-flex ms-lg-3 input-group" role="search">
+            <input class="form-control custom-border" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn search pr-3 d-flex border-search-button">
+              <i class="bi bi-search"></i>
+            </button>
+          </form>
+        </div>
 
+        <div class="col-1 mt-1 d-none d-lg-block ms-xl-5 ms-lg-4">
+          <ul class="navbar-nav mb-2 mb-lg-0 ms-lg-4 d-flex ">
+            <li class="nav-item">
+              <!-- <a class="nav-link active" aria-current="page" href="#home">Home</a> -->
+              <a class="nav-link active" aria-current="page" href="#home">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Destinations</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Article</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="collapse navbar-collapse"></div>
       </div>
-      <!-- Responsive -->
+      <!-- For large size -->
 
-      <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-2" id="navbar-search">
+      <!-- For small size -->
+      <button class="navbar-toggler d-block d-sm-block d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-        <!-- Piece search box for responsive mobile -->
-        <div class="relative mt-3 md:hidden" id="test">
-          <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-            <svg class="w-5 h-5 text-gray-500" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
-            </svg>
-          </div>
-          <input type="text" id="search-navbar" class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search...">
-        </div>
-        <!-- Piece search box for responsive mobile -->
+      <div class="collapse navbar-collapse mt-3 mx-2" id="navbarSupportedContent">
 
-        <!-- List Buttons Navbar -->
-        <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-          <li>
-            <a href="#" class="block py-2 pl-3 pr-4 text-orange bg-orange-500 rounded md:bg-transparent md:text-orange md:p-0" aria-current="page">Home</a>
+        <form class="d-flex d-lg-none" role="search">
+          <input class="form-control custom-border search-radius" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn search pr-3 d-flex border-search-button">
+            <i class="bi bi-search"></i>
+          </button>
+        </form>
+
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 mt-2 text-center d-lg-none d-xl-none d-xxl-none">
+          <li class="nav-item mt-1">
+            <!-- <a class="nav-link custom-active" aria-current="page" href="#">Home</a> -->
+            <a class="nav-link custom-active" aria-current="page" href="#home">Home</a>
           </li>
-          <li>
-            <a href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-orange dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Destinations</a>
+          <li class="nav-item mt-1">
+            <a class="nav-link custom-link" href="#">Destinations</a>
           </li>
-          <li>
-            <a href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-orange dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Article</a>
+          <li class="nav-item mt-1">
+            <a class="nav-link custom-link" href="#">Article</a>
           </li>
-          <li>
-            <a href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-orange dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">About</a>
+          <li class="nav-item mt-1">
+            <a class="nav-link custom-link" href="#about">About</a>
           </li>
         </ul>
+      </div>
+      <!-- For small size -->
+    </div>
+  </nav>
+
+  <!-- Navbar -->
+
+  <!-- Jumbotron -->
+
+  <section class="jumbotron mt-5 bg-jumbotron position-relative text-md-center text-lg-start" style="padding: 5rem 0;">
+    <div class="container">
+      <div class="bg-window z-0"></div>
+      <h1 class="mt-3 mt-xl-5 display-3 text-orange fw-700 z-2 position-relative text-start">Where Would You Like To Go?
+      </h1>
+      <p class="lead text-white z-2 position-relative text-start">Lorem ipsum dolor sit amet consectetur, adipisicing
+        elit. Dicta sed
+        sint mollitia magnam aspernatur labore reiciendis ex dolore, molestias, perspiciatis commodi quam distinctio
+        impedit laboriosam corrupti ut ratione incidunt qui.
+      </p>
+      <a class="btn btn-orange btn-custom-size text-white z-2 position-relative btn-custom-rounded w-100 " href="#" role="button">Get Started</a>
+    </div>
+  </section>
+
+  <!-- Jumbotron -->
 
 
-        <!-- List Buttons Navbar -->
+  <main>
+    <!-- Main Page -->
+    <section id="destinations">
+      <div class="container mt-5">
+        <div class="row">
+          <div class="col-12">
+            <h3 class="h3 text-center text-orange text-md-start">Destinations</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+
+          <div class="col-sm-6 col-md-4 col-lg-3 d-inline-block d-flex justify-content-center">
+
+            <div class="custom-cards-dest my-3 text-center overflow-hidden card-dest">
+              <img src="frontend-assets/images/destinations/destinationsImg.png" alt="">
+              <div class="info-dest text-center">
+                <h5 class="text-uppercase">bali</h5>
+                <h3 class="text-capitalize">pulu watu </h3>
+              </div>
+              <div class="btn-centering">
+                <button href="#" class="btn text-white btn-orange z-2">Lihat Detail</button>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-sm-6 col-md-4 col-lg-3 d-inline-block d-flex justify-content-center">
+            <div class="custom-cards-dest my-3 text-center overflow-hidden card-dest">
+              <img src="frontend-assets/images/destinations/destinationsImg.png" alt="">
+              <div class="info-dest text-center">
+                <h5 class="text-uppercase">bali</h5>
+                <h3 class="text-capitalize">pulu watu </h3>
+              </div>
+              <div class="btn-centering">
+                <button href="#" class="btn text-white btn-orange z-2">Lihat Detail</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-4 col-lg-3 d-inline-block d-flex justify-content-center">
+            <div class="custom-cards-dest my-3 text-center overflow-hidden card-dest">
+              <img src="frontend-assets/images/destinations/destinationsImg.png" alt="">
+              <div class="info-dest text-center">
+                <h5 class="text-uppercase">bali</h5>
+                <h3 class="text-capitalize">pulu watu </h3>
+              </div>
+              <div class="btn-centering">
+                <button href="#" class="btn text-white btn-orange z-2">Lihat Detail</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-4 col-lg-3 d-inline-block d-flex justify-content-center">
+            <div class="custom-cards-dest my-3 text-center overflow-hidden card-dest">
+              <img src="frontend-assets/images/destinations/destinationsImg.png" alt="">
+              <div class="info-dest text-center">
+                <h5 class="text-uppercase">bali</h5>
+                <h3 class="text-capitalize">pulu watu </h3>
+              </div>
+              <div class="btn-centering">
+                <button href="#" class="btn text-white btn-orange z-2">Lihat Detail</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col text-center ">
+          <a href="#" class="btn btn-show-more text-white my-3">Show More</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="article">
+      <div class="container-md mt-5">
+        <div class="row">
+          <div class="col">
+            <h3 class="h3 text-center text-orange text-md-start">Article</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row d-flex justify-content-sm-center justify-content-md-between">
+
+          <div class="col-sm-10 col-md-4 col-lg-4  d-inline-block d-flex justify-content-center">
+            <div class="my-3">
+
+              <a href="#" class="text-decoration-none">
+                <div class=" my-3 text-center overflow-hidden landing-card-article">
+                  <img src="frontend-assets/images/article/article.png" class="card-img-top rounded-2" alt="...">
+                  <div class="text-see-hover-landing pt-5 mt-4">
+                    <h5 class="fs-3 h-3">Lihat</h5>
+                  </div>
+                </div>
+              </a>
+
+              <div class="card-body">
+                <p class=" ml-1 mt-2 fw-medium">
+                  <span>Ilhan</span>
+                  -
+                  <span>Anime</span>
+                </p>
+                <a class="title-article" href="#">
+                  <h5 class="article mx-1">Event anime, kok cosplay genshin? "Bukan Main"</h5>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-10 col-md-4 col-lg-4  d-inline-block d-flex justify-content-center">
+            <div class="my-3">
+
+              <a href="#" class="text-decoration-none">
+                <div class=" my-3 text-center overflow-hidden landing-card-article">
+                  <img src="frontend-assets/images/article/article.png" class="card-img-top rounded-2" alt="...">
+                  <div class="text-see-hover-landing pt-5 mt-4">
+                    <h5 class="fs-3 h-3">Lihat</h5>
+                  </div>
+                </div>
+              </a>
+
+              <div class="card-body">
+                <p class=" ml-1 mt-2 fw-medium">
+                  <span>Ilhan</span>
+                  -
+                  <span>Anime</span>
+                </p>
+                <a class="title-article" href="#">
+                  <h5 class="article mx-1">Event anime, kok cosplay genshin? "Bukan Main"</h5>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-10 col-md-4 col-lg-4  d-inline-block d-flex justify-content-center">
+            <div class="my-3">
+
+              <a href="#" class="text-decoration-none">
+                <div class=" my-3 text-center overflow-hidden landing-card-article">
+                  <img src="frontend-assets/images/article/article.png" class="card-img-top rounded-2" alt="...">
+                  <div class="text-see-hover-landing pt-5 mt-4">
+                    <h5 class="fs-3 h-3">Lihat</h5>
+                  </div>
+                </div>
+              </a>
+
+              <div class="card-body">
+                <p class=" ml-1 mt-2 fw-medium">
+                  <span>Ilhan</span>
+                  -
+                  <span>Anime</span>
+                </p>
+                <a class="title-article" href="#">
+                  <h5 class="article mx-1">Event anime, kok cosplay genshin? "Bukan Main"</h5>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col text-center ">
+          <a href="#" class="btn btn-show-more text-white my-3">Show More</a>
+        </div>
       </div>
 
 
+    </section>
 
+    <!-- Main Page -->
+
+    <!-- About Us -->
+    <section id="about">
+      <div class="container mt-5">
+        <div class="row">
+          <div class="col-12">
+            <h3 class="h3 text-md-start text-center text-orange mb-3">About Us</h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class=" col-12 order-2 order-md-0 col-md-7 d-md-flex mt-4 mt-md-0">
+            <p class="text-start lh-base">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum aspernatur
+              debitis, recusandae molestiae quisquam, adipisci temporibus laboriosam odio, placeat maxime officia aut
+              perspiciatis voluptas architecto a dignissimos quidem eaque fugiat? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo laborum a vel laudantium similique veniam! Autem quae vel accusantium commodi voluptate odit dicta, praesentium numquam totam omnis cupiditate suscipit aperiam.
+              Praesentium ducimus mollitia alias a facilis nostrum dicta, dolore fugiat sapiente itaque, deleniti asperiores ipsum libero, voluptas quia aut soluta magni voluptatem harum quasi. Voluptas iure fuga aliquid quis voluptate!</p>
+          </div>
+
+          <div class="col order-1 order-md-0 col-md-5 d-flex justify-content-center align-content-start">
+            <swiper-container class="mySwiper" navigation="true" space-between="30" centered-slides="true" autoplay-delay="2500" autoplay-disable-on-interaction="false">
+
+              <swiper-slide>
+                <div class="card border rounded" style="width: 18rem;">
+                  <img src="frontend-assets/images/members-image/me.jpg" class="card-img-top" alt="...">
+                  <div class="card-body text-center text-black">
+                    <i>Front-End Developer</i>
+                    <h6>Muhamad Ilhan Revaliana Firmansyah</h6>
+                    <p class="card-text">
+                      A2.2100076
+                    </p>
+                  </div>
+                  <div class="card-link d-flex justify-content-center ">
+                    <a class="text-decoration-none text-orange pb-2 fs-5 mx-2" target="_blank" href="https://github.com/Nyanta-23">
+                      <i class="bi bi-github"></i>
+                    </a>
+                    <a class="text-decoration-none text-orange pb-2 fs-5 mx-2" target="_blank" href="https://www.linkedin.com/in/ihaannn/">
+                      <i class="bi bi-linkedin"></i>
+                    </a>
+                    <a class="text-decoration-none text-orange pb-2 fs-5 mx-2" target="_blank" href="https://www.instagram.com/ihaannn_/">
+                      <i class="bi bi-instagram"></i>
+                    </a>
+                  </div>
+                </div>
+              </swiper-slide>
+
+              <swiper-slide>
+                <div class="card border rounded" style="width: 18rem;">
+                  <img src="frontend-assets/images/members-image/me.jpg" class="card-img-top" alt="...">
+                  <div class="card-body text-center text-black">
+                    <i>Front-End Developer</i>
+                    <h6>Muhamad Ilhan Revaliana Firmansyah</h6>
+                    <p class="card-text">
+                      A2.2100076
+                    </p>
+                  </div>
+                  <div class="card-link d-flex justify-content-center ">
+                    <a class="text-decoration-none text-orange pb-2 fs-5 mx-2" target="_blank" href="https://github.com/Nyanta-23">
+                      <i class="bi bi-github"></i>
+                    </a>
+                    <a class="text-decoration-none text-orange pb-2 fs-5 mx-2" target="_blank" href="https://www.linkedin.com/in/ihaannn/">
+                      <i class="bi bi-linkedin"></i>
+                    </a>
+                    <a class="text-decoration-none text-orange pb-2 fs-5 mx-2" target="_blank" href="https://www.instagram.com/ihaannn_/">
+                      <i class="bi bi-instagram"></i>
+                    </a>
+                  </div>
+                </div>
+              </swiper-slide>
+
+              <swiper-slide>
+                <div class="card border rounded" style="width: 18rem;">
+                  <img src="frontend-assets/images/members-image/me.jpg" class="card-img-top" alt="...">
+                  <div class="card-body text-center text-black">
+                    <i>Front-End Developer</i>
+                    <h6>Muhamad Ilhan Revaliana Firmansyah</h6>
+                    <p class="card-text">
+                      A2.2100076
+                    </p>
+                  </div>
+                  <div class="card-link d-flex justify-content-center ">
+                    <a class="text-decoration-none text-orange pb-2 fs-5 mx-2" target="_blank" href="https://github.com/Nyanta-23">
+                      <i class="bi bi-github"></i>
+                    </a>
+                    <a class="text-decoration-none text-orange pb-2 fs-5 mx-2" target="_blank" href="https://www.linkedin.com/in/ihaannn/">
+                      <i class="bi bi-linkedin"></i>
+                    </a>
+                    <a class="text-decoration-none text-orange pb-2 fs-5 mx-2" target="_blank" href="https://www.instagram.com/ihaannn_/">
+                      <i class="bi bi-instagram"></i>
+                    </a>
+                  </div>
+                </div>
+              </swiper-slide>
+
+              <swiper-slide>
+                <div class="card border rounded" style="width: 18rem;">
+                  <img src="frontend-assets/images/members-image/me.jpg" class="card-img-top" alt="...">
+                  <div class="card-body text-center text-black">
+                    <i>Front-End Developer</i>
+                    <h6>Muhamad Ilhan Revaliana Firmansyah</h6>
+                    <p class="card-text">
+                      A2.2100076
+                    </p>
+                  </div>
+                  <div class="card-link d-flex justify-content-center ">
+                    <a class="text-decoration-none text-orange pb-2 fs-5 mx-2" target="_blank" href="https://github.com/Nyanta-23">
+                      <i class="bi bi-github"></i>
+                    </a>
+                    <a class="text-decoration-none text-orange pb-2 fs-5 mx-2" target="_blank" href="https://www.linkedin.com/in/ihaannn/">
+                      <i class="bi bi-linkedin"></i>
+                    </a>
+                    <a class="text-decoration-none text-orange pb-2 fs-5 mx-2" target="_blank" href="https://www.instagram.com/ihaannn_/">
+                      <i class="bi bi-instagram"></i>
+                    </a>
+                  </div>
+                </div>
+              </swiper-slide>
+
+            </swiper-container>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- About Us -->
+
+  <!-- Footer -->
+  <footer class="bg-black mt-5">
+    <div class="container">
+      <div class="row-2">
+        <div class="col text-start pt-5">
+          <a class="navbar-brand fs-3 text-white" href="#">
+            <h2 class="">
+              <span class="text-orange">Ambatu</span>trip
+            </h2>
+          </a>
+        </div>
+        <div class="col text-white">
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat totam earum perferendis, commodi corrupti
+            et eligendi cum expedita. Dolores cum quia iure cumque nulla voluptas deleniti tempore ad sit? Atque.</p>
+        </div>
+        <div class="col text-white pt-2 pb-1">
+          <p class="text-center">© 2023 <a class="text-white footer-link" href="https://www.linkedin.com/in/ihaannn/" target="_blank">Nyanta</a>. All right reserved</p>
+        </div>
+      </div>
     </div>
+<<<<<<< HEAD
   </nav>
   <!-- Navbar -->
 
@@ -126,6 +472,10 @@ include("config.php");
     <link rel="stylesheet" href="frontend-assets/styles/responsiveStyle.css">
     <title>Web Pariwisata | Destinations</title>
     </head>
+=======
+  </footer>
+  <!-- Footer -->
+>>>>>>> 0ed5f645728f291fda6db622fc5204784e5e6ccd
 
 
 
@@ -137,7 +487,17 @@ include("config.php");
     >>>>>>> 520b30c7ade68dd97e81761cbb24c05dba214ae4
     <a href="admin/login.php">Login</a>
 
+<<<<<<< HEAD
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.js"></script>
+=======
+  <script src="frontend-assets/script/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+>>>>>>> 0ed5f645728f291fda6db622fc5204784e5e6ccd
 </body>
 
 </html>
