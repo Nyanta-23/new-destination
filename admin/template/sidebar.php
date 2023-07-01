@@ -89,6 +89,41 @@ $page  = $_GET['page']; ?>
           </a>
         </li>
         <li class="nav-item">
+<<<<<<< HEAD
+=======
+          <a href="<?= $base_url ?>/dashboard.php?page=gallery" class="nav-link  <?php if ($page == 'gallery') { ?>active<?php } ?>">
+            <i class="nav-icon fas fa-tags"></i>
+            <p>
+              Gallery
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="<?= $base_url ?>/dashboard.php?page=attraction" class="nav-link  <?php if ($page == 'attraction') { ?>active<?php } ?>">
+            <i class="nav-icon fas fa-tags"></i>
+            <p>
+              Attraction
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="<?= $base_url ?>/dashboard.php?page=social" class="nav-link  <?php if ($page == 'social') { ?>active<?php } ?>">
+            <i class="nav-icon fas fa-file"></i>
+            <p>
+              Social
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="<?= $base_url ?>/dashboard.php?page=menu" class="nav-link  <?php if ($page == 'menu') { ?>active<?php } ?>">
+            <i class="nav-icon fas fa-th"></i>
+            <p>
+              Menu
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+>>>>>>> 59bccea06b0e2741b51aa8570b8307b5b54e7e75
           <a href="<?= $base_url ?>/logout.php" class="nav-link">
             <i class="nav-icon fas fa-power-off"></i>
             <p>

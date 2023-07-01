@@ -7,11 +7,12 @@ include('session.php');
 $id = @$_GET['id'];
 
 // Fetech user data based on id
-$result = mysqli_query($mysqli, "SELECT * FROM district WHERE id=$id");
+$result = mysqli_query($mysqli, "SELECT * FROM gallery WHERE id=$id");
 
-while ($district = mysqli_fetch_array($result)) {
-    $row_nama = $district['nama'];
-    $row_province = $district['province_id'];
+while ($user_data = mysqli_fetch_array($result)) {
+    $row_title = $user_data['title'];
+    $row_description = $user_data['description'];
+    $row_image = $user_data['image'];
 }
 ?>
 <?php
@@ -19,18 +20,21 @@ while ($district = mysqli_fetch_array($result)) {
 // Check if form is submitted for user update, then redirect to homepage after update
 if (isset($_POST['update'])) {
     $id = $_POST['id'];
-    $nama = @$_POST['nama'];
-    $province = @$_POST['province'];
-    $result = mysqli_query($mysqli, "UPDATE district SET nama='$nama',province_id='$province' WHERE id=$id");
+    $title = @$_POST['title'];
+    $description = @$_POST['description'];
+    $image = @$_POST['image'];
+    if ($email) {
+        $result = mysqli_query($mysqli, "UPDATE gallery SET title='$title',description='$description',image='$image' WHERE id=$id");
+    }
     // update user data
 
     // Redirect to homepage to display updated user in list
-    header("Location:../dashboard.php?page=district");
+    header("Location:../dashboard.php?page=gallery");
 }
 ?>
 
 <!DOCTYPE html>
-<!--content-header.php
+<!--
 This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
 -->
@@ -68,50 +72,46 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                             <div class="card">
                                 <div class="card-header">
-                                    <h3 class="card-title">district</h3>
+                                    <h3 class="card-title">Data Gallery</h3>
 
                                     <div class="card-tools">
                                         <!-- This will cause the card to maximize when clicked -->
-                                        <a href="<?= $base_url_admin ?>/dashboard.php?page=district" class="btn btn-info">Kembali</a>
+                                        <a href="../../admin?page=gallery" class="btn btn-info">Kembali</a>
                                     </div>
                                     <!-- /.card-tools -->
                                 </div>
 
                                 <div class="card-body">
 
-                                    <form action="../../admin/district/edit.php" method="post">
+                                    <form action="../../admin/gallery/edit.php" method="post">
                                         <input type="hidden" name="id" value="<?= $id ?>">
                                         <div class="form-group">
-                                            <label for="nama">nama destinasi</label>
-                                            <input type="text" class="form-control" value="<?= $row_nama ?>" name="nama" required <?php if ($row_nama == 'admin') { ?> readonly <?php } ?>>
+                                            <label for="title">Title</label>
+                                            <input type="text" class="form-control" value="<?= $row_title ?>" name="title" required>
                                         </div>
-                                        <?php
-                                        $province = mysqli_query($mysqli, "SELECT * FROM province ORDER BY id DESC");
-                                        ?>
                                         <div class="form-group">
-                                            <label for="province">Provinsi</label>
-                                            <select class="form-control" name="province" required>
-                                                <option value="">Pilih Provinsi</option>
-                                                <?php while ($district = mysqli_fetch_array($province)) { ?>
-                                                    <option value="<?= $district['id'] ?>" <?php if ($district['id'] == $row_province) { ?> <?= 'selected' ?> <?php } ?>><?= $district['nama_province'] ?></option>
-                                                <?php } ?>
-                                                <select>
+                                            <label for="description">description</label>
+                                            <input type="text" class="form-control" value="<?= $row_description ?>" name="description" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="image">image</label>
+                                            <input type="file" class="form-control" value="<?= $row_url ?>" name="image" required>
                                         </div>
                                         <button class="btn btn-primary" type="submit" name="update">Simpan</button>
-
-                                    </form>
-
-
                                 </div>
-                                <!-- /.content-wrapper -->
+                                </form>
+
 
                             </div>
+                            <!-- /.content-wrapper -->
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <?php include_once('../template/footer.php'); ?>
+    </div>
+    <?php include_once('../template/footer.php'); ?>
 
     </div>
     <!-- ./wrapper -->

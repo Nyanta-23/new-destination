@@ -11,7 +11,6 @@
                     case 'artikel':
                         include "artikel/index.php";
                         break;
-
                     case 'kategori':
                         include "kategori/index.php";
                         break;
@@ -32,6 +31,15 @@
                         break;
                     case 'contact':
                         include "contact/index.php";
+                        break;
+                    case 'Social':
+                        include "Social/index.php";
+                        break;
+                    case 'attraction':
+                        include "attraction/index.php";
+                        break;
+                    case 'gallery':
+                        include "gallery/index.php";
                         break;
                     default:
                         echo "<center><h3>Maaf. Halaman tidak di temukan !</h3></center>";

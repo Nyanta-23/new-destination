@@ -6,7 +6,6 @@ error_reporting(E_ALL);
 include("config.php");
 
 ?>
-
 <!-- <a href="admin/login.php">Login</a> -->
 
 <!DOCTYPE html>
@@ -16,7 +15,9 @@ include("config.php");
 
 <body class="overflow-x-hidden">
 
+  <!-- Navbar -->
   <?php include_once("navbar.php") ?>
+  <!-- Navbar -->
 
   <!-- Header -->
   <section id="page-article" class="bg-article header-margin py-4">
@@ -35,9 +36,9 @@ include("config.php");
     <div class="container">
       <div class="row mt-5 mb-5 d-flex justify-content-center mx-xl-5 mx-lg-4">
 
+        <!-- 9 cards -->
         <div class="col-sm-10 col-md-5 col-lg-5 col-xl-3  d-inline-block d-flex justify-content-center">
           <div class="my-3">
-
             <a href="#" class="text-decoration-none">
               <div class=" my-3 text-center overflow-hidden card-article">
                 <img src="frontend-assets/images/article/article.png" class="card-img-top rounded-2" alt="...">
@@ -46,7 +47,6 @@ include("config.php");
                 </div>
               </div>
             </a>
-
             <div class="card-body">
               <p class=" ml-1 mt-2 fw-medium">
                 <span>Ilhan</span>
@@ -59,186 +59,9 @@ include("config.php");
             </div>
           </div>
         </div>
-
-        <div class="col-sm-10 col-md-5 col-lg-5 col-xl-3  d-inline-block d-flex justify-content-center">
-          <div class="my-3">
-
-            <a href="#" class="text-decoration-none">
-              <div class=" my-3 text-center overflow-hidden card-article">
-                <img src="frontend-assets/images/article/article.png" class="card-img-top rounded-2" alt="...">
-                <div class="text-see-hover pt-5 mt-4">
-                  <h5 class="fs-3 h-3">Lihat</h5>
-                </div>
-              </div>
-            </a>
-
-            <div class="card-body">
-              <p class=" ml-1 mt-2 fw-medium">
-                <span>Ilhan</span>
-                -
-                <span>Anime</span>
-              </p>
-              <a class="title-article" href="#">
-                <h5 class="article">Event anime, kok cosplay genshin? "Bukan Main"</h5>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-sm-10 col-md-5 col-lg-5 col-xl-3  d-inline-block d-flex justify-content-center">
-          <div class="my-3">
-
-            <a href="#" class="text-decoration-none">
-              <div class=" my-3 text-center overflow-hidden card-article">
-                <img src="frontend-assets/images/article/article.png" class="card-img-top rounded-2" alt="...">
-                <div class="text-see-hover pt-5 mt-4">
-                  <h5 class="fs-3 h-3">Lihat</h5>
-                </div>
-              </div>
-            </a>
-
-            <div class="card-body">
-              <p class=" ml-1 mt-2 fw-medium">
-                <span>Ilhan</span>
-                -
-                <span>Anime</span>
-              </p>
-              <a class="title-article" href="#">
-                <h5 class="article">Event anime, kok cosplay genshin? "Bukan Main"</h5>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-sm-10 col-md-5 col-lg-5 col-xl-3  d-inline-block d-flex justify-content-center">
-          <div class="my-3">
-
-            <a href="#" class="text-decoration-none">
-              <div class=" my-3 text-center overflow-hidden card-article">
-                <img src="frontend-assets/images/article/article.png" class="card-img-top rounded-2" alt="...">
-                <div class="text-see-hover pt-5 mt-4">
-                  <h5 class="fs-3 h-3">Lihat</h5>
-                </div>
-              </div>
-            </a>
-
-            <div class="card-body">
-              <p class=" ml-1 mt-2 fw-medium">
-                <span>Ilhan</span>
-                -
-                <span>Anime</span>
-              </p>
-              <a class="title-article" href="#">
-                <h5 class="article">Event anime, kok cosplay genshin? "Bukan Main"</h5>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-sm-10 col-md-5 col-lg-5 col-xl-3  d-inline-block d-flex justify-content-center">
-          <div class="my-3">
-
-            <a href="#" class="text-decoration-none">
-              <div class=" my-3 text-center overflow-hidden card-article">
-                <img src="frontend-assets/images/article/article.png" class="card-img-top rounded-2" alt="...">
-                <div class="text-see-hover pt-5 mt-4">
-                  <h5 class="fs-3 h-3">Lihat</h5>
-                </div>
-              </div>
-            </a>
-
-            <div class="card-body">
-              <p class=" ml-1 mt-2 fw-medium">
-                <span>Ilhan</span>
-                -
-                <span>Anime</span>
-              </p>
-              <a class="title-article" href="#">
-                <h5 class="article">Event anime, kok cosplay genshin? "Bukan Main"</h5>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-sm-10 col-md-5 col-lg-5 col-xl-3  d-inline-block d-flex justify-content-center">
-          <div class="my-3">
-
-            <a href="#" class="text-decoration-none">
-              <div class=" my-3 text-center overflow-hidden card-article">
-                <img src="frontend-assets/images/article/article.png" class="card-img-top rounded-2" alt="...">
-                <div class="text-see-hover pt-5 mt-4">
-                  <h5 class="fs-3 h-3">Lihat</h5>
-                </div>
-              </div>
-            </a>
-
-            <div class="card-body">
-              <p class=" ml-1 mt-2 fw-medium">
-                <span>Ilhan</span>
-                -
-                <span>Anime</span>
-              </p>
-              <a class="title-article" href="#">
-                <h5 class="article">Event anime, kok cosplay genshin? "Bukan Main"</h5>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-sm-10 col-md-5 col-lg-5 col-xl-3  d-inline-block d-flex justify-content-center">
-          <div class="my-3">
-
-            <a href="#" class="text-decoration-none">
-              <div class=" my-3 text-center overflow-hidden card-article">
-                <img src="frontend-assets/images/article/article.png" class="card-img-top rounded-2" alt="...">
-                <div class="text-see-hover pt-5 mt-4">
-                  <h5 class="fs-3 h-3">Lihat</h5>
-                </div>
-              </div>
-            </a>
-
-            <div class="card-body">
-              <p class=" ml-1 mt-2 fw-medium">
-                <span>Ilhan</span>
-                -
-                <span>Anime</span>
-              </p>
-              <a class="title-article" href="#">
-                <h5 class="article">Event anime, kok cosplay genshin? "Bukan Main"</h5>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-sm-10 col-md-5 col-lg-5 col-xl-3  d-inline-block d-flex justify-content-center">
-          <div class="my-3">
-
-            <a href="#" class="text-decoration-none">
-              <div class=" my-3 text-center overflow-hidden card-article">
-                <img src="frontend-assets/images/article/article.png" class="card-img-top rounded-2" alt="...">
-                <div class="text-see-hover pt-5 mt-4">
-                  <h5 class="fs-3 h-3">Lihat</h5>
-                </div>
-              </div>
-            </a>
-
-            <div class="card-body">
-              <p class=" ml-1 mt-2 fw-medium">
-                <span>Ilhan</span>
-                -
-                <span>Anime</span>
-              </p>
-              <a class="title-article" href="#">
-                <h5 class="article">Event anime, kok cosplay genshin? "Bukan Main"</h5>
-              </a>
-            </div>
-          </div>
-        </div>
-
 
       </div>
     </div>
-
   </section>
   <!-- List Content -->
 
@@ -269,7 +92,6 @@ include("config.php");
   <!-- Pagination -->
 
   <?php include_once("footer.php") ?>
-
 </body>
 
 </html>
