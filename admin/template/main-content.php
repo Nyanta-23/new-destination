@@ -11,7 +11,6 @@
                     case 'artikel':
                         include "artikel/index.php";
                         break;
-
                     case 'kategori':
                         include "kategori/index.php";
                         break;

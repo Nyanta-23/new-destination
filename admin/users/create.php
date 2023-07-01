@@ -15,6 +15,7 @@ if (isset($_POST['submit'])) {
         echo "<script>alert('Username sudah ada. Silahkan coba lagi!')</script>";
     } else {
         $result = mysqli_query($mysqli, "INSERT INTO users(username,nama,password) VALUES('$username','$nama','$password')");
+        header('Location: ../index.php?page=users');
     }
 }
 ?>
@@ -28,7 +29,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login Admin Panel</title>
+    <title>Admin Panel - Tambah User</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -39,7 +40,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Theme style -->
     <link rel="stylesheet" href="../../assets/admin/dist/css/adminlte.min.css">
 </head>
-
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
         <?php include('../template/navbar.php'); ?>
@@ -47,7 +47,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
-            <?php include('content-header.php'); ?>
+            <div class="content-header">
+                <div class="container-fluid">
+                        <?php include('content-header.php'); ?>
+                </div>
+            </div>
             <!-- /.content-header -->
             <!-- Main content -->
             <div class="content">
@@ -62,11 +66,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                                     <div class="card-tools">
                                         <!-- This will cause the card to maximize when clicked -->
-                                        <a href="../../admin?page=users" class="btn btn-info">Kembali</a>
+                                        <a href="../../admin/index.php?page=users" class="btn btn-info">Kembali</a>
                                     </div>
                                     <!-- /.card-tools -->
                                 </div>
-                                <form action="../users/create.php" method="post" name="form1">
+                                <form action="../users/create.php?page=users" method="post" name="form1">
 
                                     <div class="card-body">
 

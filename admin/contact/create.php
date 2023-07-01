@@ -66,7 +66,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     </div>
                                     <!-- /.card-tools -->
                                 </div>
-                                <form action="../contact/create.php" method="post" name="form1">
+                                <form action="../contact/create.php?page=contact" method="post" name="form1">
 
                                     <div class="card-body">
 
