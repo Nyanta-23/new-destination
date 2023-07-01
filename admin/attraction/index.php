@@ -14,7 +14,7 @@ include_once("../config.php");
 
                         <div class="card-tools">
                             <!-- This will cause the card to maximize when clicked -->
-                            <a href='article/create.php?page=article' class="btn btn-info"><i class="fas fa-plus"></i>Tambah artikel</a>
+                            <a href='attraction/create.php?page=attraction' class="btn btn-info"><i class="fas fa-plus"></i>Tambah artikel</a>
                         </div>
                         <!-- /.card-tools -->
                     </div>
@@ -26,17 +26,18 @@ include_once("../config.php");
                             <tr>
                                 <th>No</th>
                                 <th>kategori</th>
-                                <th>attraction</th>
-                                <th>author</th>
-                                <th>title</th>
+                                <th>district</th>
+                                <th>nama</th>
+                                <th>map</th>
                                 <th>description</th>
                                 <th>Image</th>
+                                <th>capacity</th>
                                 <th>Aksi</th>
                             </tr>
                             <?php
                             $no = 1;
                             $result = mysqli_query($mysqli, "SELECT *
-                            FROM article
+                            FROM attraction
                             ORDER BY id DESC");
 
                             while ($data = mysqli_fetch_array($result)) {
@@ -50,9 +51,10 @@ include_once("../config.php");
                                     <td><?= $data['title'] ?></td>
                                     <td><?= $data['description'] ?></td>
                                     <td><?= $data['image'] ?></td>
+                                    <td><?= $data['capacity'] ?></td>
                                     <td>
-                                        <a class="btn btn-success" href='article/edit.php?id=<?= $data['id'] ?>&page=article'>Edit</a>
-                                        <a class="btn btn-danger" onclick='return confirmDelete()' href='article/delete.php?id=<?= $data['id'] ?>&page=artikel'>Hapus</a>
+                                        <a class="btn btn-success" href='attraction/edit.php?id=<?= $data['id'] ?>&page=attraction'>Edit</a>
+                                        <a class="btn btn-danger" onclick='return confirmDelete()' href='attraction/delete.php?id=<?= $data['id'] ?>&page=attraction'>Hapus</a>
                                     </td>
                                 </tr><?php } ?>
                         </table>

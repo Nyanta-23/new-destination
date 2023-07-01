@@ -6,38 +6,17 @@ include("../../config.php");
 include('session.php');
 
 if (isset($_POST['submit'])) {
-    $category_id = @$_POST['category_id'];
-    $attraction_id = @$_POST['attraction_id'];
-    $author_id  = @$_POST['author_id'];
-    $title = @$_POST['title'];
-    $description = @$_POST['description'];
-    $sql = "SELECT * FROM article WHERE title='$title'";
-    $ekstensi_diperbolehkan    = array('png', 'jpg');
-    $nama = $_FILES['image']['name'];
-    $x = explode('.', $nama);
-    $ekstensi = strtolower(end($x));
-    $ukuran    = $_FILES['image']['size'];
-    $file_tmp = $_FILES['image']['tmp_name'];
-    if (in_array($ekstensi, $ekstensi_diperbolehkan) === true) {
-        if ($ukuran < 1044070) {
-            $query = move_uploaded_file($file_tmp, 'image/' . $nama);
-            $file_name = $nama;
-            if ($query) {
-                echo '<script> alert("FILE BERHASIL DI UPLOAD") </script>';
-            } else {
-                echo '<script> alert("GAGAL MENGUPLOAD GAMBAR") </script>';
-            }
-        } else {
-            echo '<script> alert("UKURAN FILE TERLALU BESAR") </script>';
-        }
+    $email = @$_POST['email'];
+    $phone_number = @$_POST['phone_number'];
+    $url = @$_POST['url'];
+    $sql = "SELECT * FROM contact WHERE email='$email'";
+    $result = mysqli_query($mysqli, $sql);
+    if ($result->num_rows > 0) {
+        echo "<script>alert('email sudah ada. Silahkan coba lagi!')</script>";
     } else {
-        echo '<script> alert("EKSTENSI FILE YANG DI UPLOAD TIDAK DI PERBOLEHKAN") </script>';
+        $result = mysqli_query($mysqli, "INSERT INTO contact (email,phone_number,url) VALUES('$email','$phone_number','$url')");
     }
-
-    $result = mysqli_query($mysqli, "INSERT INTO article(category_id,attraction_id,author_id,title,description,image)
-         VALUES('$category_id','$attraction_id','$author_id','$title','$description','$file_name')");
 }
-// 
 ?>
 <!DOCTYPE html>
 <!--
@@ -79,43 +58,32 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="card">
 
                                 <div class="card-header">
-                                    <h3 class="card-title">Data artikel
-                                    </h3>
+                                    <h3 class="card-title">Data Kontak</h3>
 
                                     <div class="card-tools">
                                         <!-- This will cause the card to maximize when clicked -->
-                                        <a href="<?= $base_url_admin ?>/dashboard.php?page=article" class="btn btn-info">Kembali</a>
+                                        <a href="../../admin?page=contact" class="btn btn-info">Kembali</a>
                                     </div>
                                     <!-- /.card-tools -->
                                 </div>
-                                <form action="../artikel/create.php?page=article" method="post" enctype="multipart/form-data">
+                                <form action="../contact/create.php" method="post" name="form1">
 
                                     <div class="card-body">
 
                                         <div class="form-group">
-                                            <label for="category_id">Category</label>
-                                            <input type="text" class="form-control" name="category_id" required>
+                                            <label for="email">email</label>
+                                            <input type="text" class="form-control" name="email" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="attraction_id">attraction</label>
-                                            <input type="text" class="form-control" name="attraction_id" required></textarea>
+                                            <label for="phone_number">phone_number</label>
+                                            <input type="text" class="form-control" name="phone_number" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="author_id">author</label>
-                                            <input type="text" class="form-control" name="author_id" required></textarea>
+                                            <label for="url">url</label>
+                                            <input type="url" class="form-control" name="url" required>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="title">title</label>
-                                            <input type="text" class="form-control" name="title" required></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="description">Description</label>
-                                            <textarea type="text" class="form-control" name="description" required></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="image">Image</label>
-                                            <input type="file" class="form-control" name="image" required></textarea>
-                                        </div>
+                                        <!-- /.content -->
+
                                     </div>
                                     <div class="card-footer">
                                         <button class="btn btn-primary" type="submit" name="submit">Simpan</button>
