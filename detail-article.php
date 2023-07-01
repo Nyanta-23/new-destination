@@ -5,6 +5,26 @@ error_reporting(E_ALL);
 
 include("config.php");
 
+$id = $_GET['id'];
+
+$detailArticle = mysqli_query($mysqli, "SELECT * FROM article WHERE id = '$id'");
+$getData = mysqli_fetch_array($detailArticle);
+
+$author = $getData['author_id'];
+$category = $getData['category_id'];
+$title = $getData['title'];
+$descript = $getData['description'];
+$image = $getData['image'];
+
+$anyArticle = mysqli_query(
+  $mysqli,
+  "SELECT * FROM article
+  ORDER BY id DESC
+  LIMIT 0,3
+  "
+);
+
+
 ?>
 
 <!-- <a href="admin/login.php">Login</a> -->
@@ -34,19 +54,17 @@ include("config.php");
   <div class="container">
     <div class="row my-5">
       <div class="col-12 col-lg-8">
-        <img src="frontend-assets/images/article/article.png" class="img-fluid rounded" alt="...">
+        <img src="admin/artikel/image/<?= $image; ?>" class="img-fluid rounded" alt="...">
 
         <p class="info fw-medium mt-2">
-          <span class="author">Ilhan</span>
+          <span class="author"><?= $author; ?></span>
           -
-          <span class="category">Anime</span>
+          <span class="category"><?= $category; ?></span>
         </p>
         <h2>
-          Event anime, kok cosplay genshin? "Bukan Main"
+          <?= $title; ?>
         </h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores rerum, optio odio, eum cum ex animi ullam cupiditate quam nulla dicta magni assumenda velit voluptas nam sunt libero quaerat iusto?
-          Quidem deleniti ut dolores! Nulla, quia inventore deserunt dolorum perspiciatis similique ea sapiente totam quibusdam velit consequuntur, ab dolor sint quidem quae dicta voluptatem dignissimos qui officia ipsam minus asperiores!
-          Quibusdam deserunt rerum animi nisi iusto voluptas vero. Voluptatum, fuga iure soluta magni praesentium qui sed, corporis voluptas, illo consequatur minima aut id quasi saepe modi unde beatae? Tempora, nam!</p>
+        <p><?= $descript; ?></p>
       </div>
 
       <!-- List any article -->
@@ -55,45 +73,20 @@ include("config.php");
           <h5 class="mt-3">Any Article</h5>
           <div class="mb-2">
 
-            <div class="row g-0 mt-3">
-              <div class=" col-4 col-md-3 col-lg-5">
-                <img src="frontend-assets/images/article/article.png" class="img-fluid rounded" alt="...">
-              </div>
-              <div class="col-8 col-md-9 col-lg-7 mt-2 mt-md-4 mt-lg-0 mt-text-lg-custom">
-                <div class="card-body">
-                  <a href="#" class="title-article fw-medium text-elipsis">
-                    Event anime, kok cosplay genshin? "Bukan Main"
-                  </a>
+            <?php while ($articles = mysqli_fetch_array($anyArticle)) { ?>
+              <div class="row g-0 mt-3">
+                <div class=" col-4 col-md-3 col-lg-5">
+                  <img src="admin/artikel/image/<?= $articles['image']; ?>" class="img-fluid rounded">
+                </div>
+                <div class="col-8 col-md-9 col-lg-7 mt-2 mt-md-4 mt-lg-0 mt-text-lg-custom">
+                  <div class="card-body">
+                    <a href="detail-article.php?id=<?= $articles['id'] ?>" class="title-article fw-medium text-elipsis">
+                      <?= $articles['title']; ?>
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
-
-            <div class="row g-0 mt-3">
-              <div class=" col-4 col-md-3 col-lg-5">
-                <img src="frontend-assets/images/article/article.png" class="img-fluid rounded" alt="...">
-              </div>
-              <div class="col-8 col-md-9 col-lg-7 mt-2 mt-md-4 mt-lg-0 mt-text-lg-custom">
-                <div class="card-body">
-                  <a href="#" class="title-article fw-medium text-elipsis">
-                    Event anime, kok cosplay genshin? "Bukan Main"
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div class="row g-0 mt-3">
-              <div class=" col-4 col-md-3 col-lg-5">
-                <img src="frontend-assets/images/article/article.png" class="img-fluid rounded" alt="...">
-              </div>
-              <div class="col-8 col-md-9 col-lg-7 mt-2 mt-md-4 mt-lg-0 mt-text-lg-custom">
-                <div class="card-body">
-                  <a href="#" class="title-article fw-medium text-elipsis">
-                    Event anime, kok cosplay genshin? "Bukan Main"
-                  </a>
-                </div>
-              </div>
-            </div>
-
+            <?php } ?>
 
           </div>
         </div>

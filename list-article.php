@@ -5,6 +5,16 @@ error_reporting(E_ALL);
 
 include("config.php");
 
+$article = mysqli_query(
+  $mysqli,
+  "SELECT article.*, users.nama, category.nama
+  FROM article
+  INNER JOIN users ON article.author_id = users.id
+  INNER JOIN category ON article.category_id = category.id
+  ORDER BY id DESC
+  "
+);
+
 ?>
 <!-- <a href="admin/login.php">Login</a> -->
 
@@ -37,28 +47,31 @@ include("config.php");
       <div class="row mt-5 mb-5 d-flex justify-content-center mx-xl-5 mx-lg-4">
 
         <!-- 9 cards -->
-        <div class="col-sm-10 col-md-5 col-lg-5 col-xl-3  d-inline-block d-flex justify-content-center">
-          <div class="my-3">
-            <a href="#" class="text-decoration-none">
-              <div class=" my-3 text-center overflow-hidden card-article">
-                <img src="frontend-assets/images/article/article.png" class="card-img-top rounded-2" alt="...">
-                <div class="text-see-hover pt-5 mt-4">
-                  <h5 class="fs-3 h-3">Lihat</h5>
+
+        <?php while ($listArticle = mysqli_fetch_array($article)) { ?>
+          <div class="col-sm-10 col-md-5 col-lg-5 col-xl-3  d-inline-block d-flex justify-content-center">
+            <div class="my-3">
+              <a href="detail-article.php?id=<?= $listArticle['id'] ?>" class="text-decoration-none">
+                <div class=" my-3 text-center overflow-hidden card-article">
+                  <img src="admin/artikel/image/<?= $listArticle['image'] ?>" class="card-img-top rounded-2" alt="...">
+                  <div class="text-see-hover pt-5 mt-4">
+                    <h5 class="fs-3 h-3">Lihat</h5>
+                  </div>
                 </div>
-              </div>
-            </a>
-            <div class="card-body">
-              <p class=" ml-1 mt-2 fw-medium">
-                <span>Ilhan</span>
-                -
-                <span>Anime</span>
-              </p>
-              <a class="title-article" href="#">
-                <h5 class="article">Event anime, kok cosplay genshin? "Bukan Main"</h5>
               </a>
+              <div class="card-body">
+                <p class=" ml-1 mt-2 fw-medium">
+                  <span><?= $listArticle['author_id']; ?></span>
+                  -
+                  <span><?= $listArticle['category_id']; ?></span>
+                </p>
+                <a class="title-article" href="detail-article.php?id=<?= $listArticle['id'] ?>">
+                  <h5 class="article"><?= $listArticle['title']; ?></h5>
+                </a>
+              </div>
             </div>
           </div>
-        </div>
+        <?php } ?>
 
       </div>
     </div>
