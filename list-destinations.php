@@ -5,6 +5,15 @@ error_reporting(E_ALL);
 
 include("config.php");
 
+$destinations = mysqli_query(
+  $mysqli,
+  "SELECT attractions.*, district.nama
+  FROM attractions
+  INNER JOIN district ON attractions.district_id = district.id
+  ORDER BY id DESC
+  "
+);
+
 ?>
 <!-- <a href="admin/login.php">Login</a> -->
 
@@ -34,20 +43,21 @@ include("config.php");
     <div class="container">
       <div class="row mt-5 mb-5 d-flex justify-content-center mx-sm-3 mx-xl-5 mx-lg-4">
 
-        <div class="col-sm-12 col-md-4 col-lg-4 d-inline-block d-flex justify-content-center">
+        <?php while ($listDestinations = mysqli_fetch_array($destinations)) { ?>
+          <div class="col-sm-12 col-md-4 col-lg-4 d-inline-block d-flex justify-content-center">
 
-          <div class="custom-cards-dest my-3 text-center overflow-hidden card-dest">
-            <img src="frontend-assets/images/destinations/destinationsImg.png" alt="">
-            <div class="info-dest text-center">
-              <h5 class="text-uppercase">bali</h5>
-              <h3 class="text-capitalize">pulu watu</h3>
-            </div>
-            <div class="btn-centering">
-              <button href="#" class="btn text-white btn-orange z-2">Lihat Detail</button>
+            <div class="custom-cards-dest my-3 text-center overflow-hidden card-dest">
+              <img src="admin/attraction/image/<?= $listDestinations['image'] ?>" alt="">
+              <div class="info-dest text-center">
+                <h5 class="text-uppercase"><?= $listDestinations['district_id']; ?></h5>
+                <h3 class="text-capitalize"><?php $listDestinations['name'] ?></h3>
+              </div>
+              <div class="btn-centering">
+                <a href="detail-destinations.php?id=<?= $listDestinations['id'] ?>" class="btn text-white btn-orange z-2">Lihat Detail</a>
+              </div>
             </div>
           </div>
-
-        </div>
+        <?php } ?>
 
       </div>
     </div>

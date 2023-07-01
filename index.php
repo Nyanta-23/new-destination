@@ -7,17 +7,26 @@ include("config.php");
 
 $destinations = mysqli_query(
   $mysqli,
-  "SELECT attractions.*, category.nama, district.nama
+  "SELECT attractions.*, district.nama
   FROM attractions
-  INNER JOIN category 
-    ON attractions.category_id = category.id
-  INNER JOIN district
-    ON attractions.district_id = district.id
+  INNER JOIN district ON attractions.district_id = district.id
   ORDER BY id DESC
+  LIMIT 0,4
   "
 );
 
-$article = mysqli_query($mysqli, "SELECT * FROM article");
+$article = mysqli_query(
+  $mysqli,
+  "SELECT article.*, users.nama, category.nama
+  FROM article
+  INNER JOIN users ON article.author_id = users.id
+  INNER JOIN category ON article.category_id = category.id
+  ORDER BY id DESC
+  LIMIT 0,3
+  "
+);
+
+
 
 ?>
 
@@ -44,7 +53,7 @@ $article = mysqli_query($mysqli, "SELECT * FROM article");
         sint mollitia magnam aspernatur labore reiciendis ex dolore, molestias, perspiciatis commodi quam distinctio
         impedit laboriosam corrupti ut ratione incidunt qui.
       </p>
-      <a class="btn btn-orange btn-custom-size text-white z-2 position-relative btn-custom-rounded w-100 " href="#destinations" role="button">Get Started</a>
+      <a class="btn btn-orange active-dark-orange btn-custom-size text-white z-2 position-relative btn-custom-rounded w-100 " href="#destinations" role="button">Get Started</a>
     </div>
   </section>
 
@@ -66,18 +75,17 @@ $article = mysqli_query($mysqli, "SELECT * FROM article");
         <div class="row">
 
           <?php
-          // $maxAttr = 4;
           while ($attr = mysqli_fetch_array($destinations)) {
           ?>
             <div class="col-sm-6 col-md-4 col-lg-3 d-inline-block d-flex justify-content-center">
               <div class="custom-cards-dest my-3 text-center overflow-hidden card-dest">
-                <img src="frontend-assets/images/destinations/destinationsImg.png" alt="">
+                <img src="admin/attraction/image/<?= $attr['image']; ?>">
                 <div class="info-dest text-center">
                   <h5 class="text-uppercase fs-6"><?= $attr['district_id']; ?></h5>
                   <h3 class="text-capitalize fs-5"><?= $attr['name']; ?></h3>
                 </div>
                 <div class="btn-centering">
-                  <button href="#" class="btn text-white btn-orange z-2">Lihat Detail</button>
+                  <a href="detail-destinations.php?id=<?= $attr['id'] ?>" class="btn text-white btn-orange z-2">Lihat Detail</a>
                 </div>
               </div>
             </div>
@@ -87,7 +95,7 @@ $article = mysqli_query($mysqli, "SELECT * FROM article");
 
         </div>
 
-        <div class="col text-center ">
+        <div class="col text-center">
           <a href="list-destinations.php" class="btn btn-show-more text-white my-3">Show More</a>
         </div>
       </div>
@@ -106,16 +114,13 @@ $article = mysqli_query($mysqli, "SELECT * FROM article");
         <div class="row d-flex justify-content-sm-center justify-content-md-between">
 
           <?php
-          $maxArticle = 3;
           while ($articles = mysqli_fetch_array($article)) {
           ?>
-            <div class="col-sm-10 col-md-4 col-lg-4 d-inline-block d-flex justify-content-center">
+            <div class="col-11 col-sm-10 col-md-4 col-lg-4 d-block ml-3 ml-sm-0">
               <div class="my-3">
-
-
-                <a href="#" class="text-decoration-none">
+                <a href="detail-article.php?id=<?= $articles['id'] ?>" class="text-decoration-none">
                   <div class=" my-3 text-center overflow-hidden landing-card-article">
-                    <img src="frontend-assets/images/article/article.png" class="card-img-top rounded-2" alt="...">
+                    <img src="admin/artikel/image/<?= $articles['image']; ?>" class="card-img-top rounded-2" alt="...">
                     <div class="text-see-hover-landing pt-5 mt-4">
                       <h5 class="fs-3 h-3">Lihat</h5>
                     </div>
@@ -128,7 +133,7 @@ $article = mysqli_query($mysqli, "SELECT * FROM article");
                     -
                     <span><?= $articles['category_id']; ?></span>
                   </p>
-                  <a class="title-article" href="#">
+                  <a class="title-article" href="detail-article.php?id=<?= $articles['id'] ?>">
                     <h5 class="article mx-1"><?= $articles['title']; ?></h5>
                   </a>
                 </div>
@@ -145,8 +150,8 @@ $article = mysqli_query($mysqli, "SELECT * FROM article");
         </div>
       </div>
 
-
     </section>
+
 
     <!-- Main Page -->
 
@@ -160,10 +165,7 @@ $article = mysqli_query($mysqli, "SELECT * FROM article");
         </div>
         <div class="row">
           <div class=" col-12 order-2 order-md-0 col-md-7 d-md-flex mt-4 mt-md-0">
-            <p class="text-start lh-base">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum aspernatur
-              debitis, recusandae molestiae quisquam, adipisci temporibus laboriosam odio, placeat maxime officia aut
-              perspiciatis voluptas architecto a dignissimos quidem eaque fugiat? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo laborum a vel laudantium similique veniam! Autem quae vel accusantium commodi voluptate odit dicta, praesentium numquam totam omnis cupiditate suscipit aperiam.
-              Praesentium ducimus mollitia alias a facilis nostrum dicta, dolore fugiat sapiente itaque, deleniti asperiores ipsum libero, voluptas quia aut soluta magni voluptatem harum quasi. Voluptas iure fuga aliquid quis voluptate!</p>
+            <p class="text-start lh-base">Kami adalah tim yang beranggotakan 4 orang dengan setiap orang memiliki rolenya masing masing. Dalam tim kami, kami memiliki 1 Orang UI/UX, 1 Orang Front-End Developer dan 2 Orang Back-End Developer. </p>
           </div>
 
           <div class="col order-1 order-md-0 col-md-5 d-flex justify-content-center align-content-start">

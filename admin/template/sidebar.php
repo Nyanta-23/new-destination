@@ -22,7 +22,7 @@ $page  = $_GET['page']; ?>
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
+              with font-awesome or any other icon font library -->
         <li class="nav-item">
           <a href="<?= $base_url ?>/dashboard.php?page=home" class="nav-link  <?php if ($page == 'home') { ?>active<?php } ?>">
             <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -89,8 +89,6 @@ $page  = $_GET['page']; ?>
           </a>
         </li>
         <li class="nav-item">
-<<<<<<< HEAD
-=======
           <a href="<?= $base_url ?>/dashboard.php?page=gallery" class="nav-link  <?php if ($page == 'gallery') { ?>active<?php } ?>">
             <i class="nav-icon fas fa-tags"></i>
             <p>
@@ -123,7 +121,6 @@ $page  = $_GET['page']; ?>
           </a>
         </li>
         <li class="nav-item">
->>>>>>> 59bccea06b0e2741b51aa8570b8307b5b54e7e75
           <a href="<?= $base_url ?>/logout.php" class="nav-link">
             <i class="nav-icon fas fa-power-off"></i>
             <p>

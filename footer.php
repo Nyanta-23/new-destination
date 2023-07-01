@@ -10,8 +10,7 @@
         </a>
       </div>
       <div class="col text-white">
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat totam earum perferendis, commodi corrupti
-          et eligendi cum expedita. Dolores cum quia iure cumque nulla voluptas deleniti tempore ad sit? Atque.</p>
+        <p>Web ini dibuat untuk memenuhi tugas PABW "Pemrograman Aplikasi Berbasis Web"</p>
       </div>
       <div class="col text-white pt-2 pb-1">
         <p class="text-center">© 2023 <a class="text-white footer-link" href="https://www.linkedin.com/in/ihaannn/" target="_blank">Nyanta</a>. All right reserved</p>
