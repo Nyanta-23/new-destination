@@ -178,7 +178,7 @@ $article = mysqli_query(
                     <i>Back-End Developer</i>
                     <h6>Agus Padilah</h6>
                     <p class="card-text">
-                      A2.2100002
+                      A2.2100010
                     </p>
                   </div>
                   <div class="card-link d-flex justify-content-center ">
@@ -228,7 +228,7 @@ $article = mysqli_query(
                     <i>Back-End Developer</i>
                     <h6>AA Rian Sophian</h6>
                     <p class="card-text">
-                      A2.2100010
+                      A2.2100002
                     </p>
                   </div>
                   <div class="card-link d-flex justify-content-center ">
