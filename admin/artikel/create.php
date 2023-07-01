@@ -11,7 +11,7 @@ if (isset($_POST['submit'])) {
     if($attraction_id == 'null') {
         $attraction_id = null;
     }
-    $author_id  = @$_POST['author_id'];
+    $author_id  = $login_session_id;
     $title = @$_POST['title'];
     $description = @$_POST['description'];
     $sql = "SELECT * FROM article WHERE title='$title'";
@@ -37,8 +37,23 @@ if (isset($_POST['submit'])) {
         echo '<script> alert("EKSTENSI FILE YANG DI UPLOAD TIDAK DI PERBOLEHKAN") </script>';
     }
 
-    $result = mysqli_query($mysqli, "INSERT INTO article(category_id,attraction_id,author_id,title,description,image)
-         VALUES('$category_id','$attraction_id','$author_id','$title','$description','$file_name')");
+    $result = mysqli_query($mysqli, "INSERT INTO article(
+        category_id,
+        attraction_id,
+        author_id,
+        title,
+        description,
+        image
+    ) VALUES (
+        '$category_id',
+        '$attraction_id',
+        '$author_id',
+        '$title',
+        '$description',
+        '$file_name'
+    )");
+
+    header("Location:../dashboard.php?page=artikel");
 }
 // 
 ?>
@@ -87,7 +102,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="card">
 
                                 <div class="card-header">
-                                    <h3 class="card-title">Data artikel
+                                    <h3 class="card-title">Tambah artikel
                                     </h3>
 
                                     <div class="card-tools">
@@ -122,7 +137,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                                                 while ($data = mysqli_fetch_array($result)) {
                                                 ?>
-                                                <option value="<?=$data['id']?>"><?=$data['nama']?></option>
+                                                <option value="<?=$data['id']?>"><?=$data['name']?></option>
                                                 <?php } ?>
                                             </select>
                                         </div>
@@ -136,15 +151,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         </div>
                                         <div class="form-group">
                                             <label for="image">Image</label>
-                                            <input type="file" class="form-control" name="image" required></textarea>
+                                            <input type="file" class="form-control" name="image" required>
                                         </div>
                                     </div>
                                     <div class="card-footer">
                                         <button class="btn btn-primary" type="submit" name="submit">Simpan</button>
                                     </div>
                                 </form>
-
-
                             </div>
                         </div>
                     </div>

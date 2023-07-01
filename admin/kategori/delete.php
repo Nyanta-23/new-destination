@@ -10,4 +10,4 @@ $id = @$_GET['id'];
 $result = mysqli_query($mysqli, "DELETE FROM category WHERE id=$id");
 
 // After delete redirect to Home, so that latest user list will be displayed.
-header("Location:../dashboard.php?page=users");
+header("Location:../dashboard.php?page=kategori");

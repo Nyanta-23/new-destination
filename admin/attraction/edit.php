@@ -41,15 +41,15 @@ if (isset($_POST['update'])) {
         } else {
             echo '<script> alert("EKSTENSI FILE YANG DI UPLOAD TIDAK DI PERBOLEHKAN") </script>';
         }
-        $sql = "SELECT cover FROM attractions WHERE id='$id'";
+        $sql = "SELECT image FROM attractions WHERE id='$id'";
         $result = mysqli_query($mysqli, $sql);
         if ($result->num_rows ==  0) {
             $row = mysqli_fetch_assoc($result);
             if (file_exists('image/' . $filename)) {
                 unlink('image/' . $filename);
-                echo 'File ' . $row['cover'] . ' has been deleted';
+                echo 'File ' . $row['image'] . ' has been deleted';
             } else {
-                echo 'Could not delete ' . $row['cover'] . ', file does not exist';
+                echo 'Could not delete ' . $row['image'] . ', file does not exist';
             }
         }
         $file_name = $nama;
@@ -63,7 +63,7 @@ if (isset($_POST['update'])) {
         available_toilet='$available_toilet',
         available_mosque='$available_mosque',
         available_restaurant='$available_restaurant',
-        file_name='$file_name'
+        image='$file_name'
         WHERE id=$id");
     } else {
         $result = mysqli_query($mysqli, "UPDATE attractions SET  
@@ -83,25 +83,24 @@ if (isset($_POST['update'])) {
 
     // Redirect to homepage to display updated user in list
     header("Location:../dashboard.php?page=attraction");
-} else {
-    // Display selected user data based on id
-    // Getting id from url
-    $id = @$_GET['id'];
-    
-    // Fetech user data based on id
-    $red_attraction = mysqli_query($mysqli, "SELECT * FROM attractions WHERE id=$id");
-    
-    while ($data = mysqli_fetch_array($red_attraction)) {
-        $row_category_id = $data['category_id'];
-        $row_district_id = $data['district_id'];
-        $row_name = $data['name'];
-        $row_description = $data['description'];
-        $row_map_url = $data['map_url'];
-        $row_capacity = $data['capacity'];
-        $row_available_toilet = $data['available_toilet'];
-        $row_available_mosque = $data['available_mosque'];
-        $row_available_restaurant = $data['available_restaurant'];
-    }
+}
+// Display selected user data based on id
+// Getting id from url
+$id = @$_GET['id'];
+
+// Fetech user data based on id
+$red_attraction = mysqli_query($mysqli, "SELECT * FROM attractions WHERE id=$id");
+
+while ($data = mysqli_fetch_array($red_attraction)) {
+    $row_category_id = $data['category_id'];
+    $row_district_id = $data['district_id'];
+    $row_name = $data['name'];
+    $row_description = $data['description'];
+    $row_map_url = $data['map_url'];
+    $row_capacity = $data['capacity'];
+    $row_available_toilet = $data['available_toilet'];
+    $row_available_mosque = $data['available_mosque'];
+    $row_available_restaurant = $data['available_restaurant'];
 }
 // 
 ?>
@@ -149,7 +148,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="card">
 
                                 <div class="card-header">
-                                    <h3 class="card-title">Tambah Destinasi Wisata
+                                    <h3 class="card-title">Edit Destinasi Wisata
                                     </h3>
 
                                     <div class="card-tools">

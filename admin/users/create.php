@@ -49,7 +49,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- Content Header (Page header) -->
             <div class="content-header">
                 <div class="container-fluid">
-                        <?php include('content-header.php'); ?>
+                    <?php include('content-header.php'); ?>
                 </div>
             </div>
             <!-- /.content-header -->

@@ -25,18 +25,20 @@ include_once("../config.php");
 
                             <tr>
                                 <th>No</th>
-                                <th>kategori</th>
-                                <th>attraction</th>
-                                <th>author</th>
-                                <th>title</th>
-                                <th>description</th>
+                                <th>Kategori</th>
+                                <th>Destinasi Wisata</th>
+                                <th>Penulis</th>
+                                <th>Judul</th>
                                 <th>Image</th>
                                 <th>Aksi</th>
                             </tr>
                             <?php
                             $no = 1;
-                            $result = mysqli_query($mysqli, "SELECT *
+                            $result = mysqli_query($mysqli, "SELECT article.*, category.nama category, users.nama author, attractions.name attraction
                             FROM article
+                            INNER JOIN attractions ON attractions.id = article.attraction_id
+                            INNER JOIN category ON category.id = article.category_id
+                            INNER JOIN users ON users.id = article.author_id
                             ORDER BY id DESC");
 
                             while ($data = mysqli_fetch_array($result)) {
@@ -44,12 +46,11 @@ include_once("../config.php");
 
                                 <tr>
                                     <td><?= $no++ ?></td>
-                                    <td><?= $data['id'] ?></td>
+                                    <td><?= $data['category'] ?></td>
                                     <td><?= $data['attraction'] ?></td>
                                     <td><?= $data['author'] ?></td>
                                     <td><?= $data['title'] ?></td>
-                                    <td><?= $data['description'] ?></td>
-                                    <td><?= $data['image'] ?></td>
+                                    <td><img src="../admin/artikel/image/<?= $data['image']?>" alt="" width="100" height="50" style="object-fit: cover;"></td>
                                     <td>
                                         <a class="btn btn-success" href='artikel/edit.php?id=<?= $data['id'] ?>&page=artikel'>Edit</a>
                                         <a class="btn btn-danger" onclick='return confirmDelete()' href='artikel/delete.php?id=<?= $data['id'] ?>&page=artikel'>Hapus</a>

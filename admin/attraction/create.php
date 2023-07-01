@@ -61,6 +61,7 @@ if (isset($_POST['submit'])) {
         '$available_restaurant',
         '$file_name'
     )");
+    header("Location:../dashboard.php?page=attraction");
 }
 // 
 ?>

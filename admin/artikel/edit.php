@@ -5,79 +5,87 @@ error_reporting(E_ALL);
 include_once("../../config.php");
 include('session.php');
 define('SITE_ROOT', realpath(dirname(__FILE__)));
+
+if (isset($_POST['update'])) {
+    $id = @$_POST['id'];
+    $category_id = @$_POST['category_id'];
+    $attraction_id = @$_POST['attraction_id'];
+    $author_id = $login_session_id;
+    $title = @$_POST['title'];
+    $description = @$_POST['description'];
+    
+    $ekstensi_diperbolehkan    = array('png', 'jpg', 'jpeg');
+    $nama = $_FILES['image']['name'];
+    
+    if (!empty($nama)) {
+        $x = explode('.', $nama);
+        $ekstensi = strtolower(end($x));
+        $ukuran    = $_FILES['image']['size'];
+        $file_tmp = $_FILES['image']['tmp_name'];
+        if (in_array($ekstensi, $ekstensi_diperbolehkan) === true) {
+            if ($ukuran < 1044070) {
+                $query = move_uploaded_file($file_tmp, 'image/' . $nama);
+                $file_name = $nama;
+                if ($query) {
+                    echo '<script> alert("FILE BERHASIL DI UPLOAD") </script>';
+                } else {
+                    echo '<script> alert("GAGAL MENGUPLOAD GAMBAR") </script>';
+                }
+            } else {
+                echo '<script> alert("UKURAN FILE TERLALU BESAR") </script>';
+            }
+        } else {
+            echo '<script> alert("EKSTENSI FILE YANG DI UPLOAD TIDAK DI PERBOLEHKAN") </script>';
+        }
+        $sql = "SELECT image FROM article WHERE id='$id'";
+        $result = mysqli_query($mysqli, $sql);
+        if ($result->num_rows ==  0) {
+            $row = mysqli_fetch_assoc($result);
+            if (file_exists('image/' . $filename)) {
+                unlink('image/' . $filename);
+                echo 'File ' . $row['image'] . ' has been deleted';
+            } else {
+                echo 'Could not delete ' . $row['image'] . ', file does not exist';
+            }
+        }
+        $file_name = $nama;
+        $result = mysqli_query($mysqli, "UPDATE article SET 
+        category_id='$category_id',
+        attraction_id='$attraction_id',
+        author_id='$author_id',
+        title='$title',
+        description='$description',
+        image='$file_name'
+        WHERE id=$id");
+    } else {
+        $result = mysqli_query($mysqli, "UPDATE article SET  
+        category_id='$category_id',
+        attraction_id='$attraction_id',
+        author_id='$author_id',
+        title='$title',
+        description='$description'
+        WHERE id=$id");
+    }
+
+    // Redirect to homepage to display updated user in list
+    header("Location:../dashboard.php?page=artikel");
+} 
 // Display selected user data based on id
 // Getting id from url
 $id = @$_GET['id'];
 
 // Fetech user data based on id
-$res_artikel = mysqli_query($mysqli, "SELECT * FROM article WHERE id=$id");
+$red_artikel = mysqli_query($mysqli, "SELECT * FROM article WHERE id=$id");
 
-while ($artikel = mysqli_fetch_array($res_artikel)) {
-    $row_category_id = $artikel['category_id'];
-    $row_attraction_id = $artikel['attraction_id'];
-    $row_author_id = $artikel['author_id'];
-    $row_title = $artikel['title'];
-    $row_description = $artikel['description'];
+while ($data = mysqli_fetch_array($red_artikel)) {
+    $row_category_id = $data['category_id'];
+    $row_attraction_id = $data['attraction_id'];
+    $row_author_id = $data['author_id'];
+    $row_title = $data['title'];
+    $row_description = $data['description'];
 }
+// 
 ?>
-<?php
-// include config connection file
-// Check if form is submitted for user update, then redirect to homepage after update
-if (isset($_POST['update'])) {
-    $id = $_POST['id'];
-    $created_time = date("Y-m-d H:i:s");
-    $user_id = $_SESSION['id'];
-    $kategori = @$_POST['kategori'];
-    $slug = preg_replace('/[^a-z0-9]+/i', '-', trim(strtolower($_POST["judul_artikel"])));
-
-    $judul_artikel = @$_POST['judul_artikel'];
-    $content_artikel  = @$_POST['content_artikel'];
-    $ekstensi_diperbolehkan    = array('png', 'jpg', 'jpeg');
-    $nama = $_FILES['file']['name'];
-    $x = explode('.', $nama);
-    $ekstensi = strtolower(end($x));
-    $ukuran    = $_FILES['file']['size'];
-    $file_tmp = $_FILES['file']['tmp_name'];
-    if (in_array($ekstensi, $ekstensi_diperbolehkan) === true) {
-        if ($ukuran < 1044070) {
-            move_uploaded_file($file_tmp, SITE_ROOT . '/image/' . $nama);
-            $file_name = $nama;
-        } else {
-            echo 'UKURAN FILE TERLALU BESAR';
-        }
-    } else {
-        echo 'EKSTENSI FILE YANG DI UPLOAD TIDAK DI PERBOLEHKAN';
-        $file_name = '';
-    }
-    if (!empty($file_name)) {
-        $sql = "SELECT cover FROM article WHERE id='$id'";
-        $result = mysqli_query($mysqli, $sql);
-        if ($result->num_rows ==  0) {
-            $row = mysqli_fetch_assoc($result);
-            if (file_exists('uploads/' . $filename)) {
-                unlink('uploads/' . $filename);
-                echo 'File ' . $row['cover'] . ' has been deleted';
-            } else {
-                echo 'Could not delete ' . $row['cover'] . ', file does not exist';
-            }
-        }
-        $file_name = $nama;
-        $result = mysqli_query($mysqli, "UPDATE article SET cover='$file_name',judul_artikel='$judul_artikel',
-    content_artikel='$content_artikel',id_kategori='$kategori',user_id='$user_id',created_time='$created_time'
-    WHERE id=$id");
-    } else {
-        $result = mysqli_query($mysqli, "UPDATE article SET judul_artikel='$judul_artikel',
-    content_artikel='$content_artikel',id_kategori='$kategori',user_id='$user_id',created_time='$created_time'
-    WHERE id=$id");
-    }
-
-    // update user data
-
-    // Redirect to homepage to display updated user in list
-    header("Location:../dashboard.php?page=artikel");
-}
-?>
-
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -92,20 +100,26 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../../assets/admin/plugins/fontawesome-free/css/all.min.css">
+    <!-- icheck bootstrap -->
+    <link rel="stylesheet" href="../../assets/admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="../../assets/admin/dist/css/adminlte.min.css">
 </head>
 
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
-        <?php include_once('../template/navbar.php'); ?>
-        <?php include_once('../template/sidebar.php'); ?>
+        <?php include('../template/navbar.php'); ?>
+        <?php include('../template/sidebar.php'); ?>
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
-            <?php include_once('content-header.php'); ?>
+            <div class="content-header">
+                <div class="container-fluid">
+                        <?php include('content-header.php'); ?>
+                </div>
+            </div>
             <!-- /.content-header -->
             <!-- Main content -->
             <div class="content">
@@ -114,8 +128,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="col-lg-12">
 
                             <div class="card">
+
                                 <div class="card-header">
-                                    <h3 class="card-title">Data Users</h3>
+                                    <h3 class="card-title">Tambah Artikel
+                                    </h3>
 
                                     <div class="card-tools">
                                         <!-- This will cause the card to maximize when clicked -->
@@ -123,73 +139,88 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     </div>
                                     <!-- /.card-tools -->
                                 </div>
-
-                                <div class="card-body">
-
-                                    <form action="../../admin/artikel/edit.php?page=artikel" method="post" enctype="multipart/form-data">
-                                        <input type="hidden" name="id" value="<?= $id ?>">
+                                <form action="../artikel/edit.php?page=article" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" name="id" value="<?=$id?>">
+                                    <div class="card-body">
                                         <div class="form-group">
-                                            <label for="judul_artikel">Judul Artikel</label>
-                                            <input type="text" class="form-control" value="<?= $row_judul_artikel ?>" name="judul_artikel" required>
-                                        </div>
+                                            <label for="category_id">Kategori Artikel</label>
+                                            <select class="form-control" name="category_id">
+                                                <?php                
+                                                $no = 1;
+                                                $result = mysqli_query($mysqli, "SELECT * FROM category ORDER BY id DESC");
 
-                                        <div class="form-group">
-                                            <label for="content_artikel">Content</label>
-                                            <textarea type="text" class="form-control" name="content_artikel" required><?= $row_content_artikel ?></textarea>
-                                        </div>
-                                        <?php
-                                        $data_kategori = mysqli_query($mysqli, "SELECT * FROM tb_kategori ORDER BY id DESC");
-                                        ?>
-                                        <div class="form-group">
-                                            <label for="kategori">Kategori</label>
-                                            <select class="form-control" name="kategori" required>
-                                                <option value="">Pilih Kategori</option>
-                                                <?php while ($d_kategori = mysqli_fetch_array($data_kategori)) { ?>
-                                                    <option value="<?= $d_kategori['id'] ?>" <?php if ($d_kategori['id'] == $row_kategori) { ?> <?= 'selected' ?> <?php } ?>><?= $d_kategori['nama_kategori'] ?></option>
+                                                while ($data = mysqli_fetch_array($result)) {
+                                                ?>
+                                                <option value="<?=$data['id']?>" <?=($row_category_id == $data['id']) ? 'selected':false?>><?=$data['nama']?></option>
                                                 <?php } ?>
-                                                <select>
+                                            </select>
                                         </div>
-                                        <input type="file" name="file">
+                                        <div class="form-group">
+                                            <label for="attraction_id">Destinasi wisata</label>
+                                            <select class="form-control" name="attraction_id">
+                                                <option value="null">Tidak ada</option>
+                                                <?php                
+                                                $no = 1;
+                                                $result = mysqli_query($mysqli, "SELECT * FROM attractions ORDER BY id DESC");
+
+                                                while ($data = mysqli_fetch_array($result)) {
+                                                ?>
+                                                <option value="<?=$data['id']?>" <?=($row_attraction_id == $data['id']) ? 'selected':false?>><?=$data['name']?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="title">Judul Artikel</label>
+                                            <input type="text" class="form-control" name="title" value="<?=$row_title?>" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="description">Description</label>
+                                            <textarea type="text" class="form-control" name="description" required><?=$row_description?></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="image">Image</label>
+                                            <input type="file" class="form-control" name="image">
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
                                         <button class="btn btn-primary" type="submit" name="update">Simpan</button>
-
-                                    </form>
-
-
-                                </div>
-                                <!-- /.content-wrapper -->
-
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <?php include_once('../template/footer.php'); ?>
+        <!-- /.content-wrapper -->
+
+
+        <?php include('../template/footer.php'); ?>
 
     </div>
-    <!-- ./wrapper -->
+</body>
+<!-- ./wrapper -->
 
-    <!-- REQUIRED SCRIPTS -->
+<!-- REQUIRED SCRIPTS -->
 
-    <!-- jQuery -->
-    <script src="../plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="../dist/js/adminlte.min.js"></script>
-    <script>
-        function confirmDelete() {
-            if (confirm('Anda yakin menghapus data?')) {
-                //action confirmed
-                alert('Data berhasil dihapus');
-            } else {
-                //action cancelled
-                alert('Data batal di hapus');
-                return false;
+<!-- jQuery -->
+<script src="../plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../dist/js/adminlte.min.js"></script>
+<script>
+    function confirmDelete() {
+        if (confirm('Anda yakin menghapus data?')) {
+            //action confirmed
+        } else {
+            //action cancelled
+            alert('Data batal di hapus');
+            return false;
 
-            }
         }
-    </script>
+    }
+</script>
 </body>
 
 </html>
