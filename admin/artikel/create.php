@@ -8,11 +8,14 @@ include('session.php');
 if (isset($_POST['submit'])) {
     $category_id = @$_POST['category_id'];
     $attraction_id = @$_POST['attraction_id'];
+    if($attraction_id == 'null') {
+        $attraction_id = null;
+    }
     $author_id  = @$_POST['author_id'];
     $title = @$_POST['title'];
     $description = @$_POST['description'];
     $sql = "SELECT * FROM article WHERE title='$title'";
-    $ekstensi_diperbolehkan    = array('png', 'jpg');
+    $ekstensi_diperbolehkan    = array('png', 'jpg', 'jpeg');
     $nama = $_FILES['image']['name'];
     $x = explode('.', $nama);
     $ekstensi = strtolower(end($x));
@@ -67,8 +70,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <?php include('../template/sidebar.php'); ?>
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
+            
             <!-- Content Header (Page header) -->
-            <?php include('content-header.php'); ?>
+            <div class="content-header">
+                <div class="container-fluid">
+                        <?php include('content-header.php'); ?>
+                </div>
+            </div>
             <!-- /.content-header -->
             <!-- Main content -->
             <div class="content">
@@ -88,29 +96,39 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     </div>
                                     <!-- /.card-tools -->
                                 </div>
-<<<<<<< HEAD
-                                <form action="../../assets/admin/artikel/create.php?page=artikel" method="post" enctype="multipart/form-data">
-=======
                                 <form action="../artikel/create.php?page=article" method="post" enctype="multipart/form-data">
->>>>>>> 59bccea06b0e2741b51aa8570b8307b5b54e7e75
 
                                     <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="category_id">Kategori Artikel</label>
+                                            <select class="form-control" name="category_id">
+                                                <?php                
+                                                $no = 1;
+                                                $result = mysqli_query($mysqli, "SELECT * FROM category ORDER BY id DESC");
 
-                                        <div class="form-group">
-                                            <label for="category_id">Category</label>
-                                            <input type="text" class="form-control" name="category_id" required>
+                                                while ($data = mysqli_fetch_array($result)) {
+                                                ?>
+                                                <option value="<?=$data['id']?>"><?=$data['nama']?></option>
+                                                <?php } ?>
+                                            </select>
                                         </div>
                                         <div class="form-group">
-                                            <label for="attraction_id">attraction</label>
-                                            <input type="text" class="form-control" name="attraction_id" required></textarea>
+                                            <label for="attraction_id">Destinasi wisata</label>
+                                            <select class="form-control" name="attraction_id">
+                                                <option value="null">Tidak ada</option>
+                                                <?php                
+                                                $no = 1;
+                                                $result = mysqli_query($mysqli, "SELECT * FROM attractions ORDER BY id DESC");
+
+                                                while ($data = mysqli_fetch_array($result)) {
+                                                ?>
+                                                <option value="<?=$data['id']?>"><?=$data['nama']?></option>
+                                                <?php } ?>
+                                            </select>
                                         </div>
                                         <div class="form-group">
-                                            <label for="author_id">author</label>
-                                            <input type="text" class="form-control" name="author_id" required></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="title">title</label>
-                                            <input type="text" class="form-control" name="title" required></textarea>
+                                            <label for="title">Judul Artikel</label>
+                                            <input type="text" class="form-control" name="title" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="description">Description</label>

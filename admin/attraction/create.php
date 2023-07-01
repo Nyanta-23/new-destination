@@ -7,12 +7,16 @@ include('session.php');
 
 if (isset($_POST['submit'])) {
     $category_id = @$_POST['category_id'];
-    $attraction_id = @$_POST['attraction_id'];
-    $author_id  = @$_POST['author_id'];
-    $title = @$_POST['title'];
+    $district_id = @$_POST['district_id'];
+    $name = @$_POST['name'];
     $description = @$_POST['description'];
-    $sql = "SELECT * FROM article WHERE title='$title'";
-    $ekstensi_diperbolehkan    = array('png', 'jpg');
+    $map_url = @$_POST['map_url'];
+    $capacity = @$_POST['capacity'];
+    $available_toilet = (@$_POST['available_toilet'] == 'true') ? 1:0;
+    $available_mosque = (@$_POST['available_mosque'] == 'true') ? 1:0;
+    $available_restaurant = (@$_POST['available_restaurant'] == 'true') ? 1:0;
+    
+    $ekstensi_diperbolehkan    = array('png', 'jpg', 'jpeg');
     $nama = $_FILES['image']['name'];
     $x = explode('.', $nama);
     $ekstensi = strtolower(end($x));
@@ -34,8 +38,29 @@ if (isset($_POST['submit'])) {
         echo '<script> alert("EKSTENSI FILE YANG DI UPLOAD TIDAK DI PERBOLEHKAN") </script>';
     }
 
-    $result = mysqli_query($mysqli, "INSERT INTO article(category_id,attraction_id,author_id,title,description,image)
-         VALUES('$category_id','$attraction_id','$author_id','$title','$description','$file_name')");
+    $result = mysqli_query($mysqli, "INSERT INTO attractions(
+        category_id,
+        district_id,
+        name,
+        description,
+        map_url,
+        capacity,
+        available_toilet,
+        available_mosque,
+        available_restaurant,
+        image
+    ) VALUES (
+        '$category_id',
+        '$district_id',
+        '$name',
+        '$description',
+        '$map_url',
+        '$capacity',
+        '$available_toilet',
+        '$available_mosque',
+        '$available_restaurant',
+        '$file_name'
+    )");
 }
 // 
 ?>
@@ -49,7 +74,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login Admin Panel</title>
+    <title>Admin Panel</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -68,7 +93,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
-            <?php include('content-header.php'); ?>
+            <div class="content-header">
+                <div class="container-fluid">
+                        <?php include('content-header.php'); ?>
+                </div>
+            </div>
             <!-- /.content-header -->
             <!-- Main content -->
             <div class="content">
@@ -79,42 +108,79 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="card">
 
                                 <div class="card-header">
-                                    <h3 class="card-title">Data artikel
+                                    <h3 class="card-title">Tambah Destinasi Wisata
                                     </h3>
 
                                     <div class="card-tools">
                                         <!-- This will cause the card to maximize when clicked -->
-                                        <a href="<?= $base_url_admin ?>/dashboard.php?page=article" class="btn btn-info">Kembali</a>
+                                        <a href="<?= $base_url_admin ?>/dashboard.php?page=attraction" class="btn btn-info">Kembali</a>
                                     </div>
                                     <!-- /.card-tools -->
                                 </div>
-                                <form action="../artikel/create.php?page=article" method="post" enctype="multipart/form-data">
+                                <form action="../attraction/create.php?page=attraction" method="post" enctype="multipart/form-data">
 
                                     <div class="card-body">
 
                                         <div class="form-group">
-                                            <label for="category_id">Category</label>
-                                            <input type="text" class="form-control" name="category_id" required>
+                                            <label for="category_id">Kategori Artikel</label>
+                                            <select class="form-control" name="category_id">
+                                                <?php                
+                                                $no = 1;
+                                                $result = mysqli_query($mysqli, "SELECT * FROM category ORDER BY id DESC");
+
+                                                while ($data = mysqli_fetch_array($result)) {
+                                                ?>
+                                                <option value="<?=$data['id']?>"><?=$data['nama']?></option>
+                                                <?php } ?>
+                                            </select>
                                         </div>
                                         <div class="form-group">
-                                            <label for="attraction_id">attraction</label>
-                                            <input type="text" class="form-control" name="attraction_id" required></textarea>
+                                            <label for="district_id">Kabupaten</label>
+                                            <select class="form-control" name="district_id">
+                                                <?php                
+                                                $no = 1;
+                                                $result = mysqli_query($mysqli, "SELECT * FROM district ORDER BY id DESC");
+
+                                                while ($data = mysqli_fetch_array($result)) {
+                                                ?>
+                                                <option value="<?=$data['id']?>"><?=$data['nama']?></option>
+                                                <?php } ?>
+                                            </select>
                                         </div>
                                         <div class="form-group">
-                                            <label for="author_id">author</label>
-                                            <input type="text" class="form-control" name="author_id" required></textarea>
+                                            <label for="name">Nama Wisata</label>
+                                            <input type="text" class="form-control" name="name" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="title">title</label>
-                                            <input type="text" class="form-control" name="title" required></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="description">Description</label>
+                                            <label for="description">Deskripsi</label>
                                             <textarea type="text" class="form-control" name="description" required></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label for="image">Image</label>
-                                            <input type="file" class="form-control" name="image" required></textarea>
+                                            <input type="file" class="form-control" name="image" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="map_url">Url Map</label>
+                                            <input type="text" class="form-control" name="map_url" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="capacity">Kapasitas</label>
+                                            <input type="number" class="form-control" name="capacity" required>
+                                        </div>
+                                        <label for="">Ketersediaan</label>
+                                        <div class="form-group">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="checkAvailableToilet" name="available_toilet" value="true">
+                                                <label class="form-check-label" for="checkAvailableToilet">Toilet</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="checkAvailableMosque" name="available_mosque" value="true">
+                                                <label class="form-check-label" for="checkAvailableMosque">Event</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="checkAvailableRestaurant" name="available_restaurant" value="true">
+                                                <label class="form-check-label" for="checkAvailableRestaurant">Restoran</label>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="card-footer">
