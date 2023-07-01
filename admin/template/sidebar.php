@@ -89,14 +89,6 @@ $page  = $_GET['page']; ?>
           </a>
         </li>
         <li class="nav-item">
-          <a href="<?= $base_url ?>/dashboard.php?page=menu" class="nav-link  <?php if ($page == 'menu') { ?>active<?php } ?>">
-            <i class="nav-icon fas fa-th"></i>
-            <p>
-              Menu
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
           <a href="<?= $base_url ?>/logout.php" class="nav-link">
             <i class="nav-icon fas fa-power-off"></i>
             <p>

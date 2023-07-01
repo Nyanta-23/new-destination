@@ -5,6 +5,20 @@ error_reporting(E_ALL);
 
 include("config.php");
 
+$destinations = mysqli_query(
+  $mysqli,
+  "SELECT attractions.*, category.nama, district.nama
+  FROM attractions
+  INNER JOIN category 
+    ON attractions.category_id = category.id
+  INNER JOIN district
+    ON attractions.district_id = district.id
+  ORDER BY id DESC
+  "
+);
+
+$article = mysqli_query($mysqli, "SELECT * FROM article");
+
 ?>
 
 <!-- <a href="admin/login.php">Login</a> -->
@@ -12,100 +26,11 @@ include("config.php");
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<?php include_once("head.php") ?>
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+<body id="home" class="overflow-x-hidden" data-bs-spy="scroll" data-bs-target="navbar" tabindex="0">
 
-  <link rel="stylesheet" href="frontend-assets/styles/styles.css">
-  <link rel="stylesheet" href="frontend-assets/styles/responsiveStyle.css">
-  <title>Web Pariwisata</title>
-</head>
-
-<body id="home" class="overflow-x-hidden" data-bs-spy="scroll" data-bs-target="navbar" data-bs-root-margin="0px 0px -40%" tabindex="0">
-
-  <!-- Navbar -->
-
-  <nav class="navbar navbar-expand-lg bg-body-tertiary z-3 p-3 mr-2 position-fixed top-0 start-0 end-0 w-100 shadow-sm">
-
-    <div class="container d-flex">
-
-      <!-- For large size -->
-      <div class="row ml-lg-2">
-
-        <div class="col-3">
-          <a class="navbar-brand fs-3" href="#"><span class="text-orange">Ambatu</span>trip</a>
-        </div>
-
-        <div class="col-5 mt-2 col-xl-6 d-none d-lg-block ms-xl-5 ms-lg-0">
-          <form class="d-flex ms-lg-3 input-group" role="search">
-            <input class="form-control custom-border" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn search pr-3 d-flex border-search-button">
-              <i class="bi bi-search"></i>
-            </button>
-          </form>
-        </div>
-
-        <div class="col-1 mt-1 d-none d-lg-block ms-xl-5 ms-lg-4">
-          <ul class="navbar-nav mb-2 mb-lg-0 ms-lg-4 d-flex ">
-            <li class="nav-item">
-              <!-- <a class="nav-link active" aria-current="page" href="#home">Home</a> -->
-              <a class="nav-link active" aria-current="page" href="#home">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Destinations</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Article</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#about">About</a>
-            </li>
-          </ul>
-        </div>
-
-        <div class="collapse navbar-collapse"></div>
-      </div>
-      <!-- For large size -->
-
-      <!-- For small size -->
-      <button class="navbar-toggler d-block d-sm-block d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse mt-3 mx-2" id="navbarSupportedContent">
-
-        <form class="d-flex d-lg-none" role="search">
-          <input class="form-control custom-border search-radius" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn search pr-3 d-flex border-search-button">
-            <i class="bi bi-search"></i>
-          </button>
-        </form>
-
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0 mt-2 text-center d-lg-none d-xl-none d-xxl-none">
-          <li class="nav-item mt-1">
-            <!-- <a class="nav-link custom-active" aria-current="page" href="#">Home</a> -->
-            <a class="nav-link custom-active" aria-current="page" href="#home">Home</a>
-          </li>
-          <li class="nav-item mt-1">
-            <a class="nav-link custom-link" href="#">Destinations</a>
-          </li>
-          <li class="nav-item mt-1">
-            <a class="nav-link custom-link" href="#">Article</a>
-          </li>
-          <li class="nav-item mt-1">
-            <a class="nav-link custom-link" href="#about">About</a>
-          </li>
-        </ul>
-      </div>
-      <!-- For small size -->
-    </div>
-  </nav>
-
-  <!-- Navbar -->
+  <?php include_once("navbar.php") ?>
 
   <!-- Jumbotron -->
 
@@ -119,7 +44,7 @@ include("config.php");
         sint mollitia magnam aspernatur labore reiciendis ex dolore, molestias, perspiciatis commodi quam distinctio
         impedit laboriosam corrupti ut ratione incidunt qui.
       </p>
-      <a class="btn btn-orange btn-custom-size text-white z-2 position-relative btn-custom-rounded w-100 " href="#" role="button">Get Started</a>
+      <a class="btn btn-orange btn-custom-size text-white z-2 position-relative btn-custom-rounded w-100 " href="#destinations" role="button">Get Started</a>
     </div>
   </section>
 
@@ -140,64 +65,32 @@ include("config.php");
       <div class="container">
         <div class="row">
 
-          <div class="col-sm-6 col-md-4 col-lg-3 d-inline-block d-flex justify-content-center">
-
-            <div class="custom-cards-dest my-3 text-center overflow-hidden card-dest">
-              <img src="frontend-assets/images/destinations/destinationsImg.png" alt="">
-              <div class="info-dest text-center">
-                <h5 class="text-uppercase">bali</h5>
-                <h3 class="text-capitalize">pulu watu </h3>
+          <?php
+          $maxAttr = 4;
+          while ($attr = mysqli_fetch_array($destinations)) {
+            if ($maxAttr < $attr) {
+          ?>
+              <div class="col-sm-6 col-md-4 col-lg-3 d-inline-block d-flex justify-content-center">
+                <div class="custom-cards-dest my-3 text-center overflow-hidden card-dest">
+                  <img src="frontend-assets/images/destinations/destinationsImg.png" alt="">
+                  <div class="info-dest text-center">
+                    <h5 class="text-uppercase fs-6"><?= $attr['district_id']; ?></h5>
+                    <h3 class="text-capitalize fs-5"><?= $attr['name']; ?></h3>
+                  </div>
+                  <div class="btn-centering">
+                    <button href="#" class="btn text-white btn-orange z-2">Lihat Detail</button>
+                  </div>
+                </div>
               </div>
-              <div class="btn-centering">
-                <button href="#" class="btn text-white btn-orange z-2">Lihat Detail</button>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="col-sm-6 col-md-4 col-lg-3 d-inline-block d-flex justify-content-center">
-            <div class="custom-cards-dest my-3 text-center overflow-hidden card-dest">
-              <img src="frontend-assets/images/destinations/destinationsImg.png" alt="">
-              <div class="info-dest text-center">
-                <h5 class="text-uppercase">bali</h5>
-                <h3 class="text-capitalize">pulu watu </h3>
-              </div>
-              <div class="btn-centering">
-                <button href="#" class="btn text-white btn-orange z-2">Lihat Detail</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-sm-6 col-md-4 col-lg-3 d-inline-block d-flex justify-content-center">
-            <div class="custom-cards-dest my-3 text-center overflow-hidden card-dest">
-              <img src="frontend-assets/images/destinations/destinationsImg.png" alt="">
-              <div class="info-dest text-center">
-                <h5 class="text-uppercase">bali</h5>
-                <h3 class="text-capitalize">pulu watu </h3>
-              </div>
-              <div class="btn-centering">
-                <button href="#" class="btn text-white btn-orange z-2">Lihat Detail</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-sm-6 col-md-4 col-lg-3 d-inline-block d-flex justify-content-center">
-            <div class="custom-cards-dest my-3 text-center overflow-hidden card-dest">
-              <img src="frontend-assets/images/destinations/destinationsImg.png" alt="">
-              <div class="info-dest text-center">
-                <h5 class="text-uppercase">bali</h5>
-                <h3 class="text-capitalize">pulu watu </h3>
-              </div>
-              <div class="btn-centering">
-                <button href="#" class="btn text-white btn-orange z-2">Lihat Detail</button>
-              </div>
-            </div>
-          </div>
+          <?php
+            }
+          }
+          ?>
 
         </div>
 
         <div class="col text-center ">
-          <a href="#" class="btn btn-show-more text-white my-3">Show More</a>
+          <a href="list-destinations.php" class="btn btn-show-more text-white my-3">Show More</a>
         </div>
       </div>
     </section>
@@ -214,85 +107,46 @@ include("config.php");
       <div class="container">
         <div class="row d-flex justify-content-sm-center justify-content-md-between">
 
-          <div class="col-sm-10 col-md-4 col-lg-4  d-inline-block d-flex justify-content-center">
-            <div class="my-3">
+          <?php
+          $maxArticle = 3;
+          while ($articles = mysqli_fetch_array($article)) {
+            if ($maxArticle < $articles) {
+          ?>
+              <div class="col-sm-10 col-md-4 col-lg-4  d-inline-block d-flex justify-content-center">
+                <div class="my-3">
 
-              <a href="#" class="text-decoration-none">
-                <div class=" my-3 text-center overflow-hidden landing-card-article">
-                  <img src="frontend-assets/images/article/article.png" class="card-img-top rounded-2" alt="...">
-                  <div class="text-see-hover-landing pt-5 mt-4">
-                    <h5 class="fs-3 h-3">Lihat</h5>
+
+                  <a href="#" class="text-decoration-none">
+                    <div class=" my-3 text-center overflow-hidden landing-card-article">
+                      <img src="frontend-assets/images/article/article.png" class="card-img-top rounded-2" alt="...">
+                      <div class="text-see-hover-landing pt-5 mt-4">
+                        <h5 class="fs-3 h-3">Lihat</h5>
+                      </div>
+                    </div>
+                  </a>
+
+
+                  <div class="card-body">
+                    <p class=" ml-1 mt-2 fw-medium">
+                      <span><?= $articles['author_id']; ?></span>
+                      -
+                      <span><?= $articles['category_id']; ?></span>
+                    </p>
+                    <a class="title-article" href="#">
+                      <h5 class="article mx-1"><?= $articles['title']; ?></h5>
+                    </a>
                   </div>
                 </div>
-              </a>
-
-              <div class="card-body">
-                <p class=" ml-1 mt-2 fw-medium">
-                  <span>Ilhan</span>
-                  -
-                  <span>Anime</span>
-                </p>
-                <a class="title-article" href="#">
-                  <h5 class="article mx-1">Event anime, kok cosplay genshin? "Bukan Main"</h5>
-                </a>
               </div>
-            </div>
-          </div>
-
-          <div class="col-sm-10 col-md-4 col-lg-4  d-inline-block d-flex justify-content-center">
-            <div class="my-3">
-
-              <a href="#" class="text-decoration-none">
-                <div class=" my-3 text-center overflow-hidden landing-card-article">
-                  <img src="frontend-assets/images/article/article.png" class="card-img-top rounded-2" alt="...">
-                  <div class="text-see-hover-landing pt-5 mt-4">
-                    <h5 class="fs-3 h-3">Lihat</h5>
-                  </div>
-                </div>
-              </a>
-
-              <div class="card-body">
-                <p class=" ml-1 mt-2 fw-medium">
-                  <span>Ilhan</span>
-                  -
-                  <span>Anime</span>
-                </p>
-                <a class="title-article" href="#">
-                  <h5 class="article mx-1">Event anime, kok cosplay genshin? "Bukan Main"</h5>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-sm-10 col-md-4 col-lg-4  d-inline-block d-flex justify-content-center">
-            <div class="my-3">
-
-              <a href="#" class="text-decoration-none">
-                <div class=" my-3 text-center overflow-hidden landing-card-article">
-                  <img src="frontend-assets/images/article/article.png" class="card-img-top rounded-2" alt="...">
-                  <div class="text-see-hover-landing pt-5 mt-4">
-                    <h5 class="fs-3 h-3">Lihat</h5>
-                  </div>
-                </div>
-              </a>
-
-              <div class="card-body">
-                <p class=" ml-1 mt-2 fw-medium">
-                  <span>Ilhan</span>
-                  -
-                  <span>Anime</span>
-                </p>
-                <a class="title-article" href="#">
-                  <h5 class="article mx-1">Event anime, kok cosplay genshin? "Bukan Main"</h5>
-                </a>
-              </div>
-            </div>
-          </div>
+          <?php
+            }
+          }
+          ?>
 
         </div>
 
         <div class="col text-center ">
-          <a href="#" class="btn btn-show-more text-white my-3">Show More</a>
+          <a href="list-article.php" class="btn btn-show-more text-white my-3">Show More</a>
         </div>
       </div>
 
@@ -348,8 +202,8 @@ include("config.php");
                 <div class="card border rounded" style="width: 18rem;">
                   <img src="frontend-assets/images/members-image/me.jpg" class="card-img-top" alt="...">
                   <div class="card-body text-center text-black">
-                    <i>Front-End Developer</i>
-                    <h6>Muhamad Ilhan Revaliana Firmansyah</h6>
+                    <i>Back-End Developer</i>
+                    <h6>Agus Padilah</h6>
                     <p class="card-text">
                       A2.2100076
                     </p>
@@ -372,8 +226,8 @@ include("config.php");
                 <div class="card border rounded" style="width: 18rem;">
                   <img src="frontend-assets/images/members-image/me.jpg" class="card-img-top" alt="...">
                   <div class="card-body text-center text-black">
-                    <i>Front-End Developer</i>
-                    <h6>Muhamad Ilhan Revaliana Firmansyah</h6>
+                    <i>Back-End Developer</i>
+                    <h6>AA Ryan Shopian</h6>
                     <p class="card-text">
                       A2.2100076
                     </p>
@@ -396,8 +250,8 @@ include("config.php");
                 <div class="card border rounded" style="width: 18rem;">
                   <img src="frontend-assets/images/members-image/me.jpg" class="card-img-top" alt="...">
                   <div class="card-body text-center text-black">
-                    <i>Front-End Developer</i>
-                    <h6>Muhamad Ilhan Revaliana Firmansyah</h6>
+                    <i>UI-UX Designer</i>
+                    <h6>Faishal Rahman</h6>
                     <p class="card-text">
                       A2.2100076
                     </p>
@@ -425,40 +279,7 @@ include("config.php");
 
   <!-- About Us -->
 
-  <!-- Footer -->
-  <footer class="bg-black mt-5">
-    <div class="container">
-      <div class="row-2">
-        <div class="col text-start pt-5">
-          <a class="navbar-brand fs-3 text-white" href="#">
-            <h2 class="">
-              <span class="text-orange">Ambatu</span>trip
-            </h2>
-          </a>
-        </div>
-        <div class="col text-white">
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat totam earum perferendis, commodi corrupti
-            et eligendi cum expedita. Dolores cum quia iure cumque nulla voluptas deleniti tempore ad sit? Atque.</p>
-        </div>
-        <div class="col text-white pt-2 pb-1">
-          <p class="text-center">© 2023 <a class="text-white footer-link" href="https://www.linkedin.com/in/ihaannn/" target="_blank">Nyanta</a>. All right reserved</p>
-        </div>
-      </div>
-    </div>
-  </footer>
-  <!-- Footer -->
-
-
-
-
-
-  <script src="frontend-assets/script/script.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+  <?php include_once("footer.php") ?>
 </body>
 
 </html>
