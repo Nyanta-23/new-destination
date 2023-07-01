@@ -14,5 +14,3 @@ if (!$mysqli) {
 } else {
   // die("<script>alert(' tersambung dengan database.')</script>");
 }
-
-// Mattin dulu, klo ga mati ga jalan. Asik
