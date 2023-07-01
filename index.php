@@ -5,7 +5,7 @@ error_reporting(E_ALL);
 
 include("config.php");
 
-$attr = mysqli_query(
+$destinations = mysqli_query(
   $mysqli,
   "SELECT attractions.*, category.nama, district.nama
   FROM attractions
@@ -13,13 +13,11 @@ $attr = mysqli_query(
     ON attractions.category_id = category.id
   INNER JOIN district
     ON attractions.district_id = district.id
-  ORDER BY id DESC"
+  ORDER BY id DESC
+  "
 );
 
-$article = mysqli_query(
-  $mysqli,
-  "SELECT * FROM article"
-);
+$article = mysqli_query($mysqli, "SELECT * FROM article");
 
 ?>
 
@@ -69,14 +67,14 @@ $article = mysqli_query(
 
           <?php
           // $maxAttr = 4;
-          while ($destinations = mysqli_fetch_array($attr)) {
+          while ($attr = mysqli_fetch_array($destinations)) {
           ?>
             <div class="col-sm-6 col-md-4 col-lg-3 d-inline-block d-flex justify-content-center">
               <div class="custom-cards-dest my-3 text-center overflow-hidden card-dest">
                 <img src="frontend-assets/images/destinations/destinationsImg.png" alt="">
                 <div class="info-dest text-center">
-                  <h5 class="text-uppercase fs-6"><?= $destinations['district_id']; ?></h5>
-                  <h3 class="text-capitalize fs-5"><?= $destinations['name']; ?></h3>
+                  <h5 class="text-uppercase fs-6"><?= $attr['district_id']; ?></h5>
+                  <h3 class="text-capitalize fs-5"><?= $attr['name']; ?></h3>
                 </div>
                 <div class="btn-centering">
                   <button href="#" class="btn text-white btn-orange z-2">Lihat Detail</button>
@@ -109,9 +107,9 @@ $article = mysqli_query(
 
           <?php
           $maxArticle = 3;
-          while ($articles = mysqli_fetch_array($article) < $maxArticle) {
+          while ($articles = mysqli_fetch_array($article)) {
           ?>
-            <div class="col-sm-10 col-md-4 col-lg-4  d-inline-block d-flex justify-content-center">
+            <div class="col-sm-10 col-md-4 col-lg-4 d-inline-block d-flex justify-content-center">
               <div class="my-3">
 
 
@@ -123,7 +121,6 @@ $article = mysqli_query(
                     </div>
                   </div>
                 </a>
-
 
                 <div class="card-body">
                   <p class=" ml-1 mt-2 fw-medium">
