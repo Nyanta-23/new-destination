@@ -10,7 +10,9 @@ $databasePassword = '';
 
 $mysqli = mysqli_connect($databaseHost, $databaseUsername, $databasePassword, $databaseName);
 if (!$mysqli) {
-    die("<script>alert('Gagal tersambung dengan database.')</script>");
+  die("<script>alert('Gagal tersambung dengan database.')</script>");
 } else {
-    // die("<script>alert(' tersambung dengan database.')</script>");
+  // die("<script>alert(' tersambung dengan database.')</script>");
 }
+
+// Mattin dulu, klo ga mati ga jalan. Asik

@@ -10,11 +10,11 @@ include_once("../config.php");
 
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Data artikel</h3>
+                        <h3 class="card-title">Data Gallery</h3>
 
                         <div class="card-tools">
                             <!-- This will cause the card to maximize when clicked -->
-                            <a href='article/create.php?page=article' class="btn btn-info"><i class="fas fa-plus"></i>Tambah artikel</a>
+                            <a href='gallery/create.php?page=gallery' class="btn btn-info"><i class="fas fa-plus"></i>Tambah users</a>
                         </div>
                         <!-- /.card-tools -->
                     </div>
@@ -25,18 +25,15 @@ include_once("../config.php");
 
                             <tr>
                                 <th>No</th>
-                                <th>kategori</th>
-                                <th>attraction</th>
-                                <th>author</th>
                                 <th>title</th>
                                 <th>description</th>
-                                <th>Image</th>
+                                <th>image</th>
                                 <th>Aksi</th>
                             </tr>
                             <?php
                             $no = 1;
                             $result = mysqli_query($mysqli, "SELECT *
-                            FROM article
+                            FROM gallery
                             ORDER BY id DESC");
 
                             while ($data = mysqli_fetch_array($result)) {
@@ -44,15 +41,12 @@ include_once("../config.php");
 
                                 <tr>
                                     <td><?= $no++ ?></td>
-                                    <td><?= $data['kategori'] ?></td>
-                                    <td><?= $data['attraction'] ?></td>
-                                    <td><?= $data['author'] ?></td>
                                     <td><?= $data['title'] ?></td>
                                     <td><?= $data['description'] ?></td>
                                     <td><?= $data['image'] ?></td>
                                     <td>
-                                        <a class="btn btn-success" href='article/edit.php?id=<?= $data['id'] ?>&page=article'>Edit</a>
-                                        <a class="btn btn-danger" onclick='return confirmDelete()' href='article/delete.php?id=<?= $data['id'] ?>&page=artikel'>Hapus</a>
+                                        <a class="btn btn-success" href='gallery/edit.php?id=<?= $data['id'] ?>&page=gallery'>Edit</a>
+                                        <a class="btn btn-danger" onclick='return confirmDelete()' href='gallery/delete.php?id=<?= $data['id'] ?>&page=contact'>Hapus</a>
                                     </td>
                                 </tr><?php } ?>
                         </table>

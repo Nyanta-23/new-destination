@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 <?php
 ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
@@ -9,6 +11,7 @@ include("config.php");
 
 <!-- <a href="admin/login.php">Login</a> -->
 
+>>>>>>> 0ed5f645728f291fda6db622fc5204784e5e6ccd
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,9 +41,20 @@ include("config.php");
         <div class="col-3">
           <a class="navbar-brand fs-3" href="#"><span class="text-orange">Ambatu</span>trip</a>
         </div>
+<<<<<<< HEAD
+        <?php
+        include "config.php";
+        $query = mysqli_query($koneksi, "SELECT * FROM district");
+        while ($data = mysqli_fetch_array($query))
+        ?>
+
+        <div class="col-5 mt-2 col-xl-6 d-none d-lg-block ms-xl-5">
+          <form class="d-flex ms-lg-5 input-group" role="search">
+=======
 
         <div class="col-5 mt-2 col-xl-6 d-none d-lg-block ms-xl-5 ms-lg-0">
           <form class="d-flex ms-lg-3 input-group" role="search">
+>>>>>>> 0ed5f645728f291fda6db622fc5204784e5e6ccd
             <input class="form-control custom-border" type="search" placeholder="Search" aria-label="Search">
             <button class="btn search pr-3 d-flex border-search-button">
               <i class="bi bi-search"></i>
@@ -48,8 +62,13 @@ include("config.php");
           </form>
         </div>
 
+<<<<<<< HEAD
+        <div class="col-1 mt-1 d-none d-lg-block ms-xl-5 ms-lg-3">
+          <ul class="navbar-nav mb-2 mb-lg-0 ms-lg-5 d-flex ">
+=======
         <div class="col-1 mt-1 d-none d-lg-block ms-xl-5 ms-lg-4">
           <ul class="navbar-nav mb-2 mb-lg-0 ms-lg-4 d-flex ">
+>>>>>>> 0ed5f645728f291fda6db622fc5204784e5e6ccd
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#">Home</a>
             </li>
@@ -120,6 +139,90 @@ include("config.php");
     <div class="container">
       <div class="row mt-5 mb-5 d-flex justify-content-center mx-sm-3 mx-xl-5 mx-lg-4">
 
+<<<<<<< HEAD
+        <div class="col-11 col-sm-8 col-md-5 col-lg-4 col-xl-3  d-inline-block d-flex justify-content-center">
+
+          <div class="custom-cards-dest my-3 text-center position-relative overflow-hidden card-width card-hover" style="background-image: url('frontend-assets/images/destinations/destinationsImg.png');">
+
+            <div class="card-window z-0"></div>
+            <h5 class="card-title fw-bold text-white text-uppercase p-text-card position-relative z-1">bali</h5>
+            <h3 class="card-text text-white pt-2 text-capitalize position-relative z-1">pulu watu</h3>
+
+            <a href="#" class="btn margin-btn-cards mb-4 text-white btn-orange z-1 position-relative">Lihat Detail</a>
+          </div>
+        </div>
+
+        <div class="col-11 col-sm-8 col-md-5 col-lg-4 col-xl-3  d-inline-block d-flex justify-content-center">
+          <div class="custom-cards-dest my-3 text-center position-relative overflow-hidden card-width card-hover" style="background-image: url('frontend-assets/images/destinations/destinationsImg.png');">
+            <div class="card-window z-0"></div>
+            <h5 class="card-title fw-bold text-white text-uppercase p-text-card position-relative z-1">bali</h5>
+            <h3 class="card-text text-white pt-2 text-capitalize position-relative z-1">pulu watu</h3>
+
+            <a href="#" class="btn margin-btn-cards mb-4 text-white btn-orange z-1 position-relative">Lihat Detail</a>
+          </div>
+        </div>
+
+        <div class="col-11 col-sm-8 col-md-5 col-lg-4 col-xl-3  d-inline-block d-flex justify-content-center">
+          <div class="custom-cards-dest my-3 text-center position-relative overflow-hidden card-width card-hover" style="background-image: url('frontend-assets/images/destinations/destinationsImg.png');">
+            <div class="card-window z-0"></div>
+            <h5 class="card-title fw-bold text-white text-uppercase p-text-card position-relative z-1">bali</h5>
+            <h3 class="card-text text-white pt-2 text-capitalize position-relative z-1">pulu watu</h3>
+
+            <a href="#" class="btn margin-btn-cards mb-4 text-white btn-orange z-1 position-relative">Lihat Detail</a>
+          </div>
+        </div>
+
+        <div class="col-11 col-sm-8 col-md-5 col-lg-4 col-xl-3  d-inline-block d-flex justify-content-center">
+          <div class="custom-cards-dest my-3 text-center position-relative overflow-hidden card-width card-hover" style="background-image: url('frontend-assets/images/destinations/destinationsImg.png');">
+            <div class="card-window z-0"></div>
+            <h5 class="card-title fw-bold text-white text-uppercase p-text-card position-relative z-1">bali</h5>
+            <h3 class="card-text text-white pt-2 text-capitalize position-relative z-1">pulu watu</h3>
+
+            <a href="#" class="btn margin-btn-cards mb-4 text-white btn-orange z-1 position-relative">Lihat Detail</a>
+          </div>
+        </div>
+
+        <div class="col-11 col-sm-8 col-md-5 col-lg-4 col-xl-3  d-inline-block d-flex justify-content-center">
+          <div class="custom-cards-dest my-3 text-center position-relative overflow-hidden card-width card-hover" style="background-image: url('frontend-assets/images/destinations/destinationsImg.png');">
+            <div class="card-window z-0"></div>
+            <h5 class="card-title fw-bold text-white text-uppercase p-text-card position-relative z-1">bali</h5>
+            <h3 class="card-text text-white pt-2 text-capitalize position-relative z-1">pulu watu</h3>
+
+            <a href="#" class="btn margin-btn-cards mb-4 text-white btn-orange z-1 position-relative">Lihat Detail</a>
+          </div>
+        </div>
+
+        <div class="col-11 col-sm-8 col-md-5 col-lg-4 col-xl-3  d-inline-block d-flex justify-content-center">
+          <div class="custom-cards-dest my-3 text-center position-relative overflow-hidden card-width card-hover" style="background-image: url('frontend-assets/images/destinations/destinationsImg.png');">
+            <div class="card-window z-0"></div>
+            <h5 class="card-title fw-bold text-white text-uppercase p-text-card position-relative z-1">bali</h5>
+            <h3 class="card-text text-white pt-2 text-capitalize position-relative z-1">pulu watu</h3>
+
+            <a href="#" class="btn margin-btn-cards mb-4 text-white btn-orange z-1 position-relative">Lihat Detail</a>
+          </div>
+        </div>
+
+        <div class="col-11 col-sm-8 col-md-5 col-lg-4 col-xl-3  d-inline-block d-flex justify-content-center">
+          <div class="custom-cards-dest my-3 text-center position-relative overflow-hidden card-width card-hover" style="background-image: url('frontend-assets/images/destinations/destinationsImg.png');">
+            <div class="card-window z-0"></div>
+            <h5 class="card-title fw-bold text-white text-uppercase p-text-card position-relative z-1">bali</h5>
+            <h3 class="card-text text-white pt-2 text-capitalize position-relative z-1">pulu watu</h3>
+
+            <a href="#" class="btn margin-btn-cards mb-4 text-white btn-orange z-1 position-relative">Lihat Detail</a>
+          </div>
+        </div>
+
+        <div class="col-11 col-sm-8 col-md-5 col-lg-4 col-xl-3  d-inline-block d-flex justify-content-center">
+          <div class="custom-cards-dest my-3 text-center position-relative overflow-hidden card-width card-hover" style="background-image: url('frontend-assets/images/destinations/destinationsImg.png');">
+            <div class="card-window z-0"></div>
+            <h5 class="card-title fw-bold text-white text-uppercase p-text-card position-relative z-1">bali</h5>
+            <h3 class="card-text text-white pt-2 text-capitalize position-relative z-1">pulu watu</h3>
+
+            <a href="#" class="btn margin-btn-cards mb-4 text-white btn-orange z-1 position-relative">Lihat Detail</a>
+          </div>
+        </div>
+
+=======
         <div class="col-sm-12 col-md-4 col-lg-4 d-inline-block d-flex justify-content-center">
 
           <div class="custom-cards-dest my-3 text-center overflow-hidden card-dest">
@@ -254,6 +357,7 @@ include("config.php");
           </div>
 
         </div>
+>>>>>>> 0ed5f645728f291fda6db622fc5204784e5e6ccd
 
       </div>
     </div>

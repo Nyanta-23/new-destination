@@ -49,7 +49,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin Panel</title>
+    <title>Login Admin Panel</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -88,11 +88,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     </div>
                                     <!-- /.card-tools -->
                                 </div>
-<<<<<<< HEAD
-                                <form action="../../assets/admin/artikel/create.php?page=artikel" method="post" enctype="multipart/form-data">
-=======
                                 <form action="../artikel/create.php?page=article" method="post" enctype="multipart/form-data">
->>>>>>> 59bccea06b0e2741b51aa8570b8307b5b54e7e75
 
                                     <div class="card-body">
 
@@ -145,11 +141,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
-<script src="../../assets/admin/plugins/jquery/jquery.min.js"></script>
+<script src="../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="../../assets/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
-<script src="../../assets/admin/dist/js/adminlte.min.js"></script>
+<script src="../dist/js/adminlte.min.js"></script>
 <script>
     function confirmDelete() {
         if (confirm('Anda yakin menghapus data?')) {
