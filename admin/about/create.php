@@ -15,6 +15,8 @@ if (isset($_POST['submit'])) {
     } else {
         $result = mysqli_query($mysqli, "INSERT INTO about(title,descrption) VALUES('$title','$descrption')");
     }
+
+    header("Location:../dashboard.php?page=about");
 }
 ?>
 <!DOCTYPE html>

@@ -16,6 +16,8 @@ if (isset($_POST['submit'])) {
     } else {
         $result = mysqli_query($mysqli, "INSERT INTO contact (email,phone_number,url) VALUES('$email','$phone_number','$url')");
     }
+
+    header("Location:../dashboard.php?page=contact");
 }
 ?>
 <!DOCTYPE html>

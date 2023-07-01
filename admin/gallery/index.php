@@ -14,7 +14,7 @@ include_once("../config.php");
 
                         <div class="card-tools">
                             <!-- This will cause the card to maximize when clicked -->
-                            <a href='gallery/create.php?page=gallery' class="btn btn-info"><i class="fas fa-plus"></i>Tambah users</a>
+                            <a href='gallery/create.php?page=gallery' class="btn btn-info"><i class="fas fa-plus"></i>Tambah Foto</a>
                         </div>
                         <!-- /.card-tools -->
                     </div>

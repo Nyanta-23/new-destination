@@ -14,6 +14,8 @@ if (isset($_POST['submit'])) {
     } else {
         $result = mysqli_query($mysqli, "INSERT INTO province(nama_province) VALUES('$nama_province')");
     }
+
+    header("Location:../dashboard.php?page=province");
 }
 ?>
 <!DOCTYPE html>
