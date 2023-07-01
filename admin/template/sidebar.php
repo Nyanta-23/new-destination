@@ -105,10 +105,10 @@ $page  = $_GET['page']; ?>
           </a>
         </li>
         <li class="nav-item">
-          <a href="<?= $base_url ?>/dashboard.php?page=Sosial" class="nav-link  <?php if ($page == 'sosial') { ?>active<?php } ?>">
+          <a href="<?= $base_url ?>/dashboard.php?page=social" class="nav-link  <?php if ($page == 'social') { ?>active<?php } ?>">
             <i class="nav-icon fas fa-file"></i>
             <p>
-              Sosial
+              Social
             </p>
           </a>
         </li>

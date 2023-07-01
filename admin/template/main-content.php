@@ -32,8 +32,8 @@
                     case 'contact':
                         include "contact/index.php";
                         break;
-                    case 'sosial':
-                        include "sosial/index.php";
+                    case 'Social':
+                        include "Social/index.php";
                         break;
                     case 'attraction':
                         include "attraction/index.php";
