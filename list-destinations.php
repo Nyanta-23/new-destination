@@ -7,7 +7,7 @@ include("config.php");
 
 $destinations = mysqli_query(
   $mysqli,
-  "SELECT attractions.*, district.nama
+  "SELECT attractions.*, district.nama AS district_name
   FROM attractions
   INNER JOIN district ON attractions.district_id = district.id
   ORDER BY id DESC
@@ -49,8 +49,8 @@ $destinations = mysqli_query(
             <div class="custom-cards-dest my-3 text-center overflow-hidden card-dest">
               <img src="admin/attraction/image/<?= $listDestinations['image'] ?>" alt="">
               <div class="info-dest text-center">
-                <h5 class="text-uppercase"><?= $listDestinations['district_id']; ?></h5>
-                <h3 class="text-capitalize"><?php $listDestinations['name'] ?></h3>
+                <h5 class="text-uppercase"><?= $listDestinations['name']; ?></h5>
+                <h3 class="text-capitalize"><?= $listDestinations['district_name'] ?></h3>
               </div>
               <div class="btn-centering">
                 <a href="detail-destinations.php?id=<?= $listDestinations['id'] ?>" class="btn text-white btn-orange z-2">Lihat Detail</a>

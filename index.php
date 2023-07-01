@@ -7,7 +7,7 @@ include("config.php");
 
 $destinations = mysqli_query(
   $mysqli,
-  "SELECT attractions.*, district.nama
+  "SELECT attractions.*, district.nama AS district_name
   FROM attractions
   INNER JOIN district ON attractions.district_id = district.id
   ORDER BY id DESC
@@ -17,7 +17,7 @@ $destinations = mysqli_query(
 
 $article = mysqli_query(
   $mysqli,
-  "SELECT article.*, users.nama, category.nama
+  "SELECT article.*, users.nama AS user_name, category.nama AS category_name
   FROM article
   INNER JOIN users ON article.author_id = users.id
   INNER JOIN category ON article.category_id = category.id
@@ -81,7 +81,7 @@ $article = mysqli_query(
               <div class="custom-cards-dest my-3 text-center overflow-hidden card-dest">
                 <img src="admin/attraction/image/<?= $attr['image']; ?>">
                 <div class="info-dest text-center">
-                  <h5 class="text-uppercase fs-6"><?= $attr['district_id']; ?></h5>
+                  <h5 class="text-uppercase fs-6"><?= $attr['district_name']; ?></h5>
                   <h3 class="text-capitalize fs-5"><?= $attr['name']; ?></h3>
                 </div>
                 <div class="btn-centering">
@@ -129,9 +129,9 @@ $article = mysqli_query(
 
                 <div class="card-body">
                   <p class=" ml-1 mt-2 fw-medium">
-                    <span><?= $articles['author_id']; ?></span>
+                    <span><?= $articles['user_name']; ?></span>
                     -
-                    <span><?= $articles['category_id']; ?></span>
+                    <span><?= $articles['category_name']; ?></span>
                   </p>
                   <a class="title-article" href="detail-article.php?id=<?= $articles['id'] ?>">
                     <h5 class="article mx-1"><?= $articles['title']; ?></h5>
