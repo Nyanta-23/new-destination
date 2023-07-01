@@ -33,6 +33,15 @@
                     case 'contact':
                         include "contact/content-header.php";
                         break;
+                    case 'gallery':
+                        include "gallery/content-header.php";
+                        break;
+                    case 'attraction':
+                        include "attraction/content-header.php";
+                        break;
+                    case 'sosial':
+                        include "sosial/content-header.php";
+                        break;
                     default:
                         echo "<center><h3>Maaf. Halaman tidak di temukan !</h3></center>";
                         break;

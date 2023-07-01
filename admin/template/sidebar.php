@@ -89,6 +89,30 @@ $page  = $_GET['page']; ?>
           </a>
         </li>
         <li class="nav-item">
+          <a href="<?= $base_url ?>/dashboard.php?page=gallery" class="nav-link  <?php if ($page == 'gallery') { ?>active<?php } ?>">
+            <i class="nav-icon fas fa-tags"></i>
+            <p>
+              Gallery
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="<?= $base_url ?>/dashboard.php?page=attraction" class="nav-link  <?php if ($page == 'attraction') { ?>active<?php } ?>">
+            <i class="nav-icon fas fa-tags"></i>
+            <p>
+              Attraction
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="<?= $base_url ?>/dashboard.php?page=Sosial" class="nav-link  <?php if ($page == 'sosial') { ?>active<?php } ?>">
+            <i class="nav-icon fas fa-file"></i>
+            <p>
+              Sosial
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
           <a href="<?= $base_url ?>/dashboard.php?page=menu" class="nav-link  <?php if ($page == 'menu') { ?>active<?php } ?>">
             <i class="nav-icon fas fa-th"></i>
             <p>
