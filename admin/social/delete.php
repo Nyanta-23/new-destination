@@ -7,7 +7,7 @@ include('session.php');
 $id = @$_GET['id'];
 
 // Delete user row from table based on given id
-$result = mysqli_query($mysqli, "DELETE FROM contact WHERE id=$id");
+$result = mysqli_query($mysqli, "DELETE FROM socials WHERE id=$id");
 
 // After delete redirect to Home, so that latest user list will be displayed.
-header("Location:../dashboard.php?page=contact");
+header("Location:../dashboard.php?page=socials");

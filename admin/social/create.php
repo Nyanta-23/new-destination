@@ -6,16 +6,18 @@ include("../../config.php");
 include('session.php');
 
 if (isset($_POST['submit'])) {
-    $email = @$_POST['email'];
-    $phone_number = @$_POST['phone_number'];
     $url = @$_POST['url'];
-    $sql = "SELECT * FROM contact WHERE email='$email'";
+    $username = @$_POST['username'];
+    $icon = @$_POST['icon'];
+    $sql = "SELECT * FROM socials WHERE url='$url'";
     $result = mysqli_query($mysqli, $sql);
     if ($result->num_rows > 0) {
-        echo "<script>alert('email sudah ada. Silahkan coba lagi!')</script>";
+        echo "<script>alert('username sudah ada. Silahkan coba lagi!')</script>";
     } else {
-        $result = mysqli_query($mysqli, "INSERT INTO contact (email,phone_number,url) VALUES('$email','$phone_number','$url')");
+        $result = mysqli_query($mysqli, "INSERT INTO socials (url,username,icon) VALUES('$url','$username','$icon')");
     }
+
+    header("Location:../dashboard.php?page=social");
 }
 ?>
 <!DOCTYPE html>
@@ -62,29 +64,29 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="card">
 
                                 <div class="card-header">
-                                    <h3 class="card-title">Data Kontak</h3>
+                                    <h3 class="card-title">Data Social</h3>
 
                                     <div class="card-tools">
                                         <!-- This will cause the card to maximize when clicked -->
-                                        <a href="../../admin?page=contact" class="btn btn-info">Kembali</a>
+                                        <a href="../../admin?page=socials" class="btn btn-info">Kembali</a>
                                     </div>
                                     <!-- /.card-tools -->
                                 </div>
-                                <form action="../contact/create.php" method="post" name="form1">
+                                <form action="../social/create.php" method="post" name="form1">
 
                                     <div class="card-body">
 
                                         <div class="form-group">
-                                            <label for="email">email</label>
-                                            <input type="text" class="form-control" name="email" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="phone_number">phone_number</label>
-                                            <input type="text" class="form-control" name="phone_number" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="url">url</label>
+                                            <label for="url">URL</label>
                                             <input type="url" class="form-control" name="url" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="username">Username</label>
+                                            <input type="text" class="form-control" name="username" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="icon">Icon</label>
+                                            <input type="file" class="form-control" name="icon" required>
                                         </div>
                                         <!-- /.content -->
 

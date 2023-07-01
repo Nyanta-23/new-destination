@@ -88,7 +88,6 @@ $page  = $_GET['page']; ?>
             </p>
           </a>
         </li>
-<<<<<<< HEAD
         <li class="nav-item">
           <a href="<?= $base_url ?>/dashboard.php?page=gallery" class="nav-link  <?php if ($page == 'gallery') { ?>active<?php } ?>">
             <i class="nav-icon fas fa-tags"></i>
@@ -106,9 +105,6 @@ $page  = $_GET['page']; ?>
           </a>
         </li>
         <li class="nav-item">
-=======
-        <!-- <li class="nav-item">
->>>>>>> 0b993ab090d9f87fb7a96a8e17b00a371a12b7d7
           <a href="<?= $base_url ?>/dashboard.php?page=social" class="nav-link  <?php if ($page == 'social') { ?>active<?php } ?>">
             <i class="nav-icon fas fa-users"></i>
             <p>
@@ -117,7 +113,6 @@ $page  = $_GET['page']; ?>
           </a>
         </li> -->
         <li class="nav-item">
-<<<<<<< HEAD
           <a href="<?= $base_url ?>/dashboard.php?page=menu" class="nav-link  <?php if ($page == 'menu') { ?>active<?php } ?>">
             <i class="nav-icon fas fa-th"></i>
             <p>
@@ -126,8 +121,6 @@ $page  = $_GET['page']; ?>
           </a>
         </li>
         <li class="nav-item">
-=======
->>>>>>> 0b993ab090d9f87fb7a96a8e17b00a371a12b7d7
           <a href="<?= $base_url ?>/logout.php" class="nav-link">
             <i class="nav-icon fas fa-power-off"></i>
             <p>

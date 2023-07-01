@@ -23,7 +23,7 @@ if (isset($_POST['update'])) {
     $title = @$_POST['title'];
     $description = @$_POST['description'];
     $image = @$_POST['image'];
-    if ($email) {
+    if ($title) {
         $result = mysqli_query($mysqli, "UPDATE gallery SET title='$title',description='$description',image='$image' WHERE id=$id");
     }
     // update user data

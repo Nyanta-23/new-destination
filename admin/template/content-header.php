@@ -39,8 +39,8 @@
                     case 'attraction':
                         include "attraction/content-header.php";
                         break;
-                    case 'Social':
-                        include "Social/content-header.php";
+                    case 'social':
+                        include "social/content-header.php";
                         break;
                     default:
                         echo "<center><h3>Maaf. Halaman tidak di temukan !</h3></center>";
