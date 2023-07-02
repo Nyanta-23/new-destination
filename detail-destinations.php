@@ -27,6 +27,10 @@ $available_events = $getData['available_mosque']; //data row avalaible mosque ca
 $available_toilet = $getData['available_toilet'];
 $available_restaurant = $getData['available_restaurant'];
 
+$patternRegx = '/src="([^"]+)"/';
+
+
+
 $anyDestinations = mysqli_query(
   $mysqli,
   "SELECT attractions.*, district.nama AS district_name
@@ -116,8 +120,12 @@ $anyDestinations = mysqli_query(
           <!--Google map-->
           <div class="mapouter">
             <div class="gmap_canvas">
-              <iframe class="rounded gmaps shadow-md" id="gmap_canvas" src="<?= $map_url ?>" frameborder="0" scrolling="no">
-              </iframe>
+              <?php if (preg_match($patternRegx, $map_url, $matches)) {
+                $src = $matches[1]; ?>
+                <iframe class="rounded gmaps shadow-md" id="gmap_canvas" src="<?= $src ?>" frameborder="0" scrolling="no" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              <?php } else { ?>
+                <h1 class="text-center">Salin link Iframe GMAPS dengan benar !</h1>
+              <?php } ?>
             </div>
           </div>
           <!--Google Maps-->

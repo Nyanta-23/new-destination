@@ -41,7 +41,7 @@ $destinations = mysqli_query(
   <!-- List Content -->
   <section id="list-article">
     <div class="container">
-      <div class="row mt-5 mb-5 d-flex justify-content-center mx-sm-3 mx-xl-5 mx-lg-4">
+      <div class="row mt-5 mb-5 d-flex justify-content-start mx-sm-3 mx-xl-5 mx-lg-4">
 
         <?php while ($listDestinations = mysqli_fetch_array($destinations)) { ?>
           <div class="col-sm-12 col-md-4 col-lg-4 d-inline-block d-flex justify-content-center">
