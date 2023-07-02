@@ -7,7 +7,7 @@ include("config.php");
 
 $article = mysqli_query(
   $mysqli,
-  "SELECT article.*, users.nama, category.nama
+  "SELECT article.*, users.nama AS user_name, category.nama AS category_name
   FROM article
   INNER JOIN users ON article.author_id = users.id
   INNER JOIN category ON article.category_id = category.id
@@ -61,9 +61,9 @@ $article = mysqli_query(
               </a>
               <div class="card-body">
                 <p class=" ml-1 mt-2 fw-medium">
-                  <span><?= $listArticle['author_id']; ?></span>
+                  <span><?= $listArticle['user_name']; ?></span>
                   -
-                  <span><?= $listArticle['category_id']; ?></span>
+                  <span><?= $listArticle['category_name']; ?></span>
                 </p>
                 <a class="title-article" href="detail-article.php?id=<?= $listArticle['id'] ?>">
                   <h5 class="article"><?= $listArticle['title']; ?></h5>

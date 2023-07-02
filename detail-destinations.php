@@ -7,19 +7,35 @@ include("config.php");
 
 $id = $_GET['id'];
 
-$detailDestinations = mysqli_query($mysqli, "SELECT * FROM attractions WHERE id = '$id'");
+$detailDestinations = mysqli_query(
+  $mysqli,
+  "SELECT attractions.*, district.nama AS district_name
+  FROM attractions
+  INNER JOIN district ON attractions.district_id = district.id 
+  WHERE attractions.id = '$id'
+  "
+);
 $getData = mysqli_fetch_array($detailDestinations);
 
 $category = $getData['category_id'];
-$district = $getData['district_id'];
+$district = $getData['district_name'];
 $name = $getData['name'];
 $descript = $getData['description'];
 $map_url = $getData['map_url'];
 $image = $getData['image'];
+$available_events = $getData['available_mosque']; //data row avalaible mosque cahnge to events
+$available_toilet = $getData['available_toilet'];
+$available_restaurant = $getData['available_restaurant'];
+
+$patternRegx = '/src="([^"]+)"/';
+
+
 
 $anyDestinations = mysqli_query(
   $mysqli,
-  "SELECT * FROM attractions
+  "SELECT attractions.*, district.nama AS district_name
+  FROM attractions
+  INNER JOIN district ON attractions.district_id = district.id
   ORDER BY id DESC
   LIMIT 0,3
   "
@@ -66,27 +82,37 @@ $anyDestinations = mysqli_query(
 
         <div class="row d-flex justify-content-center justify-content-md-center justify-content-lg-start">
           <div class="features d-flex justify-content-center align-items-center col-12 col-md-7 p-3 my-3 p-md-2">
-            <div class="col-3 mx-3 text-center">
-              <img src="frontend-assets/images/destinations/ic_event.png" class="features-image" />
-              <div class="description text-orange">
-                <h6>Events</h6>
-                <p>Available</p>
+
+            <?php if ($available_events > 0) { ?>
+              <div class="col-3 mx-3 text-center">
+                <img src="frontend-assets/images/destinations/ic_event.png" class="features-image" />
+                <div class="description text-orange">
+                  <h6>Events</h6>
+                  <p>Available</p>
+                </div>
               </div>
-            </div>
-            <div class="col-3 mx-3 text-center">
-              <img src="frontend-assets/images/destinations/ic_toilet.png" class="features-image" />
-              <div class="description text-orange">
-                <h6>Toilet</h6>
-                <p>Available</p>
+            <?php } ?>
+
+            <?php if ($available_toilet > 0) { ?>
+              <div class="col-3 mx-3 text-center">
+                <img src="frontend-assets/images/destinations/ic_toilet.png" class="features-image" />
+                <div class="description text-orange">
+                  <h6>Toilet</h6>
+                  <p>Available</p>
+                </div>
               </div>
-            </div>
-            <div class="col-3 mx-3 text-center">
-              <img src="frontend-assets/images/destinations/ic_resto.png" class="features-image" />
-              <div class="description text-orange">
-                <h6>Restaurant</h6>
-                <p>Available</p>
+            <?php } ?>
+
+            <?php if ($available_restaurant > 0) { ?>
+              <div class="col-3 mx-3 text-center">
+                <img src="frontend-assets/images/destinations/ic_resto.png" class="features-image" />
+                <div class="description text-orange">
+                  <h6>Restaurant</h6>
+                  <p>Available</p>
+                </div>
               </div>
-            </div>
+            <?php } ?>
+
           </div>
         </div>
 
@@ -94,9 +120,12 @@ $anyDestinations = mysqli_query(
           <!--Google map-->
           <div class="mapouter">
             <div class="gmap_canvas">
-
-              <iframe class="rounded gmaps shadow-md" id="gmap_canvas" src="https://maps.google.com/maps?q=california&t=&z=10&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no">
-              </iframe>
+              <?php if (preg_match($patternRegx, $map_url, $matches)) {
+                $src = $matches[1]; ?>
+                <iframe class="rounded gmaps shadow-md" id="gmap_canvas" src="<?= $src ?>" frameborder="0" scrolling="no" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              <?php } else { ?>
+                <h1 class="text-center">Salin link Iframe GMAPS dengan benar !</h1>
+              <?php } ?>
             </div>
           </div>
           <!--Google Maps-->
@@ -118,7 +147,7 @@ $anyDestinations = mysqli_query(
                     <div class="custom-cards-dest my-3 text-center overflow-hidden side-card-dest">
                       <img src="admin/attraction/image/<?= $destinations['image']; ?>" alt="">
                       <div class="info-side-dest text-center">
-                        <h5 class="text-uppercase"><?= $destinations['district']; ?></h5>
+                        <h5 class="text-uppercase"><?= $destinations['district_name']; ?></h5>
                         <h3 class="text-capitalize"><?= $destinations['name']; ?></h3>
                       </div>
                     </div>

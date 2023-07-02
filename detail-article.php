@@ -7,18 +7,26 @@ include("config.php");
 
 $id = $_GET['id'];
 
-$detailArticle = mysqli_query($mysqli, "SELECT * FROM article WHERE id = '$id'");
+$detailArticle = mysqli_query(
+  $mysqli,
+  "SELECT article.*, users.nama AS user_name, category.nama AS category_name
+  FROM article
+  INNER JOIN users ON article.author_id = users.id
+  INNER JOIN category ON article.category_id = category.id
+  WHERE article.id = '$id'"
+);
+
 $getData = mysqli_fetch_array($detailArticle);
 
-$author = $getData['author_id'];
-$category = $getData['category_id'];
+$author = $getData['user_name'];
+$category = $getData['category_name'];
 $title = $getData['title'];
 $descript = $getData['description'];
 $image = $getData['image'];
 
 $anyArticle = mysqli_query(
   $mysqli,
-  "SELECT * FROM article
+  "SELECT article.*, 
   ORDER BY id DESC
   LIMIT 0,3
   "
