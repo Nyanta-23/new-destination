@@ -5,6 +5,16 @@ error_reporting(E_ALL);
 
 include("config.php");
 
+$current_page = (isset($_GET['page'])) ? (int) $_GET['page'] : 1;
+
+// Jumlah data per halaman
+$limit = 12;
+
+$offset = ($current_page - 1) * $limit;
+
+$previous = $current_page - 1;
+$next = $current_page + 1;
+
 $article = mysqli_query(
   $mysqli,
   "SELECT article.*, users.nama AS user_name, category.nama AS category_name
@@ -12,8 +22,19 @@ $article = mysqli_query(
   INNER JOIN users ON article.author_id = users.id
   INNER JOIN category ON article.category_id = category.id
   ORDER BY id DESC
+  LIMIT $limit OFFSET $offset
   "
 );
+
+$query_count = mysqli_query(
+  $mysqli,
+  "SELECT COUNT(id) FROM article"
+);
+
+$jumlah_data = mysqli_fetch_array($query_count)[0];
+$total_halaman = ceil($jumlah_data / $limit);
+$max_page = $total_halaman;
+
 
 ?>
 <!-- <a href="admin/login.php">Login</a> -->
@@ -79,29 +100,31 @@ $article = mysqli_query(
   <!-- List Content -->
 
   <!-- Pagination -->
-
   <section class="d-flex mt-5 mb-4 justify-content-center">
     <nav aria-label="Page navigation example">
       <ul class="pagination">
 
-        <!-- <li class="page-item">
-        <a class="page-link text-orange" href="#" aria-label="Previous">
-          <span aria-hidden="true">&laquo;</span>
-        </a>
-      </li> -->
+        <li class="page-item <?= ($previous < 1) ? 'd-none' : false ?>">
+          <a class="page-link text-orange" aria-label="Previous" href="list-article.php?page=<?= $previous ?>">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
 
-        <li class="page-item"><a class="page-link text-orange active-pagination" href="#">1</a></li>
-        <li class="page-item"><a class="page-link text-orange" href="#">2</a></li>
-        <li class="page-item"><a class="page-link text-orange" href="#">3</a></li>
-        <li class="page-item">
-          <a class="page-link text-orange" href="#" aria-label="Next">
+        <?php for ($i = 0; $i < $total_halaman; $i++) { ?>
+          <li class="page-item">
+            <a class="page-link text-orange <?= ($current_page == $i + 1) ? 'active-pagination' : false ?>" href="list-article.php?page=<?= $i + 1 ?>"><?= $i + 1 ?></a>
+          </li>
+        <?php } ?>
+
+        <li class="page-item <?= ($next > $max_page) ? 'd-none' : false ?>">
+          <a class="page-link text-orange" aria-label="Next" href="list-article.php?page=<?= $next ?>">
             <span aria-hidden="true">&raquo;</span>
           </a>
         </li>
+
       </ul>
     </nav>
   </section>
-
   <!-- Pagination -->
 
   <?php include_once("footer.php") ?>

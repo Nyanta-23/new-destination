@@ -5,16 +5,38 @@ error_reporting(E_ALL);
 
 include("config.php");
 
+
+$current_page = (isset($_GET['page'])) ? (int) $_GET['page'] : 1;
+
+// Jumlah data per halaman
+$limit = 9;
+
+$offset = ($current_page - 1) * $limit;
+
+$previous = $current_page - 1;
+$next = $current_page + 1;
+
 $destinations = mysqli_query(
   $mysqli,
   "SELECT attractions.*, district.nama AS district_name
   FROM attractions
   INNER JOIN district ON attractions.district_id = district.id
   ORDER BY id DESC
-  "
+  LIMIT $limit OFFSET $offset"
 );
 
+$query_count = mysqli_query(
+  $mysqli,
+  "SELECT COUNT(id) FROM attractions"
+);
+
+$jumlah_data = mysqli_fetch_array($query_count)[0];
+$total_halaman = ceil($jumlah_data / $limit);
+$max_page = $total_halaman;
+
 ?>
+
+
 <!-- <a href="admin/login.php">Login</a> -->
 
 <!DOCTYPE html>
@@ -44,8 +66,8 @@ $destinations = mysqli_query(
       <div class="row mt-5 mb-5 d-flex justify-content-start mx-sm-3 mx-xl-5 mx-lg-4">
 
         <?php while ($listDestinations = mysqli_fetch_array($destinations)) { ?>
-          <div class="col-sm-12 col-md-4 col-lg-4 d-inline-block d-flex justify-content-center">
 
+          <div class="col-sm-12 col-md-4 col-lg-4 d-inline-block d-flex justify-content-center">
             <div class="custom-cards-dest my-3 text-center overflow-hidden card-dest">
               <img src="admin/attraction/image/<?= $listDestinations['image'] ?>" alt="">
               <div class="info-dest text-center">
@@ -57,6 +79,7 @@ $destinations = mysqli_query(
               </div>
             </div>
           </div>
+
         <?php } ?>
 
       </div>
@@ -65,30 +88,29 @@ $destinations = mysqli_query(
   <!-- List Content -->
 
   <!-- Pagination -->
-
   <section class="d-flex mt-5 mb-4 justify-content-center">
     <nav aria-label="Page navigation example">
       <ul class="pagination">
 
-        <!-- <li class="page-item">
-        <a class="page-link text-orange" href="#" aria-label="Previous">
-          <span aria-hidden="true">&laquo;</span>
-        </a>
-      </li> -->
+        <li class="page-item <?= ($previous < 1) ? 'd-none' : false ?>">
+          <a class="page-link text-orange" aria-label="Previous" href="list-destinations.php?page=<?= $previous ?>">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
 
-        <li class="page-item"><a class="page-link text-orange active-pagination" href="#">1</a></li>
-        <li class="page-item"><a class="page-link text-orange" href="#">2</a></li>
-        <li class="page-item"><a class="page-link text-orange" href="#">3</a></li>
-        <li class="page-item">
-          <a class="page-link text-orange" href="#" aria-label="Next">
+        <?php for ($i = 0; $i < $total_halaman; $i++) { ?>
+          <li class="page-item">
+            <a class="page-link text-orange <?= ($current_page == $i + 1) ? 'active-pagination' : false ?>" href="list-destinations.php?page=<?= $i + 1 ?>"><?= $i + 1 ?></a>
+          </li>
+        <?php } ?>
+        <li class="page-item <?= ($next > $max_page) ? 'd-none' : false ?>">
+          <a class="page-link text-orange" aria-label="Next" href="list-destinations.php?page=<?= $next ?>">
             <span aria-hidden="true">&raquo;</span>
           </a>
         </li>
       </ul>
     </nav>
   </section>
-
-  <!-- Pagination -->
 
   <?php include_once("footer.php") ?>
 </body>
