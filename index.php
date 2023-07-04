@@ -48,11 +48,7 @@ $article = mysqli_query(
       <div class="bg-window z-0"></div>
       <h1 class="mt-3 mt-xl-5 display-3 text-orange fw-700 z-2 position-relative text-start">Where Would You Like To Go?
       </h1>
-      <p class="lead text-white z-2 position-relative text-start">Lorem ipsum dolor sit amet consectetur, adipisicing
-        elit. Dicta sed
-        sint mollitia magnam aspernatur labore reiciendis ex dolore, molestias, perspiciatis commodi quam distinctio
-        impedit laboriosam corrupti ut ratione incidunt qui.
-      </p>
+      <p class="lead text-white z-2 position-relative text-start">Let the journey ignite your soul and awaken your spirit. Embrace the wonders of the world with an open heart, for travel is the greatest teacher and adventure is the ultimate companion. Explore, discover, and create memories that will forever paint the canvas of your life.</p>
       <a class="btn btn-orange active-dark-orange btn-custom-size text-white z-2 position-relative btn-custom-rounded w-100 " href="#destinations" role="button">Get Started</a>
     </div>
   </section>
