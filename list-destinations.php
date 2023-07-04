@@ -49,7 +49,7 @@ $max_page = $total_halaman;
   <?php include_once("navbar.php") ?>
 
   <!-- Header -->
-  <section id="page-article" class="bg-destinations header-margin py-4">
+  <section id="page-destinations" class="bg-destinations header-margin py-4">
     <div class="container">
       <div class="row">
         <div class="col p-5">
@@ -61,7 +61,7 @@ $max_page = $total_halaman;
   <!-- Header -->
 
   <!-- List Content -->
-  <section id="list-article">
+  <section id="list-destinations">
     <div class="container">
       <div class="row mt-5 mb-5 d-flex justify-content-start mx-sm-3 mx-xl-5 mx-lg-4">
 
