@@ -1,5 +1,5 @@
 <?php
-$base_url = "http://localhost/web-pariwisata/admin";
+include_once("../config.php");
 $page  = $_GET['page']; ?>
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
