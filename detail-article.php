@@ -26,7 +26,7 @@ $image = $getData['image'];
 
 $anyArticle = mysqli_query(
   $mysqli,
-  "SELECT article.*, 
+  "SELECT * FROM article 
   ORDER BY id DESC
   LIMIT 0,3
   "
