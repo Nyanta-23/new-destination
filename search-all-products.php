@@ -83,7 +83,7 @@ $article = mysqli_query(
         </div>
       </div>
 
-      <div class="container">
+      <div class="container" style="margin-bottom: 130px;">
         <div class="row d-flex justify-content-sm-center justify-content-md-start">
 
           <?php
