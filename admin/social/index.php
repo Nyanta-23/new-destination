@@ -10,11 +10,11 @@ include_once("../config.php");
 
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Data Kontak</h3>
+                        <h3 class="card-title">Data Social</h3>
 
                         <div class="card-tools">
                             <!-- This will cause the card to maximize when clicked -->
-                            <a href='contact/create.php?page=contact' class="btn btn-info"><i class="fas fa-plus"></i>Tambah users</a>
+                            <a href='social/create.php?page=social' class="btn btn-info"><i class="fas fa-plus"></i>Tambah Social</a>
                         </div>
                         <!-- /.card-tools -->
                     </div>
@@ -25,15 +25,15 @@ include_once("../config.php");
 
                             <tr>
                                 <th>No</th>
-                                <th>Email</th>
-                                <th>phone_number</th>
-                                <th>url</th>
+                                <th>URL</th>
+                                <th>Username</th>
+                                <th>Icon</th>
                                 <th>Aksi</th>
                             </tr>
                             <?php
                             $no = 1;
                             $result = mysqli_query($mysqli, "SELECT *
-                            FROM contact
+                            FROM socials
                             ORDER BY id DESC");
 
                             while ($data = mysqli_fetch_array($result)) {
@@ -41,12 +41,12 @@ include_once("../config.php");
 
                                 <tr>
                                     <td><?= $no++ ?></td>
-                                    <td><?= $data['email'] ?></td>
-                                    <td><?= $data['phone_number'] ?></td>
                                     <td><?= $data['url'] ?></td>
+                                    <td><?= $data['username'] ?></td>
+                                    <td><?= $data['icon'] ?></td>
                                     <td>
-                                        <a class="btn btn-success" href='contact/edit.php?id=<?= $data['id'] ?>&page=contact'>Edit</a>
-                                        <a class="btn btn-danger" onclick='return confirmDelete()' href='contact/delete.php?id=<?= $data['id'] ?>&page=contact'>Hapus</a>
+                                        <a class="btn btn-success" href='social/edit.php?id=<?= $data['id'] ?>&page=social'>Edit</a>
+                                        <a class="btn btn-danger" onclick='return confirmDelete()' href='social/delete.php?id=<?= $data['id'] ?>&page=social'>Hapus</a>
                                     </td>
                                 </tr><?php } ?>
                         </table>

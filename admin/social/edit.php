@@ -7,12 +7,12 @@ include('session.php');
 $id = @$_GET['id'];
 
 // Fetech user data based on id
-$result = mysqli_query($mysqli, "SELECT * FROM contact WHERE id=$id");
+$result = mysqli_query($mysqli, "SELECT * FROM socials WHERE id=$id");
 
 while ($user_data = mysqli_fetch_array($result)) {
-    $row_email = $user_data['email'];
-    $row_phone_number = $user_data['phone_number'];
     $row_url = $user_data['url'];
+    $row_username = $user_data['username'];
+    $row_icon = $user_data['icon'];
 }
 ?>
 <?php
@@ -20,16 +20,16 @@ while ($user_data = mysqli_fetch_array($result)) {
 // Check if form is submitted for user update, then redirect to homepage after update
 if (isset($_POST['update'])) {
     $id = $_POST['id'];
-    $email = @$_POST['email'];
-    $phone_number = @$_POST['phone_number'];
     $url = @$_POST['url'];
-    if ($email) {
-        $result = mysqli_query($mysqli, "UPDATE contact SET email='$email',phone_number='$phone_number',url='$url' WHERE id=$id");
-    }
+    $username = @$_POST['username'];
+    $icon = @$_POST['icon'];
+
+    $result = mysqli_query($mysqli, "UPDATE socials SET url='$url',username='$username',icon='$icon' WHERE id=$id");
+
     // update user data
 
     // Redirect to homepage to display updated user in list
-    header("Location:../dashboard.php?page=contact");
+    header("Location:../dashboard.php?page=social");
 }
 ?>
 
@@ -72,30 +72,30 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                             <div class="card">
                                 <div class="card-header">
-                                    <h3 class="card-title">Data Kontak</h3>
+                                    <h3 class="card-title">Data Social</h3>
 
                                     <div class="card-tools">
                                         <!-- This will cause the card to maximize when clicked -->
-                                        <a href="../../admin?page=contact" class="btn btn-info">Kembali</a>
+                                        <a href="../../admin?page=social" class="btn btn-info">Kembali</a>
                                     </div>
                                     <!-- /.card-tools -->
                                 </div>
 
                                 <div class="card-body">
 
-                                    <form action="../../admin/contact/edit.php" method="post">
+                                    <form action="../../admin/social/edit.php" method="post">
                                         <input type="hidden" name="id" value="<?= $id ?>">
                                         <div class="form-group">
-                                            <label for="email">Email</label>
-                                            <input type="text" class="form-control" value="<?= $row_email ?>" name="email" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="phone_number">Phone Number</label>
-                                            <input type="text" class="form-control" value="<?= $row_phone_number ?>" name="phone_number" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="url">Url</label>
+                                            <label for="url">URL</label>
                                             <input type="url" class="form-control" value="<?= $row_url ?>" name="url" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="username">Username</label>
+                                            <input type="text" class="form-control" value="<?= $row_username ?>" name="username" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="icon">Icon</label>
+                                            <input type="file" class="form-control" value="<?= $row_icon ?>" name="icon" required>
                                         </div>
                                         <button class="btn btn-primary" type="submit" name="update">Simpan</button>
                                 </div>

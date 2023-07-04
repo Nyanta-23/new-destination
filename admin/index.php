@@ -29,6 +29,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="../assets/admin/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../assets/admin/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="../assets/admin/plugins/chart.js/Chart.min.css">
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -67,6 +68,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script src="../assets/admin/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
   <script src="../assets/admin/plugins/datatables-buttons/js/buttons.print.min.js"></script>
   <script src="../assets/admin/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+  <script src="../assets/admin/plugins/chart.js/Chart.min.js"></script>
   <!-- Bootstrap 4 -->
   <script src="../assets/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- AdminLTE App -->
