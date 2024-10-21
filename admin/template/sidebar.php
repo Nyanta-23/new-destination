@@ -16,7 +16,7 @@ $page  = $_GET['page']; ?>
         <!-- Add icons to the links using the .nav-icon class
               with font-awesome or any other icon font library -->
         <li class="nav-item">
-          <a href="<?= $base_url ?>/dashboard.php?page=home" class="nav-link  <?php if ($page == 'home') { ?>active<?php } ?>">
+          <a href="<?= $base_url_admin ?>/dashboard.php?page=home" class="nav-link  <?php if ($page == 'home') { ?>active<?php } ?>">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
               Beranda
@@ -24,7 +24,7 @@ $page  = $_GET['page']; ?>
           </a>
         </li>
         <li class="nav-item">
-          <a href="<?= $base_url ?>/dashboard.php?page=users" class="nav-link <?php if ($page == 'users') { ?>active<?php } ?>">
+          <a href="<?= $base_url_admin ?>/dashboard.php?page=users" class="nav-link <?php if ($page == 'users') { ?>active<?php } ?>">
             <i class="nav-icon fas fa-users"></i>
             <p>
               Users
@@ -32,7 +32,7 @@ $page  = $_GET['page']; ?>
           </a>
         </li>
         <li class="nav-item">
-          <a href="<?= $base_url ?>/dashboard.php?page=kategori" class="nav-link  <?php if ($page == 'kategori') { ?>active<?php } ?>">
+          <a href="<?= $base_url_admin ?>/dashboard.php?page=kategori" class="nav-link  <?php if ($page == 'kategori') { ?>active<?php } ?>">
             <i class="nav-icon fas fa-th-large"></i>
             <p>
               Kategori
@@ -40,7 +40,7 @@ $page  = $_GET['page']; ?>
           </a>
         </li>
         <li class="nav-item">
-          <a href="<?= $base_url ?>/dashboard.php?page=artikel" class="nav-link  <?php if ($page == 'artikel') { ?>active<?php } ?>">
+          <a href="<?= $base_url_admin ?>/dashboard.php?page=artikel" class="nav-link  <?php if ($page == 'artikel') { ?>active<?php } ?>">
             <i class="nav-icon fas fa-file"></i>
             <p>
               Artikel
@@ -48,7 +48,7 @@ $page  = $_GET['page']; ?>
           </a>
         </li>
         <li class="nav-item">
-          <a href="<?= $base_url ?>/dashboard.php?page=attraction" class="nav-link  <?php if ($page == 'attraction') { ?>active<?php } ?>">
+          <a href="<?= $base_url_admin ?>/dashboard.php?page=attraction" class="nav-link  <?php if ($page == 'attraction') { ?>active<?php } ?>">
             <i class="nav-icon fas fa-map-signs"></i>
             <p>
               Destinasi Wisata
@@ -56,7 +56,7 @@ $page  = $_GET['page']; ?>
           </a>
         </li>
         <li class="nav-item">
-          <a href="<?= $base_url ?>/dashboard.php?page=province" class="nav-link  <?php if ($page == 'province') { ?>active<?php } ?>">
+          <a href="<?= $base_url_admin ?>/dashboard.php?page=province" class="nav-link  <?php if ($page == 'province') { ?>active<?php } ?>">
             <i class="nav-icon fas fa-globe"></i>
             <p>
               Province
@@ -65,7 +65,7 @@ $page  = $_GET['page']; ?>
         </li>
         </li>
         <li class="nav-item">
-          <a href="<?= $base_url ?>/dashboard.php?page=district" class="nav-link  <?php if ($page == 'district') { ?>active<?php } ?>">
+          <a href="<?= $base_url_admin ?>/dashboard.php?page=district" class="nav-link  <?php if ($page == 'district') { ?>active<?php } ?>">
             <i class="nav-icon fas fa-map-marker"></i>
             <p>
               District
@@ -73,7 +73,7 @@ $page  = $_GET['page']; ?>
           </a>
         </li>
         <li class="nav-item">
-          <a href="<?= $base_url ?>/dashboard.php?page=about" class="nav-link  <?php if ($page == 'about') { ?>active<?php } ?>">
+          <a href="<?= $base_url_admin ?>/dashboard.php?page=about" class="nav-link  <?php if ($page == 'about') { ?>active<?php } ?>">
             <i class="nav-icon fas fa-info-circle"></i>
             <p>
               About
@@ -81,7 +81,7 @@ $page  = $_GET['page']; ?>
           </a>
         </li>
         <li class="nav-item">
-          <a href="<?= $base_url ?>/dashboard.php?page=contact" class="nav-link  <?php if ($page == 'contact') { ?>active<?php } ?>">
+          <a href="<?= $base_url_admin ?>/dashboard.php?page=contact" class="nav-link  <?php if ($page == 'contact') { ?>active<?php } ?>">
             <i class="nav-icon fas fa-phone-square"></i>
             <p>
               Contact
@@ -89,7 +89,7 @@ $page  = $_GET['page']; ?>
           </a>
         </li>
         <li class="nav-item">
-          <a href="<?= $base_url ?>/logout.php" class="nav-link">
+          <a href="<?= $base_url_admin ?>/logout.php" class="nav-link">
             <i class="nav-icon fas fa-power-off"></i>
             <p>
               Keluar

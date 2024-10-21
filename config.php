@@ -2,7 +2,8 @@
 ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
-$base_url_admin = "http://localhost/web-pariwisata/admin";
+// $base_url_admin = "http://localhost/web-pariwisata/admin";
+$base_url_admin = "http://php-web-destination.test/admin";
 $databaseHost = 'localhost';
 $databaseName = 'pariwisata';
 $databaseUsername = 'root';

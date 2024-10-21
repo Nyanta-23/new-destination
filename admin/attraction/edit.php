@@ -41,8 +41,10 @@ if (isset($_POST['update'])) {
         } else {
             echo '<script> alert("EKSTENSI FILE YANG DI UPLOAD TIDAK DI PERBOLEHKAN") </script>';
         }
+
         $sql = "SELECT image FROM attractions WHERE id='$id'";
         $result = mysqli_query($mysqli, $sql);
+
         if ($result->num_rows ==  0) {
             $row = mysqli_fetch_assoc($result);
             if (file_exists('image/' . $filename)) {
@@ -52,6 +54,7 @@ if (isset($_POST['update'])) {
                 echo 'Could not delete ' . $row['image'] . ', file does not exist';
             }
         }
+
         $file_name = $nama;
         $result = mysqli_query($mysqli, "UPDATE attractions SET 
         category_id='$category_id',
@@ -65,6 +68,7 @@ if (isset($_POST['update'])) {
         available_restaurant='$available_restaurant',
         image='$file_name'
         WHERE id=$id");
+
     } else {
         $result = mysqli_query($mysqli, "UPDATE attractions SET  
         category_id='$category_id',
@@ -104,6 +108,7 @@ while ($data = mysqli_fetch_array($red_attraction)) {
 }
 // 
 ?>
+
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
